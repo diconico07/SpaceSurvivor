@@ -39,3 +39,4 @@ else:unix: LIBS += -L$$PWD/SFML-2.1/lib/ -lsfml-window
 
 INCLUDEPATH += $$PWD/SFML-2.1/include
 DEPENDPATH += $$PWD/SFML-2.1/include
+
