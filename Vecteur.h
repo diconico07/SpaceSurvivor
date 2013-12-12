@@ -24,21 +24,20 @@ private:
 
 public:
 
-	Vecteur (int X = 0, int Y = 0 ):x(X),y(Y){}
-	virtual ~Vecteur ( );
-
-     void setX ( int new_var );
-     int getX ( );
-     void setY ( int new_var );
-     int getY ( );
-     void setXY (int X, int Y );
+    Vecteur (int X = 0, int Y = 0 ):x(X),y(Y){}
+    virtual ~Vecteur ( );
+    void setX ( int new_var );
+    int getX ( );
+    void setY ( int new_var );
+    int getY ( );
+    void setXY (int X, int Y );
     void setModule (int module );
     void setArgument (float Argument = 0 );
     int getModule ( );
     float getArgument ( );
-	void setModuleArgument (int Module, float Argument );
+    void setModuleArgument (int Module, float Argument );
 
-    Vecteur& Vecteur::operator+=(Vecteur vecteur);
+    Vecteur& operator+=(Vecteur vecteur);
 
 };
 

@@ -58,7 +58,7 @@ int Vaisseau::getAccAngulaire ( )	 {
 
 
 void Vaisseau::move(){
-  Vecteur accel();
+  Vecteur accel;
   accel.setModuleArgument(accLineaire,angle);
 
   position+=vitesse;
