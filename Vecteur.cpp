@@ -59,12 +59,22 @@ void Vecteur::setXY (int X, int Y )
   *
   */
 void Vecteur::setModuleArgument (int Module, float Argument ){
-    x=Module*std::sin(Argument*M_PI/180);
-    y=Module*std::cos(Argument*M_PI/180);
+    x=Module*std::cos(Argument*M_PI/180);
+    y=Module*std::sin(Argument*M_PI/180);
     }
 
 int Vecteur::getModule(){
   return std::sqrt(x*x+y*y);
+}
+
+float Vecteur::getArgument(){
+  return (std::atan2(y,x)*180/M_PI);
+}
+
+void Vecteur::setModule(int module){
+  float argument=this->getArgument();
+  x=module*std::cos(argument*M_PI/180);
+  y=module*std::sin(argument*M_PI/180);
 }
 
 // Surchage opérateurs
