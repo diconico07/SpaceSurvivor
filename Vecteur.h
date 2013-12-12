@@ -31,8 +31,6 @@ public:
 	/**
 	 * Empty Constructor
 	 */
-	Vecteur ( );
-
 	/**
 	 * Full constructor
 	 * @param  X

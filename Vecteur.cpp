@@ -3,11 +3,6 @@
 // Constructors/Destructors
 //  
 
-Vecteur::Vecteur ( ) {
-    x=0;
-    y=0;
-
-}
 
 Vecteur::~Vecteur ( ) { }
 
