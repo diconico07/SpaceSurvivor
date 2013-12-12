@@ -37,7 +37,7 @@ public:
     float getArgument ( );
     void setModuleArgument (int Module, float Argument );
 
-    Vecteur& Vecteur::operator+=(Vecteur vecteur);
+    Vecteur& operator+=(Vecteur vecteur);
 
 };
 
