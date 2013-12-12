@@ -2,35 +2,17 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 
+#include "Missile.h"
+
 int main()
 {
     std::vector<Missile*> listeMissiles;
+
     // Create the main window
     sf::RenderWindow window(sf::VideoMode::getDesktopMode(), "Space Survivor");
     // Load a sprite to display
-    sf::Texture texture;
-    if (!texture.loadFromFile("ressources/cute_image.jpg"))
-        return EXIT_FAILURE;
 
-    sf::Sprite sprite(texture);
 
-    sf::Texture asteroidt;
-    if(!asteroidt.loadFromFile("ressources/asteroid.png"))
-      return EXIT_FAILURE;
-    sf::Sprite asteroid(asteroidt);
-    asteroid.move(50,50);
-
-    // Create a graphical text to display
-    sf::Font font;
-    if (!font.loadFromFile("ressources/arial.ttf"))
-        return EXIT_FAILURE;
-    sf::Text text("Hello SFML", font, 50);
-    // Load a music to play
-    sf::Music music;
-    if (!music.openFromFile("ressources/nice_music.ogg"))
-        return EXIT_FAILURE;
-    // Play the music
-    music.play();
     // Start the game loop
     while (window.isOpen())
     {
@@ -44,11 +26,18 @@ int main()
         }
         // Clear screen
         window.clear();
-        // Draw the sprite
-        window.draw(sprite);
-        window.draw(asteroid);
-        // Draw the string
-        window.draw(text);
+        // Draw the sprites
+        for(unsigned int i=0;i<listeMissiles.size();i++){
+            listeMissiles[i]->move();
+        }
+        for(unsigned int i=0;i<listeMissiles.size();i++){
+            for(unsigned int j=i+1;j<listeMissiles.size();i++)
+              listeMissiles[i]->collide(listeMissiles[i]);
+        }
+        for(unsigned int i=0;i<listeMissiles.size();i++){
+          window.draw(listeMissiles[i]->getSprite());
+        }
+
         // Update the window
         window.display();
     }

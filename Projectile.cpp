@@ -4,7 +4,7 @@
 //  
 
 Projectile::Projectile ( ) {
-initAttributes();
+
 }
 
 Projectile::~Projectile ( ) { }

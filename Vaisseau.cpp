@@ -4,7 +4,7 @@
 //  
 
 Vaisseau::Vaisseau ( ) {
-initAttributes();
+
 }
 
 Vaisseau::~Vaisseau ( ) { }

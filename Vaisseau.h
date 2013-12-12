@@ -2,6 +2,7 @@
 #ifndef VAISSEAU_H
 #define VAISSEAU_H
 #include "Missile.h"
+#include "Projectile.h"
 
 #include <string>
 
