@@ -13,7 +13,7 @@ int main()
     listeMissiles.push_back(joueur);
 
     // Create the main window
-    sf::RenderWindow window(sf::VideoMode::getDesktopMode(), "Space Survivor");
+    sf::RenderWindow window(sf::VideoMode(800,600), "Space Survivor");
     // Load a sprite to display
 
 
@@ -31,17 +31,19 @@ int main()
             if (event.type == sf::Event::KeyPressed)
               switch(event.key.code){
                 case sf::Keyboard::Up :
-                  joueur->setAccLineaire(10);
+                  joueur->setAccLineaire(2);
                   break;
                 case sf::Keyboard::Down :
-                  joueur->setAccLineaire(-10);
+                  joueur->setAccLineaire(-2);
                   break;
                 case sf::Keyboard::Left :
-                  joueur->setAccAngulaire(5);
+                  joueur->setAccAngulaire(1);
                   break;
                 case sf::Keyboard::Right :
-                  joueur->setAccAngulaire(-5);
+                  joueur->setAccAngulaire(-1);
                   break;
+                case sf::Keyboard::Escape :
+                  window.close();
                 default:
                   break;
                 }

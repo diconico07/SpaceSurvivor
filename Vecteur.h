@@ -20,17 +20,17 @@ private:
     // Private attributes
     //
 
-    int x;
-    int y;
+    float x;
+    float y;
 
 public:
 
     Vecteur (int X = 0, int Y = 0 ):x(X),y(Y){}
     virtual ~Vecteur ( );
     void setX ( int new_var );
-    int getX ( );
+    float getX ( );
     void setY ( int new_var );
-    int getY ( );
+    float getY ( );
     void setXY (int X, int Y );
     void setModule (int module );
     void setArgument (float Argument = 0 );

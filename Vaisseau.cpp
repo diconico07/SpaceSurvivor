@@ -8,12 +8,14 @@ Vaisseau::Vaisseau ( ):Missile() {
     accAngulaire=0;
     vitesseAngulaire=0;
     angle=0;
+    size=48;
     position.setXY(100,100);
     sf::Texture *texture=new sf::Texture();
     texture->loadFromFile("ressources/vaisseau.png");
+
     sprite.setTexture(*texture);
     sprite.setPosition(100,100);
-    sprite.rotate(50);
+    sprite.setOrigin(size/2,size/2);
 }
 
 Vaisseau::~Vaisseau ( ) {
@@ -66,13 +68,28 @@ int Vaisseau::getAccAngulaire ( )	 {
 
 void Vaisseau::move(){
   Vecteur accel;
-  accel.setModuleArgument(accLineaire,angle);
+  accel.setModuleArgument(-accLineaire,-angle);
 
   position+=vitesse;
+
+  if(position.getX()>800)
+    position.setX(position.getX()-800);
+  if(position.getY()>600)
+    position.setY(position.getY()-600);
+  if(position.getX()<0)
+    position.setX(position.getX()+800);
+  if(position.getY()<0)
+    position.setY(position.getY()+600);
   vitesse+=accel;
 
   angle+=vitesseAngulaire;
-  vitesseAngulaire+=accAngulaire;
+  vitesseAngulaire-=accAngulaire;
+
+  accAngulaire=0;
+  accLineaire=0;
+
+  sprite.setPosition(position.getX(),position.getY());
+  sprite.setRotation(angle);
 }
 
 /**

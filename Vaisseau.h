@@ -7,6 +7,7 @@
 
 #include <string>
 
+#define VITESSE_MAX 20
 /**
   * class Vaisseau
   * 

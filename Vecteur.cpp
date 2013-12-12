@@ -25,7 +25,7 @@ void Vecteur::setX ( int new_var )	 {
  * Get the value of x
  * @return the value of x
  */
-int Vecteur::getX ( )	 {
+float Vecteur::getX( )	 {
         return x;
 }
 
@@ -41,7 +41,7 @@ void Vecteur::setY ( int new_var )	 {
  * Get the value of y
  * @return the value of y
  */
-int Vecteur::getY ( )	 {
+float Vecteur::getY ( )	 {
         return y;
 }
 
@@ -59,9 +59,13 @@ void Vecteur::setXY (int X, int Y )
   *
   */
 void Vecteur::setModuleArgument (int Module, float Argument ){
-    x=Module*std::cos(Argument);
-    y=Module*std::sin(Argument);
+    x=Module*std::sin(Argument*M_PI/180);
+    y=Module*std::cos(Argument*M_PI/180);
     }
+
+int Vecteur::getModule(){
+  return std::sqrt(x*x+y*y);
+}
 
 // Surchage opérateurs
 //
