@@ -4,10 +4,6 @@
 //  
 
 Missile::Missile ( ) {
-
-    position   =new Vecteur();
-    vitesse = new Vecteur();
-    sprite = new sf::Sprite();
     size = 0;
 }
 

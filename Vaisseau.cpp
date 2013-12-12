@@ -16,7 +16,16 @@ Vaisseau::~Vaisseau ( ) { }
 // Methods
 //  
 
+void Vaisseau::move(){
+  Vecteur accel();
+  accel.setModuleArgument(accLineaire,angle);
 
+  position+=vitesse;
+  vitesse+=accel;
+
+  angle+=vitesseAngulaire;
+  vitesseAngulaire+=accAngulaire;
+}
 
 // Accessor methods
 //  
