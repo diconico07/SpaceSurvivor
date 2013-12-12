@@ -3,6 +3,7 @@
 #define VAISSEAU_H
 #include "Missile.h"
 #include "Projectile.h"
+#include "Vecteur.h"
 
 #include <string>
 

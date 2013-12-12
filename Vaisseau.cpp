@@ -8,7 +8,7 @@ Vaisseau::Vaisseau ( ):Missile() {
     accAngulaire=0;
     vitesseAngulaire=0;
     angle=0;
-    position+= new Vector(100,100);
+    position.setXY(100,100);
 }
 
 Vaisseau::~Vaisseau ( ) { }

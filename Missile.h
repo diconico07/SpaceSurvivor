@@ -52,8 +52,8 @@ public:
     //Other methods
     //
 
-    virtual void move ( );
-    virtual bool collide (Missile *c );
+    virtual void move ( )=0;
+    virtual bool collide (Missile *c )=0;
     sf::Sprite getSprite ( );
 
 };
