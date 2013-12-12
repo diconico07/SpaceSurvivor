@@ -1,8 +1,10 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
+#include <vector>
 
 int main()
 {
+    std::vector<Missile*> listeMissiles;
     // Create the main window
     sf::RenderWindow window(sf::VideoMode::getDesktopMode(), "Space Survivor");
     // Load a sprite to display
