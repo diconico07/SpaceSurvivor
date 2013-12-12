@@ -3,10 +3,14 @@
 #include <vector>
 
 #include "Missile.h"
+#include "Vaisseau.h"
 
 int main()
 {
     std::vector<Missile*> listeMissiles;
+
+    Vaisseau *joueur=new Vaisseau();
+    listeMissiles.push_back(joueur);
 
     // Create the main window
     sf::RenderWindow window(sf::VideoMode::getDesktopMode(), "Space Survivor");
@@ -23,6 +27,24 @@ int main()
             // Close window : exit
             if (event.type == sf::Event::Closed)
                 window.close();
+
+            if (event.type == sf::Event::KeyPressed)
+              switch(event.key.code){
+                case sf::Keyboard::Up :
+                  joueur->setAccLineaire(10);
+                  break;
+                case sf::Keyboard::Down :
+                  joueur->setAccLineaire(-10);
+                  break;
+                case sf::Keyboard::Left :
+                  joueur->setAccAngulaire(5);
+                  break;
+                case sf::Keyboard::Right :
+                  joueur->setAccAngulaire(-5);
+                  break;
+                default:
+                  break;
+                }
         }
         // Clear screen
         window.clear();

@@ -101,7 +101,6 @@ public:
 	 */
 	float getArgument ( );
 
-
 	/**
 	 * @param  Module
 	 * @param  Argument
