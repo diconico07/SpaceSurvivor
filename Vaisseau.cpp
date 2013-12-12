@@ -53,4 +53,21 @@ int Vaisseau::getAccAngulaire ( )	 {
         return accAngulaire;
 }
 
+//Other methods
+//
+
+/**
+ */
+void Vaisseau::move ( )
+{
+}
+
+/**
+ * @return bool
+ * @param  missile1
+ */
+bool Vaisseau::collide (Missile *missile1 )
+{
+}
+
 
