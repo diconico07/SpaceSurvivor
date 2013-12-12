@@ -3,6 +3,7 @@
 #define VECTEUR_H
 
 #include <string>
+#include <cmath>
 
 /**
   * class Vecteur

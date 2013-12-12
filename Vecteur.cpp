@@ -55,6 +55,14 @@ void Vecteur::setXY (int X, int Y )
   y=Y;
 }
 
+/**
+  *
+  */
+void Vecteur::setModuleArgument (int Module, float Argument ){
+    x=Module*std::cos(Argument);
+    y=Module*std::sin(Argument);
+    }
+
 // Surchage opérateurs
 //
 
