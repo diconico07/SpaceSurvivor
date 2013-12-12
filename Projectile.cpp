@@ -21,6 +21,3 @@ Projectile::~Projectile ( ) { }
 // Other methods
 //  
 
-void Projectile::initAttributes ( ) {
-}
-

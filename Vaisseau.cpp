@@ -22,7 +22,7 @@ Vaisseau::~Vaisseau ( ) { }
  * Set the value of accLineaire
  * @param new_var the new value of accLineaire
  */
-void setAccLineaire ( int new_var )	 {
+void Vaisseau::setAccLineaire ( int new_var )	 {
                 accLineaire = new_var;
 }
 
@@ -30,7 +30,7 @@ void setAccLineaire ( int new_var )	 {
  * Get the value of accLineaire
  * @return the value of accLineaire
  */
-int getAccLineaire ( )	 {
+int Vaisseau::getAccLineaire ( )	 {
         return accLineaire;
 }
 
@@ -38,7 +38,7 @@ int getAccLineaire ( )	 {
  * Set the value of accAngulaire
  * @param new_var the new value of accAngulaire
  */
-void setAccAngulaire ( int new_var )	 {
+void Vaisseau::setAccAngulaire ( int new_var )	 {
                 accAngulaire = new_var;
 }
 
@@ -46,13 +46,8 @@ void setAccAngulaire ( int new_var )	 {
  * Get the value of accAngulaire
  * @return the value of accAngulaire
  */
-int getAccAngulaire ( )	 {
+int Vaisseau::getAccAngulaire ( )	 {
         return accAngulaire;
 }
 
-// Other methods
-//  
-
-void Vaisseau::initAttributes ( ) {
-}
 
