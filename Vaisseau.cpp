@@ -9,9 +9,14 @@ Vaisseau::Vaisseau ( ):Missile() {
     vitesseAngulaire=0;
     angle=0;
     position.setXY(100,100);
+    sf::Texture *texture=new Texture();
+    texture->loadFromFile("ressource/vaisseau.png");
+    sprite.setTexture(texture);
 }
 
-Vaisseau::~Vaisseau ( ) { }
+Vaisseau::~Vaisseau ( ) {
+  delete sprite.getTexture();
+}
 
 //  
 // Methods
