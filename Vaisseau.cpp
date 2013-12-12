@@ -3,8 +3,11 @@
 // Constructors/Destructors
 //  
 
-Vaisseau::Vaisseau ( ) {
-
+Vaisseau::Vaisseau ( ):Missile() {
+    accLineaire=0;
+    accAngulaire=0;
+    vitesseAngulaire=0;
+    angle=0;
 }
 
 Vaisseau::~Vaisseau ( ) { }

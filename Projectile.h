@@ -11,6 +11,16 @@
 
 class Projectile : virtual public Missile
 {
+private:
+
+    // Static Private attributes
+    //
+
+    // Private attributes
+    //
+
+    int life;
+
 public:
 
 	// Constructors/Destructors
@@ -49,17 +59,6 @@ public:
 	 * 
 	 */
 	void move ( );
-
-private:
-
-	// Static Private attributes
-	//  
-
-	// Private attributes
-	//  
-
-	int life;
-
 
 
 };

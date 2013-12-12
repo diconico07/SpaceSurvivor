@@ -4,6 +4,8 @@
 //  
 
 Vecteur::Vecteur ( ) {
+    x=0;
+    y=0;
 
 }
 
@@ -12,7 +14,6 @@ Vecteur::~Vecteur ( ) { }
 //  
 // Methods
 //  
-
 
 // Accessor methods
 //  

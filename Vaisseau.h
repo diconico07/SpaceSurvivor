@@ -13,6 +13,19 @@
 
 class Vaisseau : virtual public Missile
 {
+private:
+
+    // Static Private attributes
+    //
+
+    // Private attributes
+    //
+
+    int accLineaire;
+    int accAngulaire;
+    int vitesseAngulaire;
+    int angle;
+
 public:
 
 	// Constructors/Destructors
@@ -79,20 +92,6 @@ public:
 	 * @param  missile1
 	 */
 	bool collide (Missile missile1 );
-
-
-private:
-
-	// Static Private attributes
-	//  
-
-	// Private attributes
-	//  
-
-	int accLineaire;
-	int accAngulaire;
-	int vitesseAngulaire;
-	int angle;
 
 };
 

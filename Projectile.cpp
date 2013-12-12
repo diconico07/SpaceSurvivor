@@ -3,8 +3,8 @@
 // Constructors/Destructors
 //  
 
-Projectile::Projectile ( ) {
-
+Projectile::Projectile ( ):Missile() {
+    life=0;
 }
 
 Projectile::~Projectile ( ) { }

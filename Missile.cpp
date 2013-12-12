@@ -4,7 +4,13 @@
 //  
 
 Missile::Missile ( ) {
+
+    position   =new Vecteur();
+    vitesse = new Vecteur();
+    sprite = new sf::Sprite();
+    size = 0;
 }
+
 
 Missile::~Missile ( ) { }
 
@@ -43,7 +49,7 @@ void Missile::setVitesse ( Vecteur new_var )	 {
  * Get the value of vitesse
  * @return the value of vitesse
  */
-Vecteur getVitesse ( )	 {
+Vecteur Missile::getVitesse ( )	 {
     return vitesse;
 }
 
@@ -51,7 +57,7 @@ Vecteur getVitesse ( )	 {
  * Get the value of sprite
  * @return the value of sprite
  */
-sf::Sprite getSprite ( )	 {
+sf::Sprite Missile::getSprite ( )	 {
     return sprite;
 }
 

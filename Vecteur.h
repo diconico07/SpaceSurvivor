@@ -11,6 +11,17 @@
 
 class Vecteur
 {
+private:
+
+    // Static Private attributes
+    //
+
+    // Private attributes
+    //
+
+    int x;
+    int y;
+
 public:
 
 	// Constructors/Destructors
@@ -98,17 +109,6 @@ public:
 	 * @param  Argument
 	 */
 	void setModuleArgument (int Module, float Argument );
-
-private:
-
-	// Static Private attributes
-	//  
-
-	// Private attributes
-	//  
-
-	int x;
-	int y;
 
 
 };
