@@ -55,3 +55,11 @@ void Vecteur::setXY (int X, int Y )
   y=Y;
 }
 
+// Surchage opérateurs
+//
+
+Vecteur& Vecteur::operator+=(Vecteur vecteur){
+    x+=vecteur.getX();
+    y+=vecteur.getY();
+    return *this;
+}
