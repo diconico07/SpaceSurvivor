@@ -21,3 +21,16 @@ Projectile::~Projectile ( ) { }
 // Other methods
 //  
 
+/**
+ */
+void Projectile::move ( )
+{
+}
+
+/**
+ * @return bool
+ * @param  missile1
+ */
+bool Projectile::collide (Missile *missile1 )
+{
+}
