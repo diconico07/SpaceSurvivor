@@ -3,21 +3,42 @@
 // Constructors/Destructors
 //  
 
+/**
+ * Empty Constructor
+ */
 Asteroid::Asteroid ( ) {
 }
 
+/**
+ * Empty Destructor
+ */
 Asteroid::~Asteroid ( ) { }
 
-//  
-// Methods
-//  
+/**
+ * @param  Position
+ * @param  Vitesse
+ * @param  Size
+ */
+ Asteroid::Asteroid (Vecteur Position, Vecteur Vitesse, int Size )
+{
+}
 
+ //
+ // Methods
+ //
 
-// Accessor methods
-//  
+/**
+ */
+Asteroid::move ( )
+{
+}
 
-
-// Other methods
-//  
+/**
+ * @return bool
+ * @param  missile1
+ */
+Asteroid::collide (Missile missile1 )
+{
+}
 
 

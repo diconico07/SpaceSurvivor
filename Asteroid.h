@@ -17,57 +17,15 @@ public:
 	// Constructors/Destructors
 	//  
 
+    Asteroid ( );
+    virtual ~Asteroid ( );
+    Asteroid (Vecteur Position, Vecteur Vitesse, int Size );
 
-	/**
-	 * Empty Constructor
-	 */
-	Asteroid ( );
+    //Other Methods
+    //
 
-	/**
-	 * Empty Destructor
-	 */
-	virtual ~Asteroid ( );
-
-	// Static Public attributes
-	//  
-
-	// Public attributes
-	//  
-
-
-	// Public attribute accessor methods
-	//  
-
-
-	// Public attribute accessor methods
-	//  
-
-
-
-	/**
-	 * @param  Position
-	 * @param  Vitesse
-	 * @param  Size
-	 */
-	 Asteroid (Vecteur Position, Vecteur Vitesse, int Size )
-	{
-	}
-
-
-	/**
-	 */
-	void move ( )
-	{
-	}
-
-
-	/**
-	 * @return bool
-	 * @param  missile1
-	 */
-	bool collide (Missile missile1 )
-	{
-	}
+    void move ( );
+    bool collide (Missile missile1 );
 
 };
 
