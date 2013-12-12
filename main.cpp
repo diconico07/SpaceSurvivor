@@ -4,12 +4,20 @@
 int main()
 {
     // Create the main window
-    sf::RenderWindow window(sf::VideoMode(800, 600), "SFML window");
+    sf::RenderWindow window(sf::VideoMode::getDesktopMode(), "Space Survivor");
     // Load a sprite to display
     sf::Texture texture;
     if (!texture.loadFromFile("ressources/cute_image.jpg"))
         return EXIT_FAILURE;
+
     sf::Sprite sprite(texture);
+
+    sf::Texture asteroidt;
+    if(!asteroidt.loadFromFile("ressources/asteroid.png"))
+      return EXIT_FAILURE;
+    sf::Sprite asteroid(asteroidt);
+    asteroid.move(50,50);
+
     // Create a graphical text to display
     sf::Font font;
     if (!font.loadFromFile("ressources/arial.ttf"))
@@ -36,6 +44,7 @@ int main()
         window.clear();
         // Draw the sprite
         window.draw(sprite);
+        window.draw(asteroid);
         // Draw the string
         window.draw(text);
         // Update the window
