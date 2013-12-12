@@ -29,7 +29,7 @@ Asteroid::~Asteroid ( ) { }
 
 /**
  */
-Asteroid::move ( )
+void Asteroid::move ( )
 {
 }
 
@@ -37,7 +37,7 @@ Asteroid::move ( )
  * @return bool
  * @param  missile1
  */
-Asteroid::collide (Missile missile1 )
+bool Asteroid::collide (Missile *missile1 )
 {
 }
 
