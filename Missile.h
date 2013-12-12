@@ -53,7 +53,7 @@ public:
     //
 
     virtual void move ( );
-    virtual bool collide (Missile c );
+    virtual bool collide (Missile *c );
     sf::Sprite getSprite ( );
 
 };

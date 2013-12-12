@@ -75,17 +75,3 @@ void Missile::setSize ( int new_var )	 {
 // Other methods
 //  
 
-/**
- */
-void Missile::move ( )
-{
-}
-
-/**
- * @return bool
- * @param  c
- */
-bool Missile::collide (Missile c )
-{
-}
-
