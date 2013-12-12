@@ -4,6 +4,7 @@
 
 #include <string>
 #include "Vecteur.h"
+#include <SFML/Graphics.hpp>
 
 /**
   * class Missile

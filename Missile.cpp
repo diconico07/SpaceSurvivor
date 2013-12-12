@@ -4,23 +4,9 @@
 //  
 
 Missile::Missile ( ) {
-initAttributes();
 }
 
 Missile::~Missile ( ) { }
-// Constructors/Destructors
-//
-
-
-/**
- * Empty Constructor
- */
-Missile ( );
-
-/**
- * Empty Destructor
- */
-virtual ~Missile ( );
 
 //  
 // Methods
@@ -33,7 +19,7 @@ virtual ~Missile ( );
  * Set the value of position
  * @param new_var the new value of position
  */
-void setPosition ( Vecteur new_var )	 {
+void Missile::setPosition ( Vecteur new_var )	 {
         position = new_var;
 }
 
@@ -41,7 +27,7 @@ void setPosition ( Vecteur new_var )	 {
  * Get the value of position
  * @return the value of position
  */
-Vecteur getPosition ( )	 {
+Vecteur Missile::getPosition ( )	 {
     return position;
 }
 
@@ -49,7 +35,7 @@ Vecteur getPosition ( )	 {
  * Set the value of vitesse
  * @param new_var the new value of vitesse
  */
-void setVitesse ( Vecteur new_var )	 {
+void Missile::setVitesse ( Vecteur new_var )	 {
         vitesse = new_var;
 }
 
@@ -74,7 +60,7 @@ sf::Sprite getSprite ( )	 {
  * Get the value of size
  * @return the value of size
  */
-int getSize ( )	 {
+int Missile::getSize ( )	 {
     return size;
 }
 
@@ -82,7 +68,7 @@ int getSize ( )	 {
  * Set the value of size
  * @param new_var the new value of size
  */
-void setSize ( int new_var )	 {
+void Missile::setSize ( int new_var )	 {
         size = new_var;
 }
 
@@ -91,7 +77,7 @@ void setSize ( int new_var )	 {
 
 /**
  */
-virtual void move ( )
+void Missile::move ( )
 {
 }
 
@@ -99,7 +85,7 @@ virtual void move ( )
  * @return bool
  * @param  c
  */
-virtual bool collide (Missile c )
+bool Missile::collide (Missile c )
 {
 }
 

@@ -25,7 +25,7 @@ public:
     //
 
     void move ( );
-    bool collide (Missile missile1 );
+    bool collide (Missile *missile1 );
 
 };
 
