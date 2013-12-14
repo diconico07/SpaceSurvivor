@@ -20,7 +20,7 @@ private:
     //
 
     int life=2000;
-    int angle;
+
 public:
 
 	// Constructors/Destructors
