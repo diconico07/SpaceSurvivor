@@ -53,8 +53,9 @@ void Projectile::move ( )
     if(position.getY()<0)
       position.setY(position.getY()+600);
 
-
     sprite.setPosition(position.getX(),position.getY());
+    if(life<0)
+      throw 10;
 }
 
 /**

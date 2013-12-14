@@ -84,7 +84,15 @@ int main()
         // Draw the sprites
         window.draw(back);
         for(unsigned int i=0;i<listeMissiles.size();i++){
+            try{
             listeMissiles[i]->move();
+            }
+            catch(int e) {
+              if(e==10){
+                  delete listeMissiles[i];
+                  listeMissiles.erase(listeMissiles.begin()+i);
+                }
+            }
 
         }
         /*for(unsigned int i=0;i<listeMissiles.size();i++){ //TODO fix the collide loop

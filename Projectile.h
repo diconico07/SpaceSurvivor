@@ -19,7 +19,7 @@ private:
     // Private attributes
     //
 
-    int life=2000;
+    int life=50;
 
 public:
 
