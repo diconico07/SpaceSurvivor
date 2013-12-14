@@ -15,7 +15,14 @@ int main()
     // Create the main window
     sf::RenderWindow window(sf::VideoMode(800,600), "Space Survivor");
     // Load a sprite to display
-
+    sf::Texture background;
+    background.loadFromFile("ressources/background.jpg");
+    background.setRepeated(true);
+    //background.setSmooth(true);
+    sf::Sprite back(background);
+    back.setColor(sf::Color::Blue);
+    //back.scale(2,2);
+    back.setTextureRect(sf::IntRect(0,0,800,600));
 
     // Start the game loop
     while (window.isOpen())
@@ -51,6 +58,7 @@ int main()
         // Clear screen
         window.clear();
         // Draw the sprites
+        window.draw(back);
         for(unsigned int i=0;i<listeMissiles.size();i++){
             listeMissiles[i]->move();
         }
@@ -65,5 +73,7 @@ int main()
         // Update the window
         window.display();
     }
+    for(unsigned int i=0;i<listeMissiles.size();i++)
+      delete listeMissiles[i];
     return EXIT_SUCCESS;
 }
