@@ -19,8 +19,8 @@ private:
     // Private attributes
     //
 
-    int life;
-
+    int life=2000;
+    int angle;
 public:
 
 	// Constructors/Destructors
@@ -36,7 +36,7 @@ public:
 	 * @param  position
 	 * @param  vitesse
 	 */
-	 Projectile (Vecteur position, Vecteur vitesse );
+     Projectile (Vecteur position, Vecteur vitesse,int Angle);
 
 	/**
 	 * Empty Destructor
@@ -46,6 +46,8 @@ public:
 
 	// Public attribute accessor methods
 	//  
+
+     int getLife();
 
 
 	/**
