@@ -26,6 +26,7 @@ private:
 public:
 
     Vecteur (int X = 0, int Y = 0 ):x(X),y(Y){}
+    Vecteur (int Module,float Argument);
     virtual ~Vecteur ( );
     void setX ( int new_var );
     float getX ( );

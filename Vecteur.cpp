@@ -3,6 +3,9 @@
 // Constructors/Destructors
 //  
 
+Vecteur::Vecteur(int Module, float Argument){
+  this->setModuleArgument(Module,Argument);
+}
 
 Vecteur::~Vecteur ( ) { }
 

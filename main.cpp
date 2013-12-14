@@ -50,8 +50,6 @@ int main()
         sf::Event event;
         while (window.pollEvent(event))
         {
-            Vecteur *vproj=new Vecteur(Vitesse_projectiles,(float)joueur->getAngle());
-            Projectile *projectile = new Projectile(joueur->getPosition(),*vproj,joueur->getAngle());
             // Close window : exit
             if (event.type == sf::Event::Closed)
                 window.close();
@@ -70,15 +68,16 @@ int main()
                 case sf::Keyboard::Right :
                   joueur->setAccAngulaire(-1);
                   break;
-                case sf::Keyboard::Space :
+                case sf::Keyboard::Space : { //Creates a new scope in order to allow variable declaration in the switch case
+                  Projectile *projectile = new Projectile(joueur->getPosition(),Vecteur(Vitesse_projectiles,(float)joueur->getAngle()),joueur->getAngle());
                   listeMissiles.push_back(projectile);
                   break;
+                  }
                 case sf::Keyboard::Escape :
                   window.close();
                 default:
                   break;
                 }
-            delete(vproj);
         }
         // Clear screen
         window.clear();
