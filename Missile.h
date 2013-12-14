@@ -23,7 +23,7 @@ protected:
 
     Vecteur position;
     Vecteur vitesse;
-    sf::Sprite sprite;
+    sf::Sprite sprite[4];
     int size;
 
 public:
@@ -54,7 +54,7 @@ public:
 
     virtual void move ( )=0;
     virtual bool collide (Missile *c )=0;
-    sf::Sprite getSprite ( );
+    sf::Sprite getSprite (int n);
 
 };
 

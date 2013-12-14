@@ -12,7 +12,9 @@ Asteroid::Asteroid ( ) {
 /**
  * Empty Destructor
  */
-Asteroid::~Asteroid ( ) { }
+Asteroid::~Asteroid ( ) {
+  delete sprite[0].getTexture();
+}
 
 /**
  * @param  Position
@@ -28,10 +30,25 @@ Asteroid::~Asteroid ( ) { }
      texture->loadFromFile("ressources/asteroid.png");
      texture->setSmooth(true);
 
-     sprite.setTexture(*texture);
-     sprite.setPosition(Position.getX(),Position.getY());
-     sprite.setScale(1/((float)Size+3),1/((float)Size+3));
-     sprite.setOrigin(size/2,size/2);
+     sprite[0].setTexture(*texture);
+     sprite[0].setPosition(Position.getX(),Position.getY());
+     sprite[0].setScale(1/((float)Size+3),1/((float)Size+3));
+     sprite[0].setOrigin(size/2,size/2);
+
+     sprite[1].setTexture(*texture);
+     sprite[1].setPosition(-size,-size);
+     sprite[1].setScale(1/((float)Size+3),1/((float)Size+3));
+     sprite[1].setOrigin(size/2,size/2);
+
+     sprite[2].setTexture(*texture);
+     sprite[2].setPosition(-size,-size);
+     sprite[2].setScale(1/((float)Size+3),1/((float)Size+3));
+     sprite[2].setOrigin(size/2,size/2);
+
+     sprite[3].setTexture(*texture);
+     sprite[3].setPosition(-size,-size);
+     sprite[3].setScale(1/((float)Size+3),1/((float)Size+3));
+     sprite[3].setOrigin(size/2,size/2);
 }
 
  //
@@ -55,7 +72,53 @@ void Asteroid::move ( )
       position.setY(position.getY()+600);
 
 
-    sprite.setPosition(position.getX(),position.getY());
+    sprite[0].setPosition(position.getX(),position.getY());
+
+    if(position.getX()>800-size && position.getY()>600-size){
+      sprite[1].setPosition(position.getX()-800,position.getY()-600);
+      sprite[2].setPosition(position.getX()-800,position.getY());
+      sprite[3].setPosition(position.getX(),position.getY()-600);
+    }
+    else if(position.getX()>800-size && position.getY()<0+size){
+      sprite[1].setPosition(position.getX()-800,position.getY()+600);
+      sprite[2].setPosition(position.getX()-800,position.getY());
+      sprite[3].setPosition(position.getX(),position.getY()+600);
+    }
+    else if(position.getX()<0+size && position.getY()<0+size){
+      sprite[1].setPosition(position.getX()+800,position.getY()+600);
+      sprite[2].setPosition(position.getX()+800,position.getY());
+      sprite[3].setPosition(position.getX(),position.getY()+600);
+    }
+    else if(position.getX()<0+size && position.getY()>600-size){
+      sprite[1].setPosition(position.getX()+800,position.getY()-600);
+      sprite[2].setPosition(position.getX()+800,position.getY());
+      sprite[3].setPosition(position.getX(),position.getY()-600);
+    }
+    else if(position.getX()>800-size){
+      sprite[1].setPosition(position.getX()-800,position.getY());
+      sprite[2].setPosition(-size,-size);
+      sprite[3].setPosition(-size,-size);
+    }
+    else if(position.getY()>600-size){
+      sprite[1].setPosition(position.getX(),position.getY()-600);
+      sprite[2].setPosition(-size,-size);
+      sprite[3].setPosition(-size,-size);
+    }
+    else if(position.getX()<0+size){
+      sprite[1].setPosition(position.getX()+800,position.getY());
+      sprite[2].setPosition(-size,-size);
+      sprite[3].setPosition(-size,-size);
+    }
+    else if(position.getY()<0+size){
+      sprite[1].setPosition(position.getX(),position.getY()+600);
+      sprite[2].setPosition(-size,-size);
+      sprite[3].setPosition(-size,-size);
+    }
+    else{
+      sprite[1].setPosition(-size,-size);
+      sprite[2].setPosition(-size,-size);
+      sprite[3].setPosition(-size,-size);
+    }
 }
 
 /**

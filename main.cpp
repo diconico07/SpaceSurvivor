@@ -33,7 +33,7 @@ int main()
     Vecteur *position = new Vecteur();
     Vecteur *vitesse = new Vecteur();
     int size;
-    for(int i=0;i<10;i++){
+    for(int i=0;i<Nombre_asteroids;i++){
         position->setXY(std::rand()%750,std::rand()%550);
         vitesse->setXY(std::rand()%6-3,std::rand()%6-3);
         size = std::rand()%5;
@@ -100,7 +100,8 @@ int main()
               listeMissiles[i]->collide(listeMissiles[i]);
         }*/
         for(unsigned int i=0;i<listeMissiles.size();i++){
-          window.draw(listeMissiles[i]->getSprite());
+            for(int j=0;j<4;j++)
+              window.draw(listeMissiles[i]->getSprite(j));
         }
 
         // Update the window

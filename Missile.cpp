@@ -53,10 +53,9 @@ Vecteur Missile::getVitesse ( )	 {
  * Get the value of sprite
  * @return the value of sprite
  */
-sf::Sprite Missile::getSprite ( )	 {
-    return sprite;
+sf::Sprite Missile::getSprite (int n)	 {
+  return sprite[n];
 }
-
 
 /**
  * Get the value of size
