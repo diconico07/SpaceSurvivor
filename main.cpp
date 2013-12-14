@@ -28,22 +28,25 @@ int main()
     //back.scale(2,2);
     back.setTextureRect(sf::IntRect(0,0,800,600));
 
+
+    //creating test asteroids field
+    Vecteur *position = new Vecteur();
+    Vecteur *vitesse = new Vecteur();
+    int size;
+    for(int i=0;i<10;i++){
+        position->setXY(std::rand()%400,std::rand()%300);
+        vitesse->setXY(std::rand()%20,std::rand()%20);
+        size = std::rand()%3;
+        Asteroid *asteroid= new Asteroid(*position,*vitesse,size);
+        listeMissiles.push_back(asteroid);
+    }
+    delete(position);
+    delete(vitesse);
+
     // Start the game loop
     while (window.isOpen())
     {
-        //creating asteroids field
-        Vecteur *position = new Vecteur();
-        Vecteur *vitesse = new Vecteur();
-        int size;
-        for(int i=0;i<Nombre_asteroids;i++){
-            position->setXY(rand()%100,rand()%100);
-            vitesse->setXY(rand()%1000,rand()%1000);
-            size = rand()%1000;
-            Asteroid *asteroid= new Asteroid(position,vitesse,size);
-            listeMissiles.push_back(asteroid);
-        }
-        delete(position);
-        delete(vitesse);
+
 
 
         // Process events
@@ -81,10 +84,10 @@ int main()
         for(unsigned int i=0;i<listeMissiles.size();i++){
             listeMissiles[i]->move();
         }
-        for(unsigned int i=0;i<listeMissiles.size();i++){
+        /*for(unsigned int i=0;i<listeMissiles.size();i++){ //TODO fix the collide loop
             for(unsigned int j=i+1;j<listeMissiles.size();i++)
               listeMissiles[i]->collide(listeMissiles[i]);
-        }
+        }*/
         for(unsigned int i=0;i<listeMissiles.size();i++){
           window.draw(listeMissiles[i]->getSprite());
         }
