@@ -60,23 +60,29 @@ public:
 	  */
 	 void setAccLineaire ( int new_var );
 
-         /**
+     /**
           * Get the value of accLineaire
           * @return the value of accLineaire
           */
-         int getAccLineaire ( );
+     int getAccLineaire ( );
 
-         /**
+     /**
           * Set the value of accAngulaire
           * @param new_var the new value of accAngulaire
           */
-         void setAccAngulaire ( int new_var );
+     void setAccAngulaire ( int new_var );
 
-         /**
+     /**
           * Get the value of accAngulaire
           * @return the value of accAngulaire
           */
-         int getAccAngulaire ( );
+     int getAccAngulaire ( );
+
+     /**
+      * @brief get the value of Angle
+      * @return
+      */
+     int getAngle();
 
 	/**
 	 * @return Projectile*

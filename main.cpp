@@ -8,6 +8,7 @@
 #include "Asteroid.h"
 #include "Vecteur.h"
 const int Nombre_asteroids= 12;
+const int Vitesse_projectiles=15;
 
 int main()
 {
@@ -28,15 +29,14 @@ int main()
     //back.scale(2,2);
     back.setTextureRect(sf::IntRect(0,0,800,600));
 
-
     //creating test asteroids field
     Vecteur *position = new Vecteur();
     Vecteur *vitesse = new Vecteur();
     int size;
     for(int i=0;i<10;i++){
-        position->setXY(std::rand()%400,std::rand()%300);
-        vitesse->setXY(std::rand()%20,std::rand()%20);
-        size = std::rand()%3;
+        position->setXY(std::rand()%750,std::rand()%550);
+        vitesse->setXY(std::rand()%6-3,std::rand()%6-3);
+        size = std::rand()%5;
         Asteroid *asteroid= new Asteroid(*position,*vitesse,size);
         listeMissiles.push_back(asteroid);
     }
@@ -46,9 +46,6 @@ int main()
     // Start the game loop
     while (window.isOpen())
     {
-
-
-
         // Process events
         sf::Event event;
         while (window.pollEvent(event))
@@ -58,12 +55,14 @@ int main()
                 window.close();
 
             if (event.type == sf::Event::KeyPressed)
+              Vecteur *vproj=new Vecteur(Vitesse_projectiles,(float)joueur->getAngle());
+              Projectile *projectile = new Projectile(joueur->getPosition(),*vproj);
               switch(event.key.code){
                 case sf::Keyboard::Up :
-                  joueur->setAccLineaire(2);
+                  joueur->setAccLineaire(1);
                   break;
                 case sf::Keyboard::Down :
-                  joueur->setAccLineaire(-2);
+                  joueur->setAccLineaire(-1);
                   break;
                 case sf::Keyboard::Left :
                   joueur->setAccAngulaire(1);
@@ -71,11 +70,15 @@ int main()
                 case sf::Keyboard::Right :
                   joueur->setAccAngulaire(-1);
                   break;
+                case sf::Keyboard::Space :
+                  listeMissiles.push_back(projectile);
+                  break;
                 case sf::Keyboard::Escape :
                   window.close();
                 default:
                   break;
                 }
+                delete(*vproj);
         }
         // Clear screen
         window.clear();

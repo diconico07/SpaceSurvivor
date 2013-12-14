@@ -30,7 +30,7 @@ Asteroid::~Asteroid ( ) { }
 
      sprite.setTexture(*texture);
      sprite.setPosition(Position.getX(),Position.getY());
-     sprite.setScale(1/((float)Size+2),1/((float)Size+2));
+     sprite.setScale(1/((float)Size+3),1/((float)Size+3));
      sprite.setOrigin(size/2,size/2);
 }
 

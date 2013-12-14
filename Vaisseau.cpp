@@ -63,6 +63,10 @@ int Vaisseau::getAccAngulaire ( )	 {
         return accAngulaire;
 }
 
+int Vaisseau::getAngle(){
+    return angle;
+}
+
 //Other methods
 //
 
