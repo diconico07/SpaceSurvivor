@@ -52,7 +52,7 @@ public:
     //Other methods
     //
 
-    virtual void move ( )=0;
+    virtual void move ( );
     virtual bool collide (Missile *c )=0;
     sf::Sprite getSprite (int n);
 

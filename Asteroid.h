@@ -24,7 +24,7 @@ public:
     //Other Methods
     //
 
-    void move ( );
+    //void move ( );
     bool collide (Missile *missile1 );
 
 };

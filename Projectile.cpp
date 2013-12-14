@@ -63,65 +63,8 @@ int Projectile::getLife(){
  */
 void Projectile::move ( )
 {
-    position+=vitesse;
+  Missile::move();
     life--;
-    if(position.getX()>800)
-      position.setX(position.getX()-800);
-    if(position.getY()>600)
-      position.setY(position.getY()-600);
-    if(position.getX()<0)
-      position.setX(position.getX()+800);
-    if(position.getY()<0)
-      position.setY(position.getY()+600);
-
-    sprite[0].setPosition(position.getX(),position.getY());
-
-    if(position.getX()>800-size && position.getY()>600-size){
-      sprite[1].setPosition(position.getX()-800,position.getY()-600);
-      sprite[2].setPosition(position.getX()-800,position.getY());
-      sprite[3].setPosition(position.getX(),position.getY()-600);
-    }
-    else if(position.getX()>800-size && position.getY()<0+size){
-      sprite[1].setPosition(position.getX()-800,position.getY()+600);
-      sprite[2].setPosition(position.getX()-800,position.getY());
-      sprite[3].setPosition(position.getX(),position.getY()+600);
-    }
-    else if(position.getX()<0+size && position.getY()<0+size){
-      sprite[1].setPosition(position.getX()+800,position.getY()+600);
-      sprite[2].setPosition(position.getX()+800,position.getY());
-      sprite[3].setPosition(position.getX(),position.getY()+600);
-    }
-    else if(position.getX()<0+size && position.getY()>600-size){
-      sprite[1].setPosition(position.getX()+800,position.getY()-600);
-      sprite[2].setPosition(position.getX()+800,position.getY());
-      sprite[3].setPosition(position.getX(),position.getY()-600);
-    }
-    else if(position.getX()>800-size){
-      sprite[1].setPosition(position.getX()-800,position.getY());
-      sprite[2].setPosition(-size,-size);
-      sprite[3].setPosition(-size,-size);
-    }
-    else if(position.getY()>600-size){
-      sprite[1].setPosition(position.getX(),position.getY()-600);
-      sprite[2].setPosition(-size,-size);
-      sprite[3].setPosition(-size,-size);
-    }
-    else if(position.getX()<0+size){
-      sprite[1].setPosition(position.getX()+800,position.getY());
-      sprite[2].setPosition(-size,-size);
-      sprite[3].setPosition(-size,-size);
-    }
-    else if(position.getY()<0+size){
-      sprite[1].setPosition(position.getX(),position.getY()+600);
-      sprite[2].setPosition(-size,-size);
-      sprite[3].setPosition(-size,-size);
-    }
-    else{
-      sprite[1].setPosition(-size,-size);
-      sprite[2].setPosition(-size,-size);
-      sprite[3].setPosition(-size,-size);
-    }
-
     if(life<0)
       throw 10;
 }
