@@ -1,9 +1,13 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 #include <vector>
+#include <cstdlib>
 
 #include "Missile.h"
 #include "Vaisseau.h"
+#include "Asteroid.h"
+#include "Vecteur.h"
+const int Nombre_asteroids= 12;
 
 int main()
 {
@@ -27,6 +31,21 @@ int main()
     // Start the game loop
     while (window.isOpen())
     {
+        //creating asteroids field
+        Vecteur *position = new Vecteur();
+        Vecteur *vitesse = new Vecteur();
+        int size;
+        for(int i=0;i<Nombre_asteroids;i++){
+            position->setXY(rand()%100,rand()%100);
+            vitesse->setXY(rand()%1000,rand()%1000);
+            size = rand()%1000;
+            Asteroid *asteroid= new Asteroid(position,vitesse,size);
+            listeMissiles.push_back(asteroid);
+        }
+        delete(position);
+        delete(vitesse);
+
+
         // Process events
         sf::Event event;
         while (window.pollEvent(event))
