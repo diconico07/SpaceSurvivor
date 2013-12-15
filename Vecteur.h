@@ -40,7 +40,7 @@ public:
     void setModuleArgument (int Module, float Argument );
 
     Vecteur& operator+=(Vecteur vecteur);
-
+    Vecteur& operator+(Vecteur vecteur);
 };
 
 #endif // VECTEUR_H

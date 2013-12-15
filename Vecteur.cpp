@@ -88,3 +88,7 @@ Vecteur& Vecteur::operator+=(Vecteur vecteur){
     y+=vecteur.getY();
     return *this;
 }
+
+Vecteur& Vecteur::operator+(Vecteur vecteur){
+    return (Vecteur) *this+=vecteur;
+}

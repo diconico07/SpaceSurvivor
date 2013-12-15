@@ -137,3 +137,26 @@ void Missile::move(){
     sprite[3].setPosition(-size,-size);
   }
 }
+
+bool Missile::collide(Missile *c){
+  unsigned int a=0,b=0;
+  bool out=false;
+  if(position.getX()<0+size || position.getX()>800-size)
+    a++;
+  if(position.getY()<0+size || position.getY()>600-size)
+    a++;
+  if(a==2)
+    a++;
+
+  if(c->getPosition().getX()<0+size || c->getPosition().getX()>800-size)
+    b++;
+  if(c->getPosition().getY()<0+size || c->getPosition().getY()>600-size)
+    b++;
+  if(a==2)
+    b++;
+
+  for(int i=0;i<=a;i++)
+    for(int j=0;j<=a;j++)
+      out|=Collision::PixelPerfectTest(sprite[i],c->getSprite(j));
+  return out;
+}

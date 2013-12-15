@@ -11,7 +11,7 @@ Vaisseau::Vaisseau ( ):Missile() {
     size=48;
     position.setXY(100,100);
     sf::Texture *texture=new sf::Texture();
-    texture->loadFromFile("ressources/vaisseau.png");
+    Collision::CreateTextureAndBitmask(*texture,"ressources/vaisseau.png");
     texture->setSmooth(true);
 
     sprite[0].setTexture(*texture);
@@ -110,12 +110,6 @@ void Vaisseau::move(){
 
 }
 
-/**
- * @return bool
- * @param  missile1
- */
-bool Vaisseau::collide (Missile *missile1 )
-{
-}
+
 
 

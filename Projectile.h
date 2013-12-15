@@ -53,7 +53,7 @@ public:
 	/**
 	 * @param  missile1
 	 */
-	bool collide (Missile *missile1 );
+
 
 
 	/**

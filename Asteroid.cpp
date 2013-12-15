@@ -26,8 +26,9 @@ Asteroid::~Asteroid ( ) {
      vitesse=Vitesse;
      size=256/(Size+2);
      position=Position;
+
      sf::Texture *texture=new sf::Texture();
-     texture->loadFromFile("ressources/asteroid.png");
+     Collision::CreateTextureAndBitmask(*texture,"ressources/asteroid.png");
      texture->setSmooth(true);
 
      sprite[0].setTexture(*texture);
@@ -59,12 +60,5 @@ Asteroid::~Asteroid ( ) {
  */
 
 
-/**
- * @return bool
- * @param  missile1
- */
-bool Asteroid::collide (Missile *missile1 )
-{
-}
 
 

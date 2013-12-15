@@ -69,7 +69,7 @@ int main()
                   joueur->setAccAngulaire(-1);
                   break;
                 case sf::Keyboard::Space : { //Creates a new scope in order to allow variable declaration in the switch case
-                  Projectile *projectile = new Projectile(joueur->getPosition(),Vecteur(Vitesse_projectiles,(float)joueur->getAngle()),joueur->getAngle());
+                    Projectile *projectile = new Projectile(joueur->getPosition()+joueur->getVitesse()+Vecteur(joueur->getSize(),(float)joueur->getAngle()),Vecteur(Vitesse_projectiles,(float)joueur->getAngle()),joueur->getAngle());
                   listeMissiles.push_back(projectile);
                   break;
                   }
@@ -95,10 +95,16 @@ int main()
             }
 
         }
-        /*for(unsigned int i=0;i<listeMissiles.size();i++){ //TODO fix the collide loop
-            for(unsigned int j=i+1;j<listeMissiles.size();i++)
-              listeMissiles[i]->collide(listeMissiles[i]);
-        }*/
+        for(unsigned int i=0;i<listeMissiles.size();i++){
+            for(unsigned int j=i+1;j<listeMissiles.size();j++)
+              if(listeMissiles[i]->collide(listeMissiles[j])){
+                  delete listeMissiles[j];
+                  delete listeMissiles[i];
+                  listeMissiles.erase(listeMissiles.begin()+j);
+                  listeMissiles.erase(listeMissiles.begin()+i);
+                }
+
+        }
         for(unsigned int i=0;i<listeMissiles.size();i++){
             for(int j=0;j<4;j++)
               window.draw(listeMissiles[i]->getSprite(j));

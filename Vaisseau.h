@@ -95,11 +95,7 @@ public:
 	void move ( );
 
 
-	/**
-	 * @return bool
-	 * @param  missile1
-	 */
-	bool collide (Missile *missile1 );
+
 
 };
 

@@ -15,7 +15,7 @@ Projectile::Projectile(Vecteur Position, Vecteur Vitesse,int Angle){
     vitesse=Vitesse;
     position=Position;
     sf::Texture *texture=new sf::Texture();
-    texture->loadFromFile("ressources/projectile.png");
+     Collision::CreateTextureAndBitmask(*texture,"ressources/projectile.png");
     texture->setSmooth(true);
     size=16;
 
@@ -69,10 +69,4 @@ void Projectile::move ( )
       throw 10;
 }
 
-/**
- * @return bool
- * @param  missile1
- */
-bool Projectile::collide (Missile *missile1 )
-{
-}
+

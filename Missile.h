@@ -4,6 +4,7 @@
 
 #include <string>
 #include "Vecteur.h"
+#include "Collision.h"
 #include <SFML/Graphics.hpp>
 
 /**
@@ -53,7 +54,7 @@ public:
     //
 
     virtual void move ( );
-    virtual bool collide (Missile *c )=0;
+    virtual bool collide (Missile *c );
     sf::Sprite getSprite (int n);
 
 };
