@@ -53,3 +53,8 @@ HEADERS += \
     Missile.h \
     Asteroid.h
 
+
+unix: LIBS += -L$$PWD/SFGUI-0.2.0/ -lsfgui
+
+INCLUDEPATH += $$PWD/SFGUI-0.2.0/include
+DEPENDPATH += $$PWD/SFGUI-0.2.0/include
