@@ -23,6 +23,7 @@ Asteroid::~Asteroid ( ) {
  */
  Asteroid::Asteroid (Vecteur Position, Vecteur Vitesse, int Size ,sf::Vector2u window)
 {
+     name="asteroid";
      vitesse=Vitesse;
      windowSize=window;
      size=256/(Size+2);
@@ -56,6 +57,15 @@ Asteroid::~Asteroid ( ) {
  //
  // Methods
  //
+
+Missile Asteroid::split(Missile *asteroid, sf::RenderWindow *Window){
+    Vecteur *nPos = new Vecteur(asteroid->getPosition().getX()+3*asteroid->getVitesse().getX(),asteroid->getPosition().getY()+3*asteroid->getVitesse().getY());
+    Vecteur *nVit =new Vecteur(std::rand()%6-3,std::rand()%6-3);
+    Missile *ast1 = new Asteroid(*nPos,*nVit,asteroid->getSize()-1,Window->getSize());
+    asteroid->setSize(asteroid->getSize()-1);
+    asteroid->setVitesse(Vecteur(std::rand()%6-3,std::rand()%6-3));
+    return ast1;
+}
 
 /**
  */

@@ -4,6 +4,7 @@
 //  
 
 Vaisseau::Vaisseau ( sf::Vector2u window): Missile() {
+    name="vaisseau";
     windowSize=window;
     accLineaire=0;
     accAngulaire=0;

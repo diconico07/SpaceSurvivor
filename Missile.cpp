@@ -160,3 +160,8 @@ bool Missile::collide(Missile *c){
       out|=Collision::PixelPerfectTest(sprite[i],c->getSprite(j));
   return out;
 }
+
+std::string Missile::getName(){
+    return name;
+}
+

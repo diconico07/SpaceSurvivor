@@ -2,6 +2,7 @@
 #ifndef ASTEROID_H
 #define ASTEROID_H
 #include "Missile.h"
+#include <cstdlib>
 
 #include <string>
 
@@ -23,7 +24,7 @@ public:
 
     //Other Methods
     //
-
+    Missile split(Missile *asteroid, sf::RenderWindow *Window);
     //void move ( );
 
 

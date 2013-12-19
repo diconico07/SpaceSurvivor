@@ -15,7 +15,7 @@ Menu::Menu(sf::RenderWindow *window){
     back.setColor(sf::Color::White);
     //back.scale(2,2);
     back.setScale((float)window->getSize().x/background->getSize().x,(float)window->getSize().y/background->getSize().y);
-    Window->setMouseCursorVisible(false);
+    Window->setMouseCursorVisible(true);
 
 
 }
@@ -24,15 +24,16 @@ enum choix Menu::playMenu(){
     //reinitialisation
     listeMenu.clear();
 
-    sf::RectangleShape *cadre= new sf::RectangleShape(sf::Vector2f(600,400));
-    cadre->setPosition(sf::Vector2f(100,100));
+    sf::RectangleShape *cadre= new sf::RectangleShape(sf::Vector2f(Window->getSize().x-200,4*(80+10)+10));
+    cadre->setPosition(sf::Vector2f(100,Window->getSize().y/3));
     cadre->setFillColor(sf::Color::Transparent);
     cadre->setOutlineThickness(3);
     cadre->setOutlineColor(sf::Color::Black);
+    cadre->setFillColor(sf::Color(207,207,207,220));
 
-    sf::RectangleShape *selector= new sf::RectangleShape(sf::Vector2f(580,80));
-    selector->setPosition(sf::Vector2f(110,110));
-    selector->setFillColor(sf::Color(252,220,18,120));
+    sf::RectangleShape *selector= new sf::RectangleShape(sf::Vector2f(Window->getSize().x-220,80));
+    selector->setPosition(sf::Vector2f(cadre->getPosition().x+10,cadre->getPosition().y+10));
+    selector->setFillColor(sf::Color(252,220,18,150));
     selector->setOutlineThickness(2);
     selector->setOutlineColor(sf::Color::Blue);
     int selectorPosition =1;
@@ -40,22 +41,22 @@ enum choix Menu::playMenu(){
     sf::Font font ;
     font.loadFromFile("ressources/CookieMonster.ttf");
     sf::Text *jouer=new sf::Text("# Jouer #",font,42);
-    jouer->setPosition(sf::Vector2f(140,120));
+    jouer->setPosition(sf::Vector2f(cadre->getSize().x/2,cadre->getPosition().y+10));
     jouer->setColor(sf::Color::Blue);
     jouer->setStyle(sf::Text::Bold);
 
     sf::Text *HS=new sf::Text("* HighScores *",font,42);
-    HS->setPosition(sf::Vector2f(140,120+spacementSelector));
+    HS->setPosition(sf::Vector2f(cadre->getSize().x/2,cadre->getPosition().y+10+spacementSelector));
     HS->setColor(sf::Color::Blue);
     HS->setStyle(sf::Text::Bold);
 
     sf::Text *credits=new sf::Text("+ Credits +",font,42);
-    credits->setPosition(sf::Vector2f(140,120+2*spacementSelector));
+    credits->setPosition(sf::Vector2f(cadre->getSize().x/2,cadre->getPosition().y+10+2*spacementSelector));
     credits->setColor(sf::Color::Blue);
     credits->setStyle(sf::Text::Bold);
 
     sf::Text *quit=new sf::Text("?! Quitter !?",font,42);
-    quit->setPosition(sf::Vector2f(140,120+3*spacementSelector));
+    quit->setPosition(sf::Vector2f(cadre->getSize().x/2,cadre->getPosition().y+10+3*spacementSelector));
     quit->setColor(sf::Color::Red);
     quit->setStyle(sf::Text::Bold);
 
@@ -113,22 +114,22 @@ enum choix Menu::playMenu(){
                     break;
                 } 
             }
-            if(event.type == sf::Event::MouseMoved){
-                int y =event.mouseMove.y;
-                if(y>>110 && y<<190){
-                    selector->setPosition(sf::Vector2f(selector->getPosition().x,110));
-                    selectorPosition=1;
-                }
-                else if(y>>200 && y<<280){
-                    selector->setPosition(sf::Vector2f(selector->getPosition().x,200));
-                    selectorPosition=2;
-                }
-                else if(y>>290 && y<<270){
-                    selector->setPosition(sf::Vector2f(selector->getPosition().x,290));
-                    selectorPosition=3;
-                }
+//            if(event.type == sf::Event::MouseMoved){
+//                int y =event.mouseMove.y;
+//                if(y>>110 && y<<190){
+//                    selector->setPosition(sf::Vector2f(selector->getPosition().x,110));
+//                    selectorPosition=1;
+//                }
+//                else if(y>>200 && y<<280){
+//                    selector->setPosition(sf::Vector2f(selector->getPosition().x,200));
+//                    selectorPosition=2;
+//                }
+//                else if(y>>290 && y<<270){
+//                    selector->setPosition(sf::Vector2f(selector->getPosition().x,290));
+//                    selectorPosition=3;
+//                }
 
-            }
+//            }
             switch (selectorPosition) {
             case 1:
                 jouer->setColor(sf::Color::Green);

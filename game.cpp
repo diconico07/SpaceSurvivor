@@ -11,7 +11,7 @@ Game::Game(sf::RenderWindow *window){
     listeMissiles.push_back(joueur);
     music.openFromFile("ressources/music.ogg");
     music.setLoop(true);
-    music.play();
+//    music.play();
 
     // Load a sprite to display
     sf::Texture *background=new sf::Texture;
@@ -105,6 +105,11 @@ void Game::playGame(){
                   if(listeMissiles[i]->collide(listeMissiles[j])){
                       if(listeMissiles[i]==joueur || listeMissiles[j]==joueur)
                         joueurIsAlive=false;
+                      if(listeMissiles[i]->getName()=="asteroid"){
+                          listeMissiles.push_back(listeMissiles[i]->split(listeMissiles[i],Window));
+                      }
+                      if(listeMissiles[j]->getName()=="asteroid")
+                          listeMissiles.push_back(listeMissiles[j]->split(listeMissiles[j],Window));
                       delete listeMissiles[j];
                       delete listeMissiles[i];
                       listeMissiles.erase(listeMissiles.begin()+j);
@@ -126,16 +131,16 @@ void Game::playGame(){
 }
 
 void Game::spawnAsteroid(){
-  Vecteur *position = new Vecteur();
-  Vecteur *vitesse = new Vecteur();
-  int size;
-  do
-    position->setXY(std::rand()%Window->getSize().x,std::rand()%Window->getSize().y);
-  while(position->getX()<joueur->getPosition().getX()+safeZone && position->getX()>joueur->getPosition().getX()-safeZone && position->getY()<joueur->getPosition().getY()+safeZone && position->getY()<joueur->getPosition().getY()-safeZone);
-  vitesse->setXY(std::rand()%6-3,std::rand()%6-3);
-  size = std::rand()%5;
-  Asteroid *asteroid= new Asteroid(*position,*vitesse,size,Window->getSize());
-  listeMissiles.push_back(asteroid);
-  delete position;
-  delete vitesse;
+    Vecteur *position = new Vecteur();
+    Vecteur *vitesse = new Vecteur();
+    int size;
+    do
+        position->setXY(std::rand()%Window->getSize().x,std::rand()%Window->getSize().y);
+    while(position->getX()<joueur->getPosition().getX()+safeZone && position->getX()>joueur->getPosition().getX()-safeZone && position->getY()<joueur->getPosition().getY()+safeZone && position->getY()<joueur->getPosition().getY()-safeZone);
+    vitesse->setXY(std::rand()%6-3,std::rand()%6-3);
+    size = std::rand()%5;
+    Asteroid *asteroid= new Asteroid(*position,*vitesse,size,Window->getSize());
+    listeMissiles.push_back(asteroid);
+    delete position;
+    delete vitesse;
 }
