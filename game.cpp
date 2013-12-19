@@ -9,6 +9,8 @@ Game::Game(sf::RenderWindow *window){
     joueur=new Vaisseau(window->getSize());
     joueurIsAlive=true;
     listeMissiles.push_back(joueur);
+    music.openFromFile("ressources/music.ogg");
+    music.play();
 
     // Load a sprite to display
     sf::Texture *background=new sf::Texture;
@@ -19,6 +21,7 @@ Game::Game(sf::RenderWindow *window){
     back.setColor(sf::Color::White);
     //back.scale(2,2);
     back.setScale((float)window->getSize().x/background->getSize().x,(float)window->getSize().y/background->getSize().y);
+    Window->setMouseCursorVisible(false);
 
     //creating test asteroids field
     for(int i=0;i<Nombre_asteroids;i++){
@@ -30,6 +33,7 @@ Game::~Game(){
     for(unsigned int i=0;i<listeMissiles.size();i++)
     delete listeMissiles[i];
     delete back.getTexture();
+    Window->setMouseCursorVisible(true);
 }
 
 void Game::playGame(){

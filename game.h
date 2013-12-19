@@ -27,6 +27,7 @@ public:
     sf::RenderWindow *Window;
     sf::Clock fire_delay, asteroid_delay;
     sf::Sprite back;
+    sf::Music music;
 
     //Constructors
     Game();
