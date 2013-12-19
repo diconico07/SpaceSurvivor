@@ -10,6 +10,7 @@ Game::Game(sf::RenderWindow *window){
     joueurIsAlive=true;
     listeMissiles.push_back(joueur);
     music.openFromFile("ressources/music.ogg");
+    music.setLoop(true);
     music.play();
 
     // Load a sprite to display
