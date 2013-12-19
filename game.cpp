@@ -71,7 +71,7 @@ void Game::playGame(){
                   }
                   break;
                 case sf::Keyboard::Escape :
-                Window->close();
+                  break;
                 default:
                   break;
                 }

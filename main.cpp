@@ -6,9 +6,20 @@ int main()
     // Create the main window
     sf::RenderWindow window(sf::VideoMode::getDesktopMode(), "Space Survivor");
     Menu *menu = new Menu(&window);
-    menu->playMenu();
-    Game *game=new Game(&window);
-    game->playGame();
-
-    return EXIT_SUCCESS;
+    while(1){
+        switch(menu->playMenu()){
+        case JOUER:
+        {
+            Game *game=new Game(&window);
+            game->playGame();
+            break;
+        }
+        case CREDITS:
+            break;
+        case HIGHSCORES:
+            break;
+        case QUITTER:
+            return EXIT_SUCCESS;
+        }
+    }
 }
