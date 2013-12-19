@@ -37,7 +37,7 @@ public:
 	/**
 	 * Empty Constructor
 	 */
-	Vaisseau ( );
+	Vaisseau (sf::Vector2u window);
 
 	/**
 	 * @param  position

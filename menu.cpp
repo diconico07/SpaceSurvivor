@@ -30,17 +30,28 @@ enum choix Menu::playMenu(){
     sf::Text *jouer=new sf::Text("Jouer",font,24);
     jouer->setPosition(sf::Vector2f(120,120));
     listeMenu.push_back(jouer);
-
     while(Window->isOpen()){
-        if (event.type == sf::Event::Closed)
-            Window->close();
-        //Draw the sprites
-        Window->draw(back);
-        Window->draw(*cadre);
-        for(unsigned int i=0;i<listeMenu.size();i++){
-            Window->draw(*listeMenu[i]);
+        sf::Event event;
+        while (Window->pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+                Window->close();
+            if (event.type == sf::Event::KeyPressed)
+                switch (event.key.code) {
+                case sf::Keyboard::Space:
+                    return JOUER;
+                    break;
+                default:
+                    break;
+                }
+            //Draw the sprites
+            Window->draw(back);
+            Window->draw(*cadre);
+            for(unsigned int i=0;i<listeMenu.size();i++){
+                Window->draw(*listeMenu[i]);
+            }
+            // Update the window
+            Window->display();
         }
-        // Update the window
-        Window->display();
     }
 }
