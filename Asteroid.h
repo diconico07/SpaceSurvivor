@@ -19,7 +19,7 @@ public:
 
     Asteroid ( );
     virtual ~Asteroid ( );
-    Asteroid (Vecteur Position, Vecteur Vitesse, int Size );
+    Asteroid (Vecteur Position, Vecteur Vitesse, int Size , sf::Vector2u window);
 
     //Other Methods
     //

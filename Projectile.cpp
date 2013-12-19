@@ -11,7 +11,8 @@ Projectile::~Projectile ( ) {
   delete sprite[0].getTexture();
 }
 
-Projectile::Projectile(Vecteur Position, Vecteur Vitesse,int Angle){
+Projectile::Projectile(Vecteur Position, Vecteur Vitesse,int Angle,sf::Vector2u window){
+    windowSize=window;
     vitesse=Vitesse;
     position=Position;
     sf::Texture *texture=new sf::Texture();

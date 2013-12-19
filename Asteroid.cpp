@@ -21,9 +21,10 @@ Asteroid::~Asteroid ( ) {
  * @param  Vitesse
  * @param  Size
  */
- Asteroid::Asteroid (Vecteur Position, Vecteur Vitesse, int Size )
+ Asteroid::Asteroid (Vecteur Position, Vecteur Vitesse, int Size ,sf::Vector2u window)
 {
      vitesse=Vitesse;
+     windowSize=window;
      size=256/(Size+2);
      position=Position;
 

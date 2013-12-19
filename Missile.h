@@ -26,6 +26,7 @@ protected:
     Vecteur vitesse;
     sf::Sprite sprite[4];
     int size;
+    sf::Vector2u windowSize;
 
 public:
 

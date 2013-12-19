@@ -3,19 +3,20 @@
 // Constructors/Destructors
 //  
 
-Vaisseau::Vaisseau ( ):Missile() {
+Vaisseau::Vaisseau ( sf::Vector2u window): Missile() {
+    windowSize=window;
     accLineaire=0;
     accAngulaire=0;
     vitesseAngulaire=0;
     angle=0;
     size=48;
-    position.setXY(100,100);
+    position.setXY(windowSize.x/2,windowSize.y/2);
     sf::Texture *texture=new sf::Texture();
     Collision::CreateTextureAndBitmask(*texture,"ressources/vaisseau.png");
     texture->setSmooth(true);
 
     sprite[0].setTexture(*texture);
-    sprite[0].setPosition(100,100);
+    sprite[0].setPosition(400,300);
     sprite[0].setOrigin(size/2,size/2);
 
     sprite[1].setTexture(*texture);
@@ -102,11 +103,11 @@ void Vaisseau::move(){
   accLineaire=0;
 
   sprite[0].setPosition(position.getX(),position.getY());
-  sprite[0].setRotation(angle+90);
+  sprite[0].setRotation(angle-90);
 
-  sprite[1].setRotation(angle+90);
-  sprite[2].setRotation(angle+90);
-  sprite[3].setRotation(angle+90);
+  sprite[1].setRotation(angle-90);
+  sprite[2].setRotation(angle-90);
+  sprite[3].setRotation(angle-90);
 
 }
 

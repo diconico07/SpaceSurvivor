@@ -79,55 +79,55 @@ void Missile::setSize ( int new_var )	 {
 void Missile::move(){
   position+=vitesse;
 
-  if(position.getX()>800)
-    position.setX(position.getX()-800);
-  if(position.getY()>600)
-    position.setY(position.getY()-600);
+  if(position.getX()>windowSize.x)
+    position.setX(position.getX()-windowSize.x);
+  if(position.getY()>windowSize.y)
+    position.setY(position.getY()-windowSize.y);
   if(position.getX()<0)
-    position.setX(position.getX()+800);
+    position.setX(position.getX()+windowSize.x);
   if(position.getY()<0)
-    position.setY(position.getY()+600);
+    position.setY(position.getY()+windowSize.y);
 
 
   sprite[0].setPosition(position.getX(),position.getY());
 
-  if(position.getX()>800-size && position.getY()>600-size){
-    sprite[1].setPosition(position.getX()-800,position.getY()-600);
-    sprite[2].setPosition(position.getX()-800,position.getY());
-    sprite[3].setPosition(position.getX(),position.getY()-600);
+  if(position.getX()>windowSize.x-size && position.getY()>windowSize.y-size){
+    sprite[1].setPosition(position.getX()-windowSize.x,position.getY()-windowSize.y);
+    sprite[2].setPosition(position.getX()-windowSize.x,position.getY());
+    sprite[3].setPosition(position.getX(),position.getY()-windowSize.y);
   }
-  else if(position.getX()>800-size && position.getY()<0+size){
-    sprite[1].setPosition(position.getX()-800,position.getY()+600);
-    sprite[2].setPosition(position.getX()-800,position.getY());
-    sprite[3].setPosition(position.getX(),position.getY()+600);
+  else if(position.getX()>windowSize.x-size && position.getY()<0+size){
+    sprite[1].setPosition(position.getX()-windowSize.x,position.getY()+windowSize.y);
+    sprite[2].setPosition(position.getX()-windowSize.x,position.getY());
+    sprite[3].setPosition(position.getX(),position.getY()+windowSize.y);
   }
   else if(position.getX()<0+size && position.getY()<0+size){
-    sprite[1].setPosition(position.getX()+800,position.getY()+600);
-    sprite[2].setPosition(position.getX()+800,position.getY());
-    sprite[3].setPosition(position.getX(),position.getY()+600);
+    sprite[1].setPosition(position.getX()+windowSize.x,position.getY()+windowSize.y);
+    sprite[2].setPosition(position.getX()+windowSize.x,position.getY());
+    sprite[3].setPosition(position.getX(),position.getY()+windowSize.y);
   }
-  else if(position.getX()<0+size && position.getY()>600-size){
-    sprite[1].setPosition(position.getX()+800,position.getY()-600);
-    sprite[2].setPosition(position.getX()+800,position.getY());
-    sprite[3].setPosition(position.getX(),position.getY()-600);
+  else if(position.getX()<0+size && position.getY()>windowSize.y-size){
+    sprite[1].setPosition(position.getX()+windowSize.x,position.getY()-windowSize.y);
+    sprite[2].setPosition(position.getX()+windowSize.x,position.getY());
+    sprite[3].setPosition(position.getX(),position.getY()-windowSize.y);
   }
-  else if(position.getX()>800-size){
-    sprite[1].setPosition(position.getX()-800,position.getY());
+  else if(position.getX()>windowSize.x-size){
+    sprite[1].setPosition(position.getX()-windowSize.x,position.getY());
     sprite[2].setPosition(-size,-size);
     sprite[3].setPosition(-size,-size);
   }
-  else if(position.getY()>600-size){
-    sprite[1].setPosition(position.getX(),position.getY()-600);
+  else if(position.getY()>windowSize.y-size){
+    sprite[1].setPosition(position.getX(),position.getY()-windowSize.y);
     sprite[2].setPosition(-size,-size);
     sprite[3].setPosition(-size,-size);
   }
   else if(position.getX()<0+size){
-    sprite[1].setPosition(position.getX()+800,position.getY());
+    sprite[1].setPosition(position.getX()+windowSize.x,position.getY());
     sprite[2].setPosition(-size,-size);
     sprite[3].setPosition(-size,-size);
   }
   else if(position.getY()<0+size){
-    sprite[1].setPosition(position.getX(),position.getY()+600);
+    sprite[1].setPosition(position.getX(),position.getY()+windowSize.y);
     sprite[2].setPosition(-size,-size);
     sprite[3].setPosition(-size,-size);
   }
@@ -141,22 +141,22 @@ void Missile::move(){
 bool Missile::collide(Missile *c){
   unsigned int a=0,b=0;
   bool out=false;
-  if(position.getX()<0+size || position.getX()>800-size)
+  if(position.getX()<0+size || position.getX()>windowSize.x-size)
     a++;
-  if(position.getY()<0+size || position.getY()>600-size)
+  if(position.getY()<0+size || position.getY()>windowSize.y-size)
     a++;
   if(a==2)
     a++;
 
-  if(c->getPosition().getX()<0+size || c->getPosition().getX()>800-size)
+  if(c->getPosition().getX()<0+size || c->getPosition().getX()>windowSize.x-size)
     b++;
-  if(c->getPosition().getY()<0+size || c->getPosition().getY()>600-size)
+  if(c->getPosition().getY()<0+size || c->getPosition().getY()>windowSize.y-size)
     b++;
   if(a==2)
     b++;
 
-  for(int i=0;i<=a;i++)
-    for(int j=0;j<=a;j++)
+  for(unsigned int i=0;i<=a;i++)
+    for(unsigned int j=0;j<=a;j++)
       out|=Collision::PixelPerfectTest(sprite[i],c->getSprite(j));
   return out;
 }
