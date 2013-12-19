@@ -62,10 +62,10 @@ Asteroid::~Asteroid ( ) {
    if(size>256/(4+2)){
        Vecteur Vitesse=Vecteur(std::rand()%6-3,std::rand()%6-3);
        int Size=256/size+1;
-       Vecteur Position1=position+(256/(Size+3))*Vitesse;
-       Vecteur Position2=position-(256/(Size+3))*Vitesse;
+       Vecteur Position1=position+(256/(Size+4))*Vitesse;
+       Vecteur Position2=position-(256/(Size+4))*Vitesse;
        Asteroid *ast1=new Asteroid(Position1,Vitesse,Size,windowSize);
-       Asteroid *ast2=new Asteroid(Position2,Vitesse,Size,windowSize);
+       Asteroid *ast2=new Asteroid(Position2,-1*Vitesse,Size,windowSize);
        objectList->push_back(ast1);
        objectList->push_back(ast2);
    }
