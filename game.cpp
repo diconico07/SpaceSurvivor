@@ -12,13 +12,13 @@ Game::Game(sf::RenderWindow *window){
 
     // Load a sprite to display
     sf::Texture *background=new sf::Texture;
-    background->loadFromFile("ressources/background.jpg");
+    background->loadFromFile("ressources/back.png");
     background->setRepeated(true);
-    //background.setSmooth(true);
+    background->setSmooth(true);
     back=sf::Sprite(*background);
     back.setColor(sf::Color::White);
     //back.scale(2,2);
-    back.setTextureRect(sf::IntRect(0,0,800,600));
+    back.setScale((float)800/background->getSize().x,(float)600/background->getSize().y);
 
     //creating test asteroids field
     Vecteur *position = new Vecteur();
