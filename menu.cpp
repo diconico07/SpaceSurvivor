@@ -39,22 +39,22 @@ enum choix Menu::playMenu(){
 
     sf::Font font ;
     font.loadFromFile("ressources/CookieMonster.ttf");
-    sf::Text *jouer=new sf::Text("Jouer",font,42);
+    sf::Text *jouer=new sf::Text("# Jouer #",font,42);
     jouer->setPosition(sf::Vector2f(140,120));
     jouer->setColor(sf::Color::Blue);
     jouer->setStyle(sf::Text::Bold);
 
-    sf::Text *HS=new sf::Text("HighScores",font,42);
+    sf::Text *HS=new sf::Text("* HighScores *",font,42);
     HS->setPosition(sf::Vector2f(140,120+spacementSelector));
     HS->setColor(sf::Color::Blue);
     HS->setStyle(sf::Text::Bold);
 
-    sf::Text *credits=new sf::Text("Credits",font,42);
+    sf::Text *credits=new sf::Text("+ Credits +",font,42);
     credits->setPosition(sf::Vector2f(140,120+2*spacementSelector));
     credits->setColor(sf::Color::Blue);
     credits->setStyle(sf::Text::Bold);
 
-    sf::Text *quit=new sf::Text("Quitter",font,42);
+    sf::Text *quit=new sf::Text("?! Quitter !?",font,42);
     quit->setPosition(sf::Vector2f(140,120+3*spacementSelector));
     quit->setColor(sf::Color::Red);
     quit->setStyle(sf::Text::Bold);
