@@ -2,13 +2,16 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <cstdlib>
+#include <unistd.h>
+#include <typeinfo>
 
 #include "Missile.h"
 #include "Vaisseau.h"
 #include "Asteroid.h"
 #include "Vecteur.h"
-const int Nombre_asteroids= 12;
+const int Nombre_asteroids= 6;
 const int Vitesse_projectiles=15;
+const int shootDelay = 100; //100 millisecondes
 
 int main()
 {
