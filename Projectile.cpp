@@ -12,7 +12,6 @@ Projectile::~Projectile ( ) {
 }
 
 Projectile::Projectile(Vecteur Position, Vecteur Vitesse,int Angle,sf::Vector2u window){
-    name="projectile";
     windowSize=window;
     vitesse=Vitesse;
     position=Position;
@@ -71,4 +70,7 @@ void Projectile::move ( )
       throw 10;
 }
 
+void Projectile::destroy(std::vector<Missile*> *objectList){
+
+}
 

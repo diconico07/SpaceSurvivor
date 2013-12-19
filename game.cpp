@@ -71,6 +71,7 @@ void Game::playGame(){
                   }
                   break;
                 case sf::Keyboard::Escape :
+                  return;
                   break;
                 default:
                   break;
@@ -100,16 +101,14 @@ void Game::playGame(){
                 }
 
               }
+            std::vector<Missile*> listeCollision;
             for(unsigned int i=0;i<listeMissiles.size();i++){
                 for(unsigned int j=i+1;j<listeMissiles.size();j++)
                   if(listeMissiles[i]->collide(listeMissiles[j])){
                       if(listeMissiles[i]==joueur || listeMissiles[j]==joueur)
                         joueurIsAlive=false;
-                      if(listeMissiles[i]->getName()=="asteroid"){
-                          listeMissiles.push_back(listeMissiles[i]->split(listeMissiles[i],Window));
-                      }
-                      if(listeMissiles[j]->getName()=="asteroid")
-                          listeMissiles.push_back(listeMissiles[j]->split(listeMissiles[j],Window));
+                      listeMissiles[i]->destroy(&listeCollision);
+                      listeMissiles[j]->destroy(&listeCollision);
                       delete listeMissiles[j];
                       delete listeMissiles[i];
                       listeMissiles.erase(listeMissiles.begin()+j);
@@ -117,6 +116,7 @@ void Game::playGame(){
                     }
 
               }
+            listeMissiles.insert(listeMissiles.end(),listeCollision.begin(),listeCollision.end());
           }
         //Draw the sprites
         Window->draw(back);

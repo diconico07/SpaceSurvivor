@@ -41,6 +41,10 @@ public:
 
     Vecteur& operator+=(Vecteur vecteur);
     Vecteur& operator+(Vecteur vecteur);
+    Vecteur& operator-=(Vecteur vecteur);
+    Vecteur& operator-(Vecteur vecteur);
 };
 
+Vecteur operator*(Vecteur,int);
+Vecteur operator*(int,Vecteur);
 #endif // VECTEUR_H

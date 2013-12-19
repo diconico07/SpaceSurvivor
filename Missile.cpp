@@ -161,7 +161,5 @@ bool Missile::collide(Missile *c){
   return out;
 }
 
-std::string Missile::getName(){
-    return name;
-}
+
 

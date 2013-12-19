@@ -23,7 +23,6 @@ Asteroid::~Asteroid ( ) {
  */
  Asteroid::Asteroid (Vecteur Position, Vecteur Vitesse, int Size ,sf::Vector2u window)
 {
-     name="asteroid";
      vitesse=Vitesse;
      windowSize=window;
      size=256/(Size+2);
@@ -58,14 +57,21 @@ Asteroid::~Asteroid ( ) {
  // Methods
  //
 
-Missile Asteroid::split(Missile *asteroid, sf::RenderWindow *Window){
-    Vecteur *nPos = new Vecteur(asteroid->getPosition().getX()+3*asteroid->getVitesse().getX(),asteroid->getPosition().getY()+3*asteroid->getVitesse().getY());
-    Vecteur *nVit =new Vecteur(std::rand()%6-3,std::rand()%6-3);
-    Missile *ast1 = new Asteroid(*nPos,*nVit,asteroid->getSize()-1,Window->getSize());
-    asteroid->setSize(asteroid->getSize()-1);
-    asteroid->setVitesse(Vecteur(std::rand()%6-3,std::rand()%6-3));
-    return ast1;
-}
+ void Asteroid::destroy(std::vector<Missile *> *objectList){
+   //Split asteroids
+   if(size>256/(4+2)){
+       Vecteur Vitesse=Vecteur(std::rand()%6-3,std::rand()%6-3);
+       int Size=256/size+1;
+       Vecteur Position1=position+(256/(Size+3))*Vitesse;
+       Vecteur Position2=position-(256/(Size+3))*Vitesse;
+       Asteroid *ast1=new Asteroid(Position1,Vitesse,Size,windowSize);
+       Asteroid *ast2=new Asteroid(Position2,Vitesse,Size,windowSize);
+       objectList->push_back(ast1);
+       objectList->push_back(ast2);
+   }
+
+
+ }
 
 /**
  */

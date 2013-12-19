@@ -24,7 +24,7 @@ public:
 
     //Other Methods
     //
-    Missile split(Missile *asteroid, sf::RenderWindow *Window);
+    void destroy(std::vector<Missile *> *objectList);
     //void move ( );
 
 

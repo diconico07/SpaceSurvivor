@@ -27,7 +27,6 @@ protected:
     sf::Sprite sprite[4];
     int size;
     sf::Vector2u windowSize;
-    std::string name;
 
 public:
 
@@ -58,8 +57,7 @@ public:
     virtual void move ( );
     virtual bool collide (Missile *c );
     sf::Sprite getSprite (int n);
-    std::string getName();
-    virtual Missile split(Missile *asteroid, sf::RenderWindow *Window);
+    virtual void destroy(std::vector<Missile*> *objectList)=0;
 
 };
 

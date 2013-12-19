@@ -61,6 +61,7 @@ public:
 	 * 
 	 */
 	void move ( );
+	void destroy(std::vector<Missile *> *objectList);
 
 
 };

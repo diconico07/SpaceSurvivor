@@ -92,3 +92,21 @@ Vecteur& Vecteur::operator+=(Vecteur vecteur){
 Vecteur& Vecteur::operator+(Vecteur vecteur){
     return (Vecteur) *this+=vecteur;
 }
+
+Vecteur& Vecteur::operator-=(Vecteur vecteur){
+    x-=vecteur.getX();
+    y-=vecteur.getY();
+    return *this;
+}
+
+Vecteur& Vecteur::operator-(Vecteur vecteur){
+    return (Vecteur) *this-=vecteur;
+}
+
+Vecteur operator*(const int i,Vecteur vecteur){
+  return Vecteur(vecteur.getX()*i,vecteur.getY()*i);
+}
+
+Vecteur operator*(Vecteur vecteur,const int i){
+  return Vecteur(vecteur.getX()*i,vecteur.getY()*i);
+}

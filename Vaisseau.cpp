@@ -4,7 +4,6 @@
 //  
 
 Vaisseau::Vaisseau ( sf::Vector2u window): Missile() {
-    name="vaisseau";
     windowSize=window;
     accLineaire=0;
     accAngulaire=0;
@@ -112,6 +111,8 @@ void Vaisseau::move(){
 
 }
 
+void Vaisseau::destroy(std::vector<Missile *> *objectList){
 
+}
 
 
