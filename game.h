@@ -7,7 +7,7 @@
 #include <vector>
 #include <cstdlib>
 #include <iostream>
-#include <chrono> //in order to implement a chrono at right top corner
+#include <sstream>
 
 #include "Missile.h"
 #include "Vaisseau.h"
@@ -29,9 +29,10 @@ public:
     Vaisseau *joueur;
     bool joueurIsAlive;
     sf::RenderWindow *Window;
-    sf::Clock fire_delay, asteroid_delay, move_delay;
+    sf::Clock fire_delay, asteroid_delay, move_delay,game_delay;
     sf::Sprite back;
     sf::Music music;
+    int score;
 
     //Constructors
     Game();

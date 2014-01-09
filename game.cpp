@@ -41,20 +41,30 @@ Game::~Game(){
 
 void Game::playGame(){
 
-    std::chrono::time_point<std::chrono::system_clock> start, current;
-    start = std::chrono::system_clock::now();
+    game_delay.restart();
     // Start the game loop
     while (Window->isOpen())
     {
-//        //Display chrono
-//        sf::Font font ;
-//        font.loadFromFile("ressources/CookieMonster.ttf");
-//        current = std::chrono::system_clock::now();
-//        std::chrono::duration<double> elapsed_seconds = current-start;
-//        std::string chronoText =elapsed_seconds;
-//        sf::Text chrono=sf::Text(chronoText,font,24);
-//        chrono.setPosition(sf::Vector2f(Window->getSize().x-60,Window->getSize().y-10));
-//        chrono.setColor(sf::Color::Black);
+
+        int millisec=game_delay.getElapsedTime().asMilliseconds();
+        int sec=(int)game_delay.getElapsedTime().asSeconds();
+        sf::Font font ;
+        font.loadFromFile("ressources/CookieMonster.ttf");
+        // créer un flux de sortie
+        std::ostringstream ossmin,osssec,ossms,ossscore;
+        ossmin<<sec/60;
+        osssec<<sec-(sec/60)*60;
+        ossms<<(millisec%1000)/10;
+        std::string chrono_display=ossmin.str()+":"+osssec.str()+":"+ossms.str();
+        sf::Text chrono=sf::Text(chrono_display,font,42);
+        chrono.setPosition(sf::Vector2f(Window->getSize().x-200,10));
+        chrono.setColor(sf::Color::Green);
+
+        score+=(millisec%1000)/100;
+        ossscore<<score;
+        sf::Text Score=sf::Text(ossscore.str(),font,42);
+        Score.setColor(sf::Color::Black);
+        Score.setPosition(sf::Vector2f(Window->getSize().x-200,50));
 
         // Process events
         sf::Event event;
@@ -135,7 +145,8 @@ void Game::playGame(){
           }
         //Draw the sprites
         Window->draw(back);
-//        Window->draw(chrono);
+        Window->draw(chrono);
+        Window->draw(Score);
         for(unsigned int i=0;i<listeMissiles.size();i++){
             for(int j=0;j<4;j++)
               Window->draw(listeMissiles[i]->getSprite(j));
