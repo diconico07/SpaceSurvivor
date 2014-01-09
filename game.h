@@ -1,10 +1,13 @@
 #ifndef GAME_H
 #define GAME_H
+#include <SFML/Graphics/Rect.hpp>
+#include <SFML/Graphics/Text.hpp>
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <vector>
 #include <cstdlib>
 #include <iostream>
+#include <chrono> //in order to implement a chrono at right top corner
 
 #include "Missile.h"
 #include "Vaisseau.h"

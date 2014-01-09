@@ -39,9 +39,21 @@ Game::~Game(){
 
 void Game::playGame(){
 
+    std::chrono::time_point<std::chrono::system_clock> start, current;
+    start = std::chrono::system_clock::now();
     // Start the game loop
     while (Window->isOpen())
     {
+//        //Display chrono
+//        sf::Font font ;
+//        font.loadFromFile("ressources/CookieMonster.ttf");
+//        current = std::chrono::system_clock::now();
+//        std::chrono::duration<double> elapsed_seconds = current-start;
+//        std::string chronoText =elapsed_seconds;
+//        sf::Text chrono=sf::Text(chronoText,font,24);
+//        chrono.setPosition(sf::Vector2f(Window->getSize().x-60,Window->getSize().y-10));
+//        chrono.setColor(sf::Color::Black);
+
         // Process events
         sf::Event event;
         while (Window->pollEvent(event))
@@ -120,6 +132,7 @@ void Game::playGame(){
           }
         //Draw the sprites
         Window->draw(back);
+//        Window->draw(chrono);
         for(unsigned int i=0;i<listeMissiles.size();i++){
             for(int j=0;j<4;j++)
               Window->draw(listeMissiles[i]->getSprite(j));
