@@ -6,7 +6,7 @@
 #include "Vecteur.h"
 
 #include <string>
-
+#include <iostream>
 #define VITESSE_MAX 20
 /**
   * class Vaisseau
