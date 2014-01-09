@@ -3,9 +3,11 @@
 #define MISSILE_H
 
 #include <string>
+#include <iostream>
 #include "Vecteur.h"
 #include "Collision.h"
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 /**
   * class Missile
@@ -27,6 +29,7 @@ protected:
     sf::Sprite sprite[4];
     int size;
     sf::Vector2u windowSize;
+    sf::Sound createSound;
 
 public:
 

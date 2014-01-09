@@ -5,6 +5,12 @@
 
 Projectile::Projectile ( ):Missile() {
     life=0;
+    sf::SoundBuffer* buffer=new sf::SoundBuffer();
+    if(!buffer->loadFromFile("ressources/fire.wav"))
+      std::cout<<"Error"<<std::endl;
+
+    createSound.setBuffer(*buffer);
+    createSound.play();
 }
 
 Projectile::~Projectile ( ) {
@@ -43,6 +49,15 @@ Projectile::Projectile(Vecteur Position, Vecteur Vitesse,int Angle,sf::Vector2u 
     sprite[3].setScale(0.5,0.5);
     sprite[3].setOrigin(size/2,size/2);
     sprite[3].setRotation(Angle+90);
+
+    sf::SoundBuffer* buffer=new sf::SoundBuffer();
+    if(!buffer->loadFromFile("ressources/fire.wav"))
+      std::cout<<"Error"<<std::endl;
+
+    createSound.setBuffer(*buffer);
+    createSound.play();
+
+
 }
 
 //  
