@@ -54,6 +54,10 @@ void Game::playGame(){
     sf::Text chrono;
     sf::Text Score;
 
+    std::ofstream highscore;
+    highscore.open("highscore",std::ios::out | std::ios::app | std::ios::binary);
+
+
     while (Window->isOpen())
     {
 
@@ -141,8 +145,12 @@ void Game::playGame(){
             for(unsigned int i=0;i<listeMissiles.size();i++){
                 for(unsigned int j=i+1;j<listeMissiles.size();j++)
                   if(listeMissiles[i]->collide(listeMissiles[j])){
-                      if(listeMissiles[i]==joueur || listeMissiles[j]==joueur)
+                      if(listeMissiles[i]==joueur || listeMissiles[j]==joueur){
                         joueurIsAlive=false;
+                        if(highscore.is_open()){
+                            highscore<<score<<std::endl;
+                        }
+                      }
                       listeMissiles[i]->destroy(&listeCollision, &listeSound);
                       listeMissiles[j]->destroy(&listeCollision, &listeSound);
                       delete listeMissiles[j];
