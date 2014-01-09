@@ -111,14 +111,14 @@ void Vaisseau::move(){
 
 }
 
-void Vaisseau::destroy(std::vector<Missile *> *objectList){
-  sf::SoundBuffer buffer;
-  if(!buffer.loadFromFile("ressources/death.wav"))
+void Vaisseau::destroy(std::vector<Missile *> *objectList, std::vector<sf::Sound> *soundList){
+  sf::SoundBuffer *buffer=new sf::SoundBuffer();
+  if(!buffer->loadFromFile("ressources/death.wav"))
     std::cout<<"Error"<<std::endl;
   sf::Sound death;
-  death.setBuffer(buffer);
-  death.play();
-  while(death.getStatus()!=0){}
+  soundList->push_back(death);
+  soundList->back().setBuffer(*buffer);
+  soundList->back().play();
 
 }
 

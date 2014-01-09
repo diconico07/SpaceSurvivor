@@ -89,7 +89,7 @@ void Game::playGame(){
                   joueur->setAccAngulaire(-1);
                   break;
                 case sf::Keyboard::Space : if(fire_delay.getElapsedTime().asMilliseconds()>shootDelay && joueurIsAlive){ //Creates a new scope in order to allow variable declaration in the switch case
-                    Projectile *projectile = new Projectile(joueur->getPosition()+joueur->getVitesse()+Vecteur(joueur->getSize(),(float)joueur->getAngle()),Vecteur(Vitesse_projectiles,(float)joueur->getAngle()),joueur->getAngle(),Window->getSize());
+                    Projectile *projectile = new Projectile(joueur->getPosition()+joueur->getVitesse()+Vecteur(joueur->getSize(),(float)joueur->getAngle()),Vecteur(Vitesse_projectiles,(float)joueur->getAngle()),joueur->getAngle(),Window->getSize(), &listeSound);
                   listeMissiles.push_back(projectile);
                   fire_delay.restart();
                   }
@@ -102,6 +102,12 @@ void Game::playGame(){
                 }
         }
 
+        for(unsigned int i=0;i<listeSound.size();i++){
+          if(listeSound[i].getStatus()==0){
+              delete listeSound[i].getBuffer();
+              listeSound.erase(listeSound.begin()+i);
+            }
+        }
 
         // Clear screen
         Window->clear();
@@ -132,8 +138,8 @@ void Game::playGame(){
                   if(listeMissiles[i]->collide(listeMissiles[j])){
                       if(listeMissiles[i]==joueur || listeMissiles[j]==joueur)
                         joueurIsAlive=false;
-                      listeMissiles[i]->destroy(&listeCollision);
-                      listeMissiles[j]->destroy(&listeCollision);
+                      listeMissiles[i]->destroy(&listeCollision, &listeSound);
+                      listeMissiles[j]->destroy(&listeCollision, &listeSound);
                       delete listeMissiles[j];
                       delete listeMissiles[i];
                       listeMissiles.erase(listeMissiles.begin()+j);

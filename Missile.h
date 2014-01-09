@@ -29,7 +29,6 @@ protected:
     sf::Sprite sprite[4];
     int size;
     sf::Vector2u windowSize;
-    sf::Sound createSound;
 
 public:
 
@@ -60,7 +59,7 @@ public:
     virtual void move ( );
     virtual bool collide (Missile *c );
     sf::Sprite getSprite (int n);
-    virtual void destroy(std::vector<Missile*> *objectList)=0;
+    virtual void destroy(std::vector<Missile*> *objectList, std::vector<sf::Sound> *soundList)=0;
 
 };
 

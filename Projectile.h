@@ -36,7 +36,7 @@ public:
 	 * @param  position
 	 * @param  vitesse
 	 */
-     Projectile (Vecteur position, Vecteur vitesse,int Angle,sf::Vector2u window);
+     Projectile (Vecteur position, Vecteur vitesse, int Angle, sf::Vector2u window, std::vector<sf::Sound> *listSound);
 
 	/**
 	 * Empty Destructor
@@ -61,7 +61,7 @@ public:
 	 * 
 	 */
 	void move ( );
-	void destroy(std::vector<Missile *> *objectList);
+	void destroy(std::vector<Missile *> *objectList, std::vector<sf::Sound> *soundList);
 
 
 };

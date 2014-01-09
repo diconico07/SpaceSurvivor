@@ -5,19 +5,13 @@
 
 Projectile::Projectile ( ):Missile() {
     life=0;
-    sf::SoundBuffer* buffer=new sf::SoundBuffer();
-    if(!buffer->loadFromFile("ressources/fire.wav"))
-      std::cout<<"Error"<<std::endl;
-
-    createSound.setBuffer(*buffer);
-    createSound.play();
 }
 
 Projectile::~Projectile ( ) {
   delete sprite[0].getTexture();
 }
 
-Projectile::Projectile(Vecteur Position, Vecteur Vitesse,int Angle,sf::Vector2u window){
+Projectile::Projectile(Vecteur Position, Vecteur Vitesse, int Angle, sf::Vector2u window, std::vector<sf::Sound> *listSound){
     windowSize=window;
     vitesse=Vitesse;
     position=Position;
@@ -53,9 +47,10 @@ Projectile::Projectile(Vecteur Position, Vecteur Vitesse,int Angle,sf::Vector2u 
     sf::SoundBuffer* buffer=new sf::SoundBuffer();
     if(!buffer->loadFromFile("ressources/fire.wav"))
       std::cout<<"Error"<<std::endl;
-
-    createSound.setBuffer(*buffer);
-    createSound.play();
+    sf::Sound sound;
+    listSound->push_back(sound);
+    listSound->back().setBuffer(*buffer);
+    listSound->back().play();
 
 
 }
@@ -85,7 +80,7 @@ void Projectile::move ( )
       throw 10;
 }
 
-void Projectile::destroy(std::vector<Missile*> *objectList){
+void Projectile::destroy(std::vector<Missile*> *objectList, std::vector<sf::Sound> *soundList){
 
 }
 

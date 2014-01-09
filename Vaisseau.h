@@ -93,7 +93,7 @@ public:
 	/**
 	 */
 	void move ( );
-	void destroy(std::vector<Missile *> *objectList);
+	void destroy(std::vector<Missile *> *objectList, std::vector<sf::Sound> *soundList);
 
 
 

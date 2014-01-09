@@ -57,7 +57,7 @@ Asteroid::~Asteroid ( ) {
  // Methods
  //
 
- void Asteroid::destroy(std::vector<Missile *> *objectList){
+ void Asteroid::destroy(std::vector<Missile *> *objectList, std::vector<sf::Sound> *soundList){
    //Split asteroids
    if(size>256/(4+2)){
        Vecteur Vitesse=Vecteur(std::rand()%6-3,std::rand()%6-3);

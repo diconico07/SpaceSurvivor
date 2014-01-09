@@ -26,6 +26,7 @@ class Game
 public:
     //Attributes
     std::vector<Missile*> listeMissiles;
+    std::vector<sf::Sound> listeSound;
     Vaisseau *joueur;
     bool joueurIsAlive;
     sf::RenderWindow *Window;
