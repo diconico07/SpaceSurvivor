@@ -40,29 +40,34 @@ Game::~Game(){
 }
 
 void Game::playGame(){
-
-    game_delay.restart();
     // Start the game loop
+    // start game chrono
+    game_delay.restart();
+
+    int millisec,sec;
+    std::string chrono_display; // temp text to display chrono
+
+    //loading font
+    sf::Font font ;
+    font.loadFromFile("ressources/CookieMonster.ttf");
+
+    sf::Text chrono;
+    sf::Text Score;
+
     while (Window->isOpen())
     {
 
-        int millisec=game_delay.getElapsedTime().asMilliseconds();
-        int sec=(int)game_delay.getElapsedTime().asSeconds();
-        sf::Font font ;
-        font.loadFromFile("ressources/CookieMonster.ttf");
-        // créer un flux de sortie
-        std::ostringstream ossmin,osssec,ossms,ossscore;
-        ossmin<<sec/60;
-        osssec<<sec-(sec/60)*60;
-        ossms<<(millisec%1000)/10;
-        std::string chrono_display=ossmin.str()+":"+osssec.str()+":"+ossms.str();
-        sf::Text chrono=sf::Text(chrono_display,font,42);
+        if(joueurIsAlive){
+            millisec=game_delay.getElapsedTime().asMilliseconds();
+            sec=(int)game_delay.getElapsedTime().asSeconds();
+            score=5*sec;
+        }
+        chrono_display=std::to_string(sec/60)+":"+std::to_string(sec%60)+":"+std::to_string((millisec%1000)/10);
+        chrono=sf::Text(chrono_display,font,42);
         chrono.setPosition(sf::Vector2f(Window->getSize().x-200,10));
         chrono.setColor(sf::Color::Green);
 
-        score+=(millisec%1000)/100;
-        ossscore<<score;
-        sf::Text Score=sf::Text(ossscore.str(),font,42);
+        Score=sf::Text(std::to_string(score),font,42);
         Score.setColor(sf::Color::Black);
         Score.setPosition(sf::Vector2f(Window->getSize().x-200,50));
 
