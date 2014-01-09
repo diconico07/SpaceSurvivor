@@ -4,6 +4,10 @@
 #include <SFML/Graphics/Rect.hpp>
 #include <SFML/Graphics/Text.hpp>
 #include <SFML/Window/Event.hpp>
+#include <istream>
+#include <ostream>
+#include <fstream>
+
 const int spacementSelector=90;
 
 enum choix {
@@ -28,6 +32,7 @@ public:
 
     //methods
     enum choix playMenu();
+    void play_HS();
 };
 
 #endif // MENU_H

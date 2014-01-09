@@ -18,6 +18,7 @@ int main()
         case CREDITS:
             break;
         case HIGHSCORES:
+            menu->play_HS();
             break;
         case QUITTER:
             return EXIT_SUCCESS;

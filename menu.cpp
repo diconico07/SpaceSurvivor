@@ -19,7 +19,6 @@ Menu::Menu(sf::RenderWindow *window){
 
 
 }
-
 enum choix Menu::playMenu(){
     //reinitialisation
     if(listeMenu.size()>0)
@@ -192,4 +191,10 @@ enum choix Menu::playMenu(){
             Window->display();
         }
     }
+}
+
+void Menu::play_HS(){
+    std::ifstream highscore ("highscore",std::ios::in | std::ios::ate);
+
+
 }
