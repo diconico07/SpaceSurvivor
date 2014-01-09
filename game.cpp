@@ -11,6 +11,7 @@ Game::Game(sf::RenderWindow *window){
     listeMissiles.push_back(joueur);
     music.openFromFile("ressources/music.ogg");
     music.setLoop(true);
+    music.setVolume(60);
     music.play();
 
     // Load a sprite to display
@@ -82,16 +83,20 @@ void Game::playGame(){
             if (event.type == sf::Event::KeyPressed)
               switch(event.key.code){
                 case sf::Keyboard::Up :
-                  joueur->setAccLineaire(1);
+                  if(joueurIsAlive)
+                    joueur->setAccLineaire(1);
                   break;
                 case sf::Keyboard::Down :
-                  joueur->setAccLineaire(-1);
+                  if(joueurIsAlive)
+                    joueur->setAccLineaire(-1);
                   break;
                 case sf::Keyboard::Left :
-                  joueur->setAccAngulaire(1);
+                  if(joueurIsAlive)
+                    joueur->setAccAngulaire(1);
                   break;
                 case sf::Keyboard::Right :
-                  joueur->setAccAngulaire(-1);
+                  if(joueurIsAlive)
+                    joueur->setAccAngulaire(-1);
                   break;
                 case sf::Keyboard::Space : if(fire_delay.getElapsedTime().asMilliseconds()>shootDelay && joueurIsAlive){ //Creates a new scope in order to allow variable declaration in the switch case
                     Projectile *projectile = new Projectile(joueur->getPosition()+joueur->getVitesse()+Vecteur(joueur->getSize(),(float)joueur->getAngle()),Vecteur(Vitesse_projectiles,(float)joueur->getAngle()),joueur->getAngle(),Window->getSize(), &listeSound);

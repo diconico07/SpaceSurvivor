@@ -59,6 +59,13 @@ Asteroid::~Asteroid ( ) {
 
  void Asteroid::destroy(std::vector<Missile *> *objectList, std::vector<sf::Sound> *soundList){
    //Split asteroids
+   sf::SoundBuffer *buffer = new sf::SoundBuffer;
+   if(!buffer->loadFromFile("ressources/explosion2.wav"))
+     return;
+   sf::Sound death;
+   soundList->push_back(death);
+   soundList->back().setBuffer(*buffer);
+   soundList->back().play();
    if(size>256/(4+2)){
        Vecteur Vitesse=Vecteur(std::rand()%6-3,std::rand()%6-3);
        int Size=256/size+1;
