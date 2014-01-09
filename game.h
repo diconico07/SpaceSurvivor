@@ -26,7 +26,7 @@ public:
     Vaisseau *joueur;
     bool joueurIsAlive;
     sf::RenderWindow *Window;
-    sf::Clock fire_delay, asteroid_delay;
+    sf::Clock fire_delay, asteroid_delay, move_delay;
     sf::Sprite back;
     sf::Music music;
 

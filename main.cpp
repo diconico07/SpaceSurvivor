@@ -12,6 +12,7 @@ int main()
         {
             Game *game=new Game(&window);
             game->playGame();
+            delete game;
             break;
         }
         case CREDITS:
