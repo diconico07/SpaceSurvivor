@@ -11,7 +11,7 @@ Game::Game(sf::RenderWindow *window){
     listeMissiles.push_back(joueur);
     music.openFromFile("ressources/music.ogg");
     music.setLoop(true);
-//    music.play();
+    music.play();
 
     // Load a sprite to display
     sf::Texture *background=new sf::Texture;
@@ -31,10 +31,12 @@ Game::Game(sf::RenderWindow *window){
 }
 
 Game::~Game(){
+    music.stop();
     for(unsigned int i=0;i<listeMissiles.size();i++)
-    delete listeMissiles[i];
+     delete listeMissiles[i];
     delete back.getTexture();
     Window->setMouseCursorVisible(true);
+
 }
 
 void Game::playGame(){
@@ -95,7 +97,8 @@ void Game::playGame(){
         Window->clear();
 
         // Move the sprites
-        if(joueurIsAlive){
+        if(joueurIsAlive && move_delay.getElapsedTime().asMilliseconds()>=10){
+            move_delay.restart();
             if(asteroid_delay.getElapsedTime().asMilliseconds()>asteroidDelay){
                 asteroid_delay.restart();
                 spawnAsteroid();

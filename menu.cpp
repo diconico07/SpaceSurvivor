@@ -22,6 +22,9 @@ Menu::Menu(sf::RenderWindow *window){
 
 enum choix Menu::playMenu(){
     //reinitialisation
+    if(listeMenu.size()>0)
+      for(unsigned int i=0;i<listeMenu.size();i++)
+        delete listeMenu[i];
     listeMenu.clear();
 
     sf::RectangleShape *cadre= new sf::RectangleShape(sf::Vector2f(Window->getSize().x-200,4*(80+10)+10));
