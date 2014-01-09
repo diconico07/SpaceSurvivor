@@ -129,9 +129,11 @@ void Game::playGame(){
         // Move the sprites
         if(joueurIsAlive && move_delay.getElapsedTime().asMilliseconds()>=10){
             move_delay.restart();
+
             if(asteroid_delay.getElapsedTime().asMilliseconds()>asteroidDelay){
                 asteroid_delay.restart();
                 spawnAsteroid();
+                back.setColor(sf::Color(std::rand()*255,std::rand()*255,std::rand()*255));
               }
 
             for(unsigned int i=0;i<listeMissiles.size();i++){
