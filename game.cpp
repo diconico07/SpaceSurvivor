@@ -6,9 +6,12 @@ Game::Game()
 
 Game::Game(sf::RenderWindow *window){
     Window=window;
+    //Creates and add the player to the vector
     joueur=new Vaisseau(window->getSize());
     joueurIsAlive=true;
     listeMissiles.push_back(joueur);
+
+    //Loads and play background music
     music.openFromFile("ressources/music.ogg");
     music.setLoop(true);
     music.setVolume(60);
@@ -33,8 +36,10 @@ Game::Game(sf::RenderWindow *window){
 
 Game::~Game(){
     music.stop();
+    //Flush the vector
     for(unsigned int i=0;i<listeMissiles.size();i++)
      delete listeMissiles[i];
+
     delete back.getTexture();
     Window->setMouseCursorVisible(true);
 
@@ -187,13 +192,21 @@ void Game::spawnAsteroid(){
     Vecteur *position = new Vecteur();
     Vecteur *vitesse = new Vecteur();
     int size;
+
+    //Generates new position util outside the player's safe zone
     do
         position->setXY(std::rand()%Window->getSize().x,std::rand()%Window->getSize().y);
     while(position->getX()<joueur->getPosition().getX()+safeZone && position->getX()>joueur->getPosition().getX()-safeZone && position->getY()<joueur->getPosition().getY()+safeZone && position->getY()<joueur->getPosition().getY()-safeZone);
+
+    //Generate speed and size
     vitesse->setXY(std::rand()%6-3,std::rand()%6-3);
     size = std::rand()%5;
+
+    //Creates asteroids and add them to the vector
     Asteroid *asteroid= new Asteroid(*position,*vitesse,size,Window->getSize());
     listeMissiles.push_back(asteroid);
+
+    //delete temp data
     delete position;
     delete vitesse;
 }

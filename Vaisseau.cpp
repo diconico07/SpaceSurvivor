@@ -11,10 +11,13 @@ Vaisseau::Vaisseau ( sf::Vector2u window): Missile() {
     angle=0;
     size=48;
     position.setXY(windowSize.x/2,windowSize.y/2);
+
+    //Load the texture
     sf::Texture *texture=new sf::Texture();
     Collision::CreateTextureAndBitmask(*texture,"ressources/vaisseau.png");
     texture->setSmooth(true);
 
+    //Sets the sprites properties
     sprite[0].setTexture(*texture);
     sprite[0].setPosition(400,300);
     sprite[0].setOrigin(size/2,size/2);
@@ -86,22 +89,28 @@ int Vaisseau::getAngle(){
 
 void Vaisseau::move(){
   Missile::move();
+
   Vecteur accel;
   accel.setModuleArgument(accLineaire,angle);
 
+  //Sets speed using acceleration
   vitesse+=accel;
 
+  //Sets angle and angular speed
   angle+=vitesseAngulaire;
   vitesseAngulaire-=accAngulaire;
 
+  //Set a maximum speed
   if(vitesseAngulaire>VITESSE_MAX)
     vitesseAngulaire=VITESSE_MAX;
   if(vitesse.getModule()>VITESSE_MAX)
     vitesse.setModule(VITESSE_MAX);
 
+  //reset the accelerations
   accAngulaire=0;
   accLineaire=0;
 
+  //correctly moves the sprites
   sprite[0].setPosition(position.getX(),position.getY());
   sprite[0].setRotation(angle-90);
 
@@ -112,6 +121,8 @@ void Vaisseau::move(){
 }
 
 void Vaisseau::destroy(std::vector<Missile *> *objectList, std::vector<sf::Sound> *soundList){
+
+  //Load death sound adds it to the vector and plays it
   sf::SoundBuffer *buffer=new sf::SoundBuffer();
   if(!buffer->loadFromFile("ressources/death.wav"))
     std::cout<<"Error"<<std::endl;

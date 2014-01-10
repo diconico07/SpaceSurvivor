@@ -28,10 +28,12 @@ Asteroid::~Asteroid ( ) {
      size=256/(Size+2);
      position=Position;
 
+     //Load the texture
      sf::Texture *texture=new sf::Texture();
      Collision::CreateTextureAndBitmask(*texture,"ressources/asteroid.png");
      texture->setSmooth(true);
 
+     //Creates needed sprites and sets their properties
      sprite[0].setTexture(*texture);
      sprite[0].setPosition(Position.getX(),Position.getY());
      sprite[0].setScale(1/((float)Size+3),1/((float)Size+3));
@@ -58,7 +60,8 @@ Asteroid::~Asteroid ( ) {
  //
 
  void Asteroid::destroy(std::vector<Missile *> *objectList, std::vector<sf::Sound> *soundList){
-   //Split asteroids
+
+   //Load explosion sound and adds it to the vector then play it
    sf::SoundBuffer *buffer = new sf::SoundBuffer;
    if(!buffer->loadFromFile("ressources/explosion2.wav"))
      return;
@@ -66,11 +69,15 @@ Asteroid::~Asteroid ( ) {
    soundList->push_back(death);
    soundList->back().setBuffer(*buffer);
    soundList->back().play();
+
+   //Split asteroids if necessary
    if(size>256/(4+2)){
        Vecteur Vitesse=Vecteur(std::rand()%6-3,std::rand()%6-3);
        int Size=256/size+1;
-       Vecteur Position1=position+(256/(Size+4))*Vitesse;
-       Vecteur Position2=position-(256/(Size+4))*Vitesse;
+       //Sets new asteroids position
+       Vecteur Position1=position+(((256/(Size+3))/Vitesse.getModule())+3)*Vitesse;
+       Vecteur Position2=position-(((256/(Size+3))/Vitesse.getModule())+3)*Vitesse;
+       //Generate new asteroids and adds them to the vector
        Asteroid *ast1=new Asteroid(Position1,Vitesse,Size,windowSize);
        Asteroid *ast2=new Asteroid(Position2,-1*Vitesse,Size,windowSize);
        objectList->push_back(ast1);
