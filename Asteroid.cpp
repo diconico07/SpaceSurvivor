@@ -72,7 +72,10 @@ Asteroid::~Asteroid ( ) {
 
    //Split asteroids if necessary
    if(size>256/(4+2)){
-       Vecteur Vitesse=Vecteur(std::rand()%6-3,std::rand()%6-3);
+       Vecteur Vitesse;
+       do
+        Vitesse.setXY(std::rand()%6-3,std::rand()%6-3);
+       while(Vitesse.getModule()==0);
        int Size=256/size+1;
        //Sets new asteroids position
        Vecteur Position1=position+(((256/(Size+3))/Vitesse.getModule())+3)*Vitesse;

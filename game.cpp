@@ -48,6 +48,7 @@ Game::~Game(){
 void Game::playGame(){
     // Start the game loop
     // start game chrono
+    hardcoreMode=false;
     game_delay.restart();
 
     int millisec,sec;
@@ -116,6 +117,9 @@ void Game::playGame(){
                 case sf::Keyboard::Escape :
                   return;
                   break;
+                case sf::Keyboard::C :
+                  hardcoreMode=hardcoreMode?false:true;
+                  break;
                 default:
                   break;
                 }
@@ -138,7 +142,8 @@ void Game::playGame(){
             if(asteroid_delay.getElapsedTime().asMilliseconds()>asteroidDelay){
                 asteroid_delay.restart();
                 spawnAsteroid();
-                back.setColor(sf::Color(std::rand()*255,std::rand()*255,std::rand()*255));
+                if(hardcoreMode)
+                  back.setColor(sf::Color(std::rand()*255,std::rand()*255,std::rand()*255));
               }
 
             for(unsigned int i=0;i<listeMissiles.size();i++){
@@ -176,13 +181,14 @@ void Game::playGame(){
           }
         //Draw the sprites
         Window->draw(back);
-        Window->draw(chrono);
-        Window->draw(Score);
+
         for(unsigned int i=0;i<listeMissiles.size();i++){
             for(int j=0;j<4;j++)
               Window->draw(listeMissiles[i]->getSprite(j));
         }
 
+        Window->draw(chrono);
+        Window->draw(Score);
         // Update the window
         Window->display();
     }

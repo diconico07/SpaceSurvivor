@@ -30,6 +30,7 @@ public:
     std::vector<sf::Sound> listeSound;
     Vaisseau *joueur;
     bool joueurIsAlive;
+    bool hardcoreMode;
     sf::RenderWindow *Window;
     sf::Clock fire_delay, asteroid_delay, move_delay,game_delay;
     sf::Sprite back;

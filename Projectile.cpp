@@ -55,6 +55,7 @@ Projectile::Projectile(Vecteur Position, Vecteur Vitesse, int Angle, sf::Vector2
     sf::Sound sound;
     listSound->push_back(sound);
     listSound->back().setBuffer(*buffer);
+    listSound->back().setVolume(30);
     listSound->back().play();
 
 
