@@ -16,7 +16,7 @@ class Animation
 public:
   Animation(sf::Vector2u windowSize);
   ~Animation();
-  void setTexture(std::string path);
+  void setTexture(sf::Texture &texture);
   void setPosition(sf::Vector2f);
   void setSize(int);
   void addFrame(sf::IntRect);

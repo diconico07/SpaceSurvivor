@@ -13,7 +13,8 @@ SOURCES += main.cpp \
     Collision.cpp \
     game.cpp \
     menu.cpp \
-    animation.cpp
+    animation.cpp \
+    ressources.cpp
 
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/SFML-2.1/lib/release/ -lsfml-audio
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/SFML-2.1/lib/debug/ -lsfml-audio
@@ -59,7 +60,8 @@ HEADERS += \
     Collision.h \
     game.h \
     menu.h \
-    animation.h
+    animation.h \
+    ressources.h
 
 
 unix: LIBS += -L$$PWD/SFGUI-0.2.0/ -lsfgui

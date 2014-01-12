@@ -13,7 +13,7 @@ Asteroid::Asteroid ( ) {
  * Empty Destructor
  */
 Asteroid::~Asteroid ( ) {
-  delete sprite[0].getTexture();
+
 }
 
 /**
@@ -28,28 +28,25 @@ Asteroid::~Asteroid ( ) {
      size=256/(Size+2);
      position=Position;
 
-     //Load the texture
-     sf::Texture *texture=new sf::Texture();
-     Collision::CreateTextureAndBitmask(*texture,"ressources/asteroid.png");
-     texture->setSmooth(true);
+
 
      //Creates needed sprites and sets their properties
-     sprite[0].setTexture(*texture);
+     sprite[0].setTexture(Ressources::getAsteroid());
      sprite[0].setPosition(Position.getX(),Position.getY());
      sprite[0].setScale(1/((float)Size+3),1/((float)Size+3));
      sprite[0].setOrigin(size/2,size/2);
 
-     sprite[1].setTexture(*texture);
+     sprite[1].setTexture(Ressources::getAsteroid());
      sprite[1].setPosition(-size,-size);
      sprite[1].setScale(1/((float)Size+3),1/((float)Size+3));
      sprite[1].setOrigin(size/2,size/2);
 
-     sprite[2].setTexture(*texture);
+     sprite[2].setTexture(Ressources::getAsteroid());
      sprite[2].setPosition(-size,-size);
      sprite[2].setScale(1/((float)Size+3),1/((float)Size+3));
      sprite[2].setOrigin(size/2,size/2);
 
-     sprite[3].setTexture(*texture);
+     sprite[3].setTexture(Ressources::getAsteroid());
      sprite[3].setPosition(-size,-size);
      sprite[3].setScale(1/((float)Size+3),1/((float)Size+3));
      sprite[3].setOrigin(size/2,size/2);
@@ -62,19 +59,16 @@ Asteroid::~Asteroid ( ) {
  void Asteroid::destroy(std::vector<Missile *> *objectList, std::vector<sf::Sound> *soundList, std::vector<Animation> *animationList){
 
    //Load explosion sound and adds it to the vector then play it
-   sf::SoundBuffer *buffer = new sf::SoundBuffer;
-   if(!buffer->loadFromFile("ressources/explosion2.wav"))
-     return;
    sf::Sound death;
    soundList->push_back(death);
-   soundList->back().setBuffer(*buffer);
+   soundList->back().setBuffer(Ressources::getExplosionSound());
    soundList->back().play();
 
    Animation animation(windowSize);
    animationList->push_back(animation);
    for(int i=0; i<12;i++)
     animationList->back().addFrame(sf::IntRect(0+256*(i%3),0+128*(i/3),256,128));
-   animationList->back().setTexture("ressources/explosion.png");
+   animationList->back().setTexture(Ressources::getExplosion());
    animationList->back().setPosition(sf::Vector2f(position.getX()-size/2,position.getY()-size/2));
    animationList->back().setSize(size);
 

@@ -127,7 +127,7 @@ void Game::playGame(){
 
         for(unsigned int i=0;i<listeSound.size();i++){
           if(listeSound[i].getStatus()==0){
-              delete listeSound[i].getBuffer();
+              //delete listeSound[i].getBuffer();
               listeSound.erase(listeSound.begin()+i);
             }
         }

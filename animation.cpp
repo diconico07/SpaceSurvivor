@@ -6,18 +6,16 @@ Animation::Animation(sf::Vector2u windowSize):windowSize(windowSize)
 }
 
 Animation::~Animation(){
-  //delete sprite[0].getTexture();
+
 }
 
-void Animation::setTexture(std::string path){
-  sf::Texture* texture=new sf::Texture();
-  texture->loadFromFile(path);
-  texture->setSmooth(true);
+void Animation::setTexture(sf::Texture& texture){
 
-  sprite[0].setTexture(*texture);
-  sprite[1].setTexture(*texture);
-  sprite[2].setTexture(*texture);
-  sprite[3].setTexture(*texture);
+
+  sprite[0].setTexture(texture);
+  sprite[1].setTexture(texture);
+  sprite[2].setTexture(texture);
+  sprite[3].setTexture(texture);
   sprite[0].setTextureRect(frames[0]);
   sprite[1].setTextureRect(frames[0]);
   sprite[2].setTextureRect(frames[0]);

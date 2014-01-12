@@ -1,8 +1,12 @@
 #include <game.h>
 #include <menu.h>
 
+sf::Texture EXPLOSION, PROJECTILE, ASTEROID, VESSEL;
+sf::SoundBuffer EXPLOSION_SOUND, FIRE_SOUND, DEATH_SOUND;
+
 int main()
 {
+    Ressources::load();
     // Create the main window
     sf::RenderWindow window(sf::VideoMode::getDesktopMode(), "Space Survivor");
     Menu *menu = new Menu(&window);

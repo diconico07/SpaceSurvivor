@@ -12,31 +12,28 @@ Vaisseau::Vaisseau ( sf::Vector2u window): Missile() {
     size=48;
     position.setXY(windowSize.x/2,windowSize.y/2);
 
-    //Load the texture
-    sf::Texture *texture=new sf::Texture();
-    Collision::CreateTextureAndBitmask(*texture,"ressources/vaisseau.png");
-    texture->setSmooth(true);
+
 
     //Sets the sprites properties
-    sprite[0].setTexture(*texture);
+    sprite[0].setTexture(Ressources::getVessel());
     sprite[0].setPosition(400,300);
     sprite[0].setOrigin(size/2,size/2);
 
-    sprite[1].setTexture(*texture);
+    sprite[1].setTexture(Ressources::getVessel());
     sprite[1].setPosition(-size,-size);
     sprite[1].setOrigin(size/2,size/2);
 
-    sprite[2].setTexture(*texture);
+    sprite[2].setTexture(Ressources::getVessel());
     sprite[2].setPosition(-size,-size);
     sprite[2].setOrigin(size/2,size/2);
 
-    sprite[3].setTexture(*texture);
+    sprite[3].setTexture(Ressources::getVessel());
     sprite[3].setPosition(-size,-size);
     sprite[3].setOrigin(size/2,size/2);
 }
 
 Vaisseau::~Vaisseau ( ) {
-  delete sprite[0].getTexture();
+
 }
 
 //  
@@ -123,12 +120,9 @@ void Vaisseau::move(){
 void Vaisseau::destroy(std::vector<Missile *> *objectList, std::vector<sf::Sound> *soundList, std::vector<Animation> *animationList){
 
   //Load death sound adds it to the vector and plays it
-  sf::SoundBuffer *buffer=new sf::SoundBuffer();
-  if(!buffer->loadFromFile("ressources/death.wav"))
-    std::cout<<"Error"<<std::endl;
   sf::Sound death;
   soundList->push_back(death);
-  soundList->back().setBuffer(*buffer);
+  soundList->back().setBuffer(Ressources::getDeathSound());
   soundList->back().play();
 
 }

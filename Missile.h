@@ -7,6 +7,7 @@
 #include "Vecteur.h"
 #include "Collision.h"
 #include "animation.h"
+#include "ressources.h"
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 
