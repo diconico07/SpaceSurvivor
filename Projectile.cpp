@@ -87,7 +87,7 @@ void Projectile::move ( )
       throw 10;
 }
 
-void Projectile::destroy(std::vector<Missile*> *objectList, std::vector<sf::Sound> *soundList){
+void Projectile::destroy(std::vector<Missile*> *objectList, std::vector<sf::Sound> *soundList, std::vector<Animation> *animationList){
 
 }
 

@@ -24,7 +24,7 @@ public:
 
     //Other Methods
     //
-    void destroy(std::vector<Missile *> *objectList, std::vector<sf::Sound> *soundList);
+    void destroy(std::vector<Missile *> *objectList, std::vector<sf::Sound> *soundList, std::vector<Animation> *animationList);
     //void move ( );
 
 

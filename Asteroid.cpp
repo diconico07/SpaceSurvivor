@@ -59,7 +59,7 @@ Asteroid::~Asteroid ( ) {
  // Methods
  //
 
- void Asteroid::destroy(std::vector<Missile *> *objectList, std::vector<sf::Sound> *soundList){
+ void Asteroid::destroy(std::vector<Missile *> *objectList, std::vector<sf::Sound> *soundList, std::vector<Animation> *animationList){
 
    //Load explosion sound and adds it to the vector then play it
    sf::SoundBuffer *buffer = new sf::SoundBuffer;
@@ -69,6 +69,14 @@ Asteroid::~Asteroid ( ) {
    soundList->push_back(death);
    soundList->back().setBuffer(*buffer);
    soundList->back().play();
+
+   Animation animation(windowSize);
+   animationList->push_back(animation);
+   for(int i=0; i<12;i++)
+    animationList->back().addFrame(sf::IntRect(0+256*(i%3),0+128*(i/3),256,128));
+   animationList->back().setTexture("ressources/explosion.png");
+   animationList->back().setPosition(sf::Vector2f(position.getX()-size/2,position.getY()-size/2));
+   animationList->back().setSize(size);
 
    //Split asteroids if necessary
    if(size>256/(4+2)){

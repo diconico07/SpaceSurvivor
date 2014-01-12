@@ -14,6 +14,7 @@
 #include "Vaisseau.h"
 #include "Asteroid.h"
 #include "Vecteur.h"
+#include "animation.h"
 
 const int Nombre_asteroids= 6;
 const int Vitesse_projectiles=15;
@@ -28,6 +29,7 @@ public:
     //Attributes
     std::vector<Missile*> listeMissiles;
     std::vector<sf::Sound> listeSound;
+    std::vector<Animation> listeAnimation;
     Vaisseau *joueur;
     bool joueurIsAlive;
     bool hardcoreMode;

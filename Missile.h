@@ -6,6 +6,7 @@
 #include <iostream>
 #include "Vecteur.h"
 #include "Collision.h"
+#include "animation.h"
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 
@@ -59,7 +60,7 @@ public:
     virtual void move ( );
     virtual bool collide (Missile *c );
     sf::Sprite getSprite (int n);
-    virtual void destroy(std::vector<Missile*> *objectList, std::vector<sf::Sound> *soundList)=0;
+    virtual void destroy(std::vector<Missile*> *objectList, std::vector<sf::Sound> *soundList, std::vector<Animation> *animationList)=0;
 
 };
 

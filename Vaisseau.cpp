@@ -120,7 +120,7 @@ void Vaisseau::move(){
 
 }
 
-void Vaisseau::destroy(std::vector<Missile *> *objectList, std::vector<sf::Sound> *soundList){
+void Vaisseau::destroy(std::vector<Missile *> *objectList, std::vector<sf::Sound> *soundList, std::vector<Animation> *animationList){
 
   //Load death sound adds it to the vector and plays it
   sf::SoundBuffer *buffer=new sf::SoundBuffer();

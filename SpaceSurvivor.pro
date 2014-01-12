@@ -12,7 +12,8 @@ SOURCES += main.cpp \
     Asteroid.cpp \
     Collision.cpp \
     game.cpp \
-    menu.cpp
+    menu.cpp \
+    animation.cpp
 
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/SFML-2.1/lib/release/ -lsfml-audio
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/SFML-2.1/lib/debug/ -lsfml-audio
@@ -57,7 +58,8 @@ HEADERS += \
     Asteroid.h \
     Collision.h \
     game.h \
-    menu.h
+    menu.h \
+    animation.h
 
 
 unix: LIBS += -L$$PWD/SFGUI-0.2.0/ -lsfgui

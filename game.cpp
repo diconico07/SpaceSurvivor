@@ -158,6 +158,16 @@ void Game::playGame(){
                 }
 
               }
+            for(unsigned int i=0;i<listeAnimation.size();i++){
+                try{
+                  listeAnimation[i].play();
+                }
+                catch(int e) {
+                  if(e==10){
+                      listeAnimation.erase(listeAnimation.begin()+i);
+                    }
+                }
+              }
             std::vector<Missile*> listeCollision;
             for(unsigned int i=0;i<listeMissiles.size();i++){
                 for(unsigned int j=i+1;j<listeMissiles.size();j++)
@@ -168,8 +178,8 @@ void Game::playGame(){
                             highscore<<score<<std::endl;
                         }
                       }
-                      listeMissiles[i]->destroy(&listeCollision, &listeSound);
-                      listeMissiles[j]->destroy(&listeCollision, &listeSound);
+                      listeMissiles[i]->destroy(&listeCollision, &listeSound, &listeAnimation);
+                      listeMissiles[j]->destroy(&listeCollision, &listeSound, &listeAnimation);
                       delete listeMissiles[j];
                       delete listeMissiles[i];
                       listeMissiles.erase(listeMissiles.begin()+j);
@@ -187,6 +197,10 @@ void Game::playGame(){
               Window->draw(listeMissiles[i]->getSprite(j));
         }
 
+        for(unsigned int i=0;i<listeAnimation.size();i++){
+            for(int j=0;j<4;j++)
+              Window->draw(listeAnimation[i].getSprite(j));
+        }
         Window->draw(chrono);
         Window->draw(Score);
         // Update the window
