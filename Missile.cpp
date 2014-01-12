@@ -77,8 +77,10 @@ void Missile::setSize ( int new_var )	 {
 //  
 
 void Missile::move(){
+  //Moves using the speed vector
   position+=vitesse;
 
+  //Makes the area spherical
   if(position.getX()>windowSize.x)
     position.setX(position.getX()-windowSize.x);
   if(position.getY()>windowSize.y)
@@ -88,9 +90,10 @@ void Missile::move(){
   if(position.getY()<0)
     position.setY(position.getY()+windowSize.y);
 
-
+  //Sets main sprite position
   sprite[0].setPosition(position.getX(),position.getY());
 
+  //Sets secondary sprites position if necessary in order to get seemless spherical area
   if(position.getX()>windowSize.x-size && position.getY()>windowSize.y-size){
     sprite[1].setPosition(position.getX()-windowSize.x,position.getY()-windowSize.y);
     sprite[2].setPosition(position.getX()-windowSize.x,position.getY());
@@ -141,6 +144,8 @@ void Missile::move(){
 bool Missile::collide(Missile *c){
   unsigned int a=0,b=0;
   bool out=false;
+
+  //Check if the missile1 is on the borders
   if(position.getX()<0+size || position.getX()>windowSize.x-size)
     a++;
   if(position.getY()<0+size || position.getY()>windowSize.y-size)
@@ -148,6 +153,7 @@ bool Missile::collide(Missile *c){
   if(a==2)
     a++;
 
+  //Check if the missile2 is on the borders
   if(c->getPosition().getX()<0+size || c->getPosition().getX()>windowSize.x-size)
     b++;
   if(c->getPosition().getY()<0+size || c->getPosition().getY()>windowSize.y-size)
@@ -155,6 +161,7 @@ bool Missile::collide(Missile *c){
   if(a==2)
     b++;
 
+  //Check collision using pixel perfect algorithm with the needed sprites
   for(unsigned int i=0;i<=a;i++)
     for(unsigned int j=0;j<=a;j++)
       out|=Collision::PixelPerfectTest(sprite[i],c->getSprite(j));

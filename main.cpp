@@ -8,7 +8,7 @@ int main()
     Menu *menu = new Menu(&window);
     while(1){
         switch(menu->playMenu()){
-        case JOUER:
+        case JOUER: //Launch the game
         {
             Game *game=new Game(&window);
             game->playGame();

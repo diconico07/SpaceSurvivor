@@ -15,11 +15,15 @@ Projectile::Projectile(Vecteur Position, Vecteur Vitesse, int Angle, sf::Vector2
     windowSize=window;
     vitesse=Vitesse;
     position=Position;
+
+    //Load Textures
     sf::Texture *texture=new sf::Texture();
      Collision::CreateTextureAndBitmask(*texture,"ressources/projectile.png");
     texture->setSmooth(true);
+
     size=16;
 
+    //Sets sprites properties
     sprite[0].setTexture(*texture);
     sprite[0].setPosition(Position.getX(),Position.getY());
     sprite[0].setScale(0.5,0.5);
@@ -44,6 +48,7 @@ Projectile::Projectile(Vecteur Position, Vecteur Vitesse, int Angle, sf::Vector2
     sprite[3].setOrigin(size/2,size/2);
     sprite[3].setRotation(Angle+90);
 
+    //Load fire sound, adds it to the vector and plays it
     sf::SoundBuffer* buffer=new sf::SoundBuffer();
     if(!buffer->loadFromFile("ressources/fire.wav"))
       std::cout<<"Error"<<std::endl;
@@ -75,6 +80,7 @@ int Projectile::getLife(){
 void Projectile::move ( )
 {
   Missile::move();
+  //decrease life and throw exception to get the Projectile destroyed if the Projectile is no longer alive
     life--;
     if(life<0)
       throw 10;
