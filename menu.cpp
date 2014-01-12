@@ -38,7 +38,7 @@ enum choix Menu::playMenu(){
     selector->setFillColor(sf::Color(252,220,18,150));
     selector->setOutlineThickness(2);
     selector->setOutlineColor(sf::Color::Blue);
-    int selectorPosition =1;
+    unsigned int selectorPosition =1;
 
     sf::Font font ;
     font.loadFromFile("ressources/CookieMonster.ttf");
@@ -191,6 +191,7 @@ enum choix Menu::playMenu(){
             Window->display();
         }
     }
+    return QUITTER;
 }
 
 void Menu::play_HS(){
