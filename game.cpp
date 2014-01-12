@@ -70,7 +70,7 @@ void Game::playGame(){
         chrono_display=std::to_string(sec/60)+":"+std::to_string(sec%60)+":"+std::to_string((millisec%1000)/10);
         chrono=sf::Text(chrono_display,font,42);
         chrono.setPosition(sf::Vector2f(Window->getSize().x-200,10));
-        chrono.setColor(sf::Color::Green);
+        chrono.setColor(sf::Color::Black);
 
         Score=sf::Text(std::to_string(score),font,42);
         Score.setColor(sf::Color::Black);

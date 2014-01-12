@@ -7,6 +7,9 @@
 #include <istream>
 #include <ostream>
 #include <fstream>
+#include <algorithm>
+#include <vector>
+
 
 const int spacementSelector=90;
 
