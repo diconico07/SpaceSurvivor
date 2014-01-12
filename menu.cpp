@@ -194,7 +194,30 @@ enum choix Menu::playMenu(){
 }
 
 void Menu::play_HS(){
+    Window->clear();
     std::ifstream highscore ("highscore",std::ios::in | std::ios::ate);
-
-
+    std::ofstream HS;
+    HS.open("hs");
+    if(highscore.is_open()){
+        int lines = 0;
+        std::string line;
+        while ( highscore.ignore( std::numeric_limits<int>::max(), '\n' ) )
+        {
+            ++lines;
+        }
+        std::vector <int> hs;
+        for(int i=0; i<lines;i++){
+//            std::getline();
+            hs.push_back(atoi(line.c_str()));
+            line.clear();
+        }
+        std::sort(hs.begin(),hs.end());
+        if(HS.is_open()){
+            for(int j=0; j<lines;j++){
+                HS<<hs[j]<<std::endl;
+            }
+        }
+    }
+    while(1){}
 }
+
