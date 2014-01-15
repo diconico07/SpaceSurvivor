@@ -64,6 +64,12 @@ void Game::playGame(){
     //End of Game text
     sf::Text GameOver;
     sf::Text EndGame;
+    sf::RectangleShape Bar;
+    Bar.setSize(sf::Vector2f(800,200));
+    Bar.setPosition(Window->getSize().x/2-400,Window->getSize().y/2-100);
+    Bar.setFillColor(sf::Color(207,207,207,220));
+    Bar.setOutlineColor(sf::Color::Black);
+    Bar.setOutlineThickness(2);
     GameOver.setString("Game Over");
     GameOver.setFont(font);
     GameOver.setPosition(Window->getSize().x/2-100,Window->getSize().y/2-80);
@@ -71,9 +77,17 @@ void Game::playGame(){
     GameOver.setCharacterSize(50);
     EndGame.setString("Appuyez sur Echap pour continuer");
     EndGame.setFont(font);
-    EndGame.setPosition(Window->getSize().x/2-300,Window->getSize().y/2);
+    EndGame.setPosition(Window->getSize().x/2-350,Window->getSize().y/2);
     EndGame.setColor(sf::Color::Blue);
     EndGame.setCharacterSize(50);
+    sf::Texture background_blur;
+    background_blur.loadFromFile("ressources/backmenu.png");
+    background_blur.setRepeated(true);
+    background_blur.setSmooth(true);
+    sf::Sprite backblur(background_blur);
+    backblur.setColor(sf::Color::Transparent);
+    backblur.setScale((float)Window->getSize().x/background_blur.getSize().x,(float)Window->getSize().y/background_blur.getSize().y);
+    int alphablur=0;
 
     std::ofstream highscore;
     highscore.open("highscore",std::ios::out | std::ios::app | std::ios::binary);
@@ -218,6 +232,10 @@ void Game::playGame(){
         }
 
         if(!joueurIsAlive){//Draw end of game text
+            backblur.setColor(sf::Color(255,255,255,alphablur));
+            alphablur=alphablur+15>=255?255:alphablur+15;
+            Window->draw(backblur);
+            Window->draw(Bar);
             Window->draw(GameOver);
             Window->draw(EndGame);
         }
