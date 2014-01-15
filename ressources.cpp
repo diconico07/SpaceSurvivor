@@ -5,46 +5,46 @@ namespace Ressources {
   sf::SoundBuffer Death, Fire, Explosion_sound;
 
   void load(){
-    Explosion.loadFromFile("ressources/explosion.png");
-    Explosion.setSmooth(true);
-    Collision::CreateTextureAndBitmask(Vessel,"ressources/vaisseau.png");
-    Vessel.setSmooth(true);
-    Collision::CreateTextureAndBitmask(Projectile,"ressources/projectile.png");
-    Projectile.setSmooth(true);
-    Collision::CreateTextureAndBitmask(Asteroid,"ressources/asteroid.png");
-    Asteroid.setSmooth(true);
+      Explosion.loadFromFile("ressources/explosion.png");
+      Explosion.setSmooth(true);
+      Collision::CreateTextureAndBitmask(Vessel,"ressources/vaisseau.png");
+      Vessel.setSmooth(true);
+      Collision::CreateTextureAndBitmask(Projectile,"ressources/projectile.png");
+      Projectile.setSmooth(true);
+      Collision::CreateTextureAndBitmask(Asteroid,"ressources/asteroid.png");
+      Asteroid.setSmooth(true);
 
-    Fire.loadFromFile("ressources/fire.wav");
-    Death.loadFromFile("ressources/death.wav");
-    Explosion_sound.loadFromFile("ressources/explosion2.wav");
+      Fire.loadFromFile("ressources/fire.wav");
+      Death.loadFromFile("ressources/death.wav");
+      Explosion_sound.loadFromFile("ressources/explosion2.wav");
 
   }
 
   sf::Texture& getExplosion(){
-    return Explosion;
+      return Explosion;
   }
 
   sf::Texture& getProjectile(){
-    return Projectile;
+      return Projectile;
   }
 
   sf::Texture& getVessel(){
-    return Vessel;
+      return Vessel;
   }
 
   sf::Texture& getAsteroid(){
-    return Asteroid;
+      return Asteroid;
   }
 
   sf::SoundBuffer& getExplosionSound(){
-    return Explosion_sound;
+      return Explosion_sound;
   }
 
   sf::SoundBuffer& getFireSound(){
-    return Fire;
+      return Fire;
   }
 
   sf::SoundBuffer& getDeathSound(){
-    return Death;
+      return Death;
   }
 }
