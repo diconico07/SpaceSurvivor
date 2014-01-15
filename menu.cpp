@@ -202,8 +202,8 @@ void Menu::play_HS(){
     cadre->setOutlineColor(sf::Color::Yellow);
     cadre->setFillColor(sf::Color(207,207,207,220));
 
-    sf::Text *Title=new sf::Text("* HighScores *",font,70);
-    Title->setPosition(sf::Vector2f(cadre->getSize().x/2-100,cadre->getPosition().y-120));
+    sf::Text *Title=new sf::Text("* HighScores *",font,90);
+    Title->setPosition(sf::Vector2f(cadre->getSize().x/2-150,cadre->getPosition().y-150));
     Title->setColor(sf::Color::Yellow);
     Title->setStyle(sf::Text::Bold);
 
@@ -221,30 +221,26 @@ void Menu::play_HS(){
         }
         std::sort(hs.begin(),hs.end());
         std::reverse(hs.begin(),hs.end());
-        //if(HS.is_open()){
-            for(int j=0; j<hs.size();j++){
-                std::cout<<hs[j]<<std::endl;
-            }
-        //}
+
     }
 
-    sf::Text *hs1=new sf::Text(std::to_string(hs[0]),font,60);
+    sf::Text *hs1=new sf::Text(std::to_string(hs[0]),font,70);
     hs1->setPosition(sf::Vector2f(cadre->getSize().x/2+50,cadre->getPosition().y+10));
     hs1->setColor(sf::Color::Yellow);
     hs1->setStyle(sf::Text::Bold);
 
     sf::Text *hs2=new sf::Text(std::to_string(hs[1]),font,42);
-    hs2->setPosition(sf::Vector2f(cadre->getSize().x/2+70,cadre->getPosition().y+10+spacementSelector));
+    hs2->setPosition(sf::Vector2f(cadre->getSize().x/2+60,cadre->getPosition().y+10+spacementSelector));
     hs2->setColor(sf::Color::Blue);
     hs2->setStyle(sf::Text::Bold);
 
     sf::Text *hs3=new sf::Text(std::to_string(hs[2]),font,42);
-    hs3->setPosition(sf::Vector2f(cadre->getSize().x/2+70,cadre->getPosition().y+10+2*spacementSelector));
+    hs3->setPosition(sf::Vector2f(cadre->getSize().x/2+60,cadre->getPosition().y+10+2*spacementSelector));
     hs3->setColor(sf::Color::Blue);
     hs3->setStyle(sf::Text::Bold);
 
     sf::Text *hs4=new sf::Text(std::to_string(hs[3]),font,42);
-    hs4->setPosition(sf::Vector2f(cadre->getSize().x/2+70,cadre->getPosition().y+10+3*spacementSelector));
+    hs4->setPosition(sf::Vector2f(cadre->getSize().x/2+60,cadre->getPosition().y+10+3*spacementSelector));
     hs4->setColor(sf::Color::Blue);
     hs4->setStyle(sf::Text::Bold);
 
