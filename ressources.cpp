@@ -3,6 +3,7 @@
 namespace Ressources {
   sf::Texture Explosion, Vessel, Projectile, Asteroid;
   sf::SoundBuffer Death, Fire, Explosion_sound;
+  sf::Font Font;
 
   void load(){
       Explosion.loadFromFile("ressources/explosion.png");
@@ -17,6 +18,8 @@ namespace Ressources {
       Fire.loadFromFile("ressources/fire.wav");
       Death.loadFromFile("ressources/death.wav");
       Explosion_sound.loadFromFile("ressources/explosion2.wav");
+
+      Font.loadFromFile("ressources/CookieMonster.ttf");
 
   }
 
@@ -46,5 +49,9 @@ namespace Ressources {
 
   sf::SoundBuffer& getDeathSound(){
       return Death;
+  }
+
+  sf::Font& getFont(){
+    return Font;
   }
 }

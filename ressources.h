@@ -16,6 +16,8 @@ namespace Ressources {
   sf::SoundBuffer& getExplosionSound();
   sf::SoundBuffer& getFireSound();
   sf::SoundBuffer& getDeathSound();
+
+  sf::Font& getFont();
 }
 
 #endif

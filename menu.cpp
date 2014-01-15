@@ -15,7 +15,8 @@ Menu::Menu(sf::RenderWindow *window){
     back.setColor(sf::Color::White);
     //back.scale(2,2);
     back.setScale((float)window->getSize().x/background->getSize().x,(float)window->getSize().y/background->getSize().y);
-    Window->setMouseCursorVisible(false);
+    Window->setMouseCursorVisible(true);
+
 
 
 }
@@ -40,23 +41,23 @@ enum choix Menu::playMenu(){
     selector->setOutlineColor(sf::Color::Blue);
     unsigned int selectorPosition =1;
 
-    font.loadFromFile("ressources/CookieMonster.ttf");
-    sf::Text *jouer=new sf::Text("# Jouer #",font,42);
+
+    sf::Text *jouer=new sf::Text("# Jouer #",Ressources::getFont(),42);
     jouer->setPosition(sf::Vector2f(cadre->getSize().x/2,cadre->getPosition().y+10));
     jouer->setColor(sf::Color::Blue);
     jouer->setStyle(sf::Text::Bold);
 
-    sf::Text *HS=new sf::Text("* HighScores *",font,42);
+    sf::Text *HS=new sf::Text("* HighScores *",Ressources::getFont(),42);
     HS->setPosition(sf::Vector2f(cadre->getSize().x/2,cadre->getPosition().y+10+spacementSelector));
     HS->setColor(sf::Color::Blue);
     HS->setStyle(sf::Text::Bold);
 
-    sf::Text *credits=new sf::Text("+ Credits +",font,42);
+    sf::Text *credits=new sf::Text("+ Credits +",Ressources::getFont(),42);
     credits->setPosition(sf::Vector2f(cadre->getSize().x/2,cadre->getPosition().y+10+2*spacementSelector));
     credits->setColor(sf::Color::Blue);
     credits->setStyle(sf::Text::Bold);
 
-    sf::Text *quit=new sf::Text("?! Quitter !?",font,42);
+    sf::Text *quit=new sf::Text("?! Quitter !?",Ressources::getFont(),42);
     quit->setPosition(sf::Vector2f(cadre->getSize().x/2,cadre->getPosition().y+10+3*spacementSelector));
     quit->setColor(sf::Color::Red);
     quit->setStyle(sf::Text::Bold);
@@ -202,7 +203,7 @@ void Menu::play_HS(){
     cadre->setOutlineColor(sf::Color::Yellow);
     cadre->setFillColor(sf::Color(207,207,207,220));
 
-    sf::Text *Title=new sf::Text("* HighScores *",font,90);
+    sf::Text *Title=new sf::Text("* HighScores *",Ressources::getFont(),90);
     Title->setPosition(sf::Vector2f(cadre->getSize().x/2-150,cadre->getPosition().y-150));
     Title->setColor(sf::Color::Yellow);
     Title->setStyle(sf::Text::Bold);
@@ -224,22 +225,22 @@ void Menu::play_HS(){
 
     }
 
-    sf::Text *hs1=new sf::Text(std::to_string(hs[0]),font,70);
+    sf::Text *hs1=new sf::Text(std::to_string(hs[0]),Ressources::getFont(),70);
     hs1->setPosition(sf::Vector2f(cadre->getSize().x/2+50,cadre->getPosition().y+10));
     hs1->setColor(sf::Color::Yellow);
     hs1->setStyle(sf::Text::Bold);
 
-    sf::Text *hs2=new sf::Text(std::to_string(hs[1]),font,42);
+    sf::Text *hs2=new sf::Text(std::to_string(hs[1]),Ressources::getFont(),42);
     hs2->setPosition(sf::Vector2f(cadre->getSize().x/2+60,cadre->getPosition().y+10+spacementSelector));
     hs2->setColor(sf::Color::Blue);
     hs2->setStyle(sf::Text::Bold);
 
-    sf::Text *hs3=new sf::Text(std::to_string(hs[2]),font,42);
+    sf::Text *hs3=new sf::Text(std::to_string(hs[2]),Ressources::getFont(),42);
     hs3->setPosition(sf::Vector2f(cadre->getSize().x/2+60,cadre->getPosition().y+10+2*spacementSelector));
     hs3->setColor(sf::Color::Blue);
     hs3->setStyle(sf::Text::Bold);
 
-    sf::Text *hs4=new sf::Text(std::to_string(hs[3]),font,42);
+    sf::Text *hs4=new sf::Text(std::to_string(hs[3]),Ressources::getFont(),42);
     hs4->setPosition(sf::Vector2f(cadre->getSize().x/2+60,cadre->getPosition().y+10+3*spacementSelector));
     hs4->setColor(sf::Color::Blue);
     hs4->setStyle(sf::Text::Bold);

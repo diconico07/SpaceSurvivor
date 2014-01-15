@@ -54,9 +54,6 @@ void Game::playGame(){
     int millisec,sec;
     std::string chrono_display; // temp text to display chrono
 
-    //loading font
-    sf::Font font ;
-    font.loadFromFile("ressources/CookieMonster.ttf");
 
     sf::Text chrono;
     sf::Text Score;
@@ -71,12 +68,12 @@ void Game::playGame(){
     Bar.setOutlineColor(sf::Color::Black);
     Bar.setOutlineThickness(2);
     GameOver.setString("Game Over");
-    GameOver.setFont(font);
+    GameOver.setFont(Ressources::getFont());
     GameOver.setPosition(Window->getSize().x/2-100,Window->getSize().y/2-80);
     GameOver.setColor(sf::Color::Blue);
     GameOver.setCharacterSize(50);
     EndGame.setString("Appuyez sur Echap pour continuer");
-    EndGame.setFont(font);
+    EndGame.setFont(Ressources::getFont());
     EndGame.setPosition(Window->getSize().x/2-350,Window->getSize().y/2);
     EndGame.setColor(sf::Color::Blue);
     EndGame.setCharacterSize(50);
@@ -102,11 +99,11 @@ void Game::playGame(){
             score=5*sec;
         }
         chrono_display=std::to_string(sec/60)+":"+std::to_string(sec%60)+":"+std::to_string((millisec%1000)/10);
-        chrono=sf::Text(chrono_display,font,42);
+        chrono=sf::Text(chrono_display,Ressources::getFont(),42);
         chrono.setPosition(sf::Vector2f(Window->getSize().x-200,10));
         chrono.setColor(sf::Color::Black);
 
-        Score=sf::Text(std::to_string(score),font,42);
+        Score=sf::Text(std::to_string(score),Ressources::getFont(),42);
         Score.setColor(sf::Color::Black);
         Score.setPosition(sf::Vector2f(Window->getSize().x-200,50));
 

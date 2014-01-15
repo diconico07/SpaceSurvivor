@@ -10,6 +10,7 @@
 #include <algorithm>
 #include <vector>
 #include <iostream>
+#include "ressources.h"
 
 
 const int spacementSelector=90;
@@ -28,7 +29,6 @@ private:
     sf::RenderWindow *Window;
     sf::Sprite back;
     std::vector<sf::Text*> listeMenu;
-    sf::Font font ;
 public:
     //Constructors/destructor
     Menu();
