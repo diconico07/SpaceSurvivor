@@ -196,29 +196,43 @@ enum choix Menu::playMenu(){
 
 void Menu::play_HS(){
     Window->clear();
-    std::ifstream highscore ("highscore",std::ios::in | std::ios::ate);
+    std::ifstream highscore ("highscore");
     std::ofstream HS;
     HS.open("hs");
     if(highscore.is_open()){
-        int lines = 0;
         std::string line;
-        while ( highscore.ignore( std::numeric_limits<int>::max(), '\n' ) )
-        {
-            ++lines;
-        }
         std::vector <int> hs;
-        for(int i=0; i<lines;i++){
-//            std::getline();
-            hs.push_back(atoi(line.c_str()));
+        while (std::getline(highscore,line)){
+            hs.push_back(std::atoi(line.c_str()));
             line.clear();
         }
         std::sort(hs.begin(),hs.end());
-        if(HS.is_open()){
-            for(int j=0; j<lines;j++){
-                HS<<hs[j]<<std::endl;
+        std::reverse(hs.begin(),hs.end());
+        //if(HS.is_open()){
+            for(int j=0; j<hs.size();j++){
+                std::cout<<hs[j]<<std::endl;
+            }
+        //}
+    }
+    while(Window->isOpen()){
+        Window->clear();
+        sf::Event event;
+        while (Window->pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+                Window->close();
+            if (event.type == sf::Event::KeyPressed){
+                if(event.key.code==sf::Keyboard::Return) {
+                return;
+                }
             }
         }
+
+        //clear window
+        Window->clear();
     }
-    while(1){}
+
+
+
 }
 
