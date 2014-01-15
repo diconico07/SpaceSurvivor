@@ -41,6 +41,12 @@ enum choix Menu::playMenu(){
     unsigned int selectorPosition =1;
 
     font.loadFromFile("ressources/CookieMonster.ttf");
+
+    sf::Text *Title=new sf::Text("SPACE SURVIVOR",font,90);
+    Title->setPosition(sf::Vector2f(cadre->getSize().x/2-160,cadre->getPosition().y-200));
+    Title->setColor(sf::Color::Red);
+    Title->setStyle(sf::Text::Bold);
+
     sf::Text *jouer=new sf::Text("# Jouer #",font,42);
     jouer->setPosition(sf::Vector2f(cadre->getSize().x/2,cadre->getPosition().y+10));
     jouer->setColor(sf::Color::Blue);
@@ -135,42 +141,58 @@ enum choix Menu::playMenu(){
             case 1:
                 jouer->setColor(sf::Color::Green);
                 jouer->setScale(1.2,1.2);
+                jouer->setPosition(sf::Vector2f(cadre->getSize().x/2-10,cadre->getPosition().y+10));
                 HS->setColor(sf::Color::Blue);
                 HS->setScale(1,1);
+                HS->setPosition(sf::Vector2f(cadre->getSize().x/2-35,cadre->getPosition().y+10+spacementSelector));
                 credits->setColor(sf::Color::Blue);
                 credits->setScale(1,1);
+                credits->setPosition(sf::Vector2f(cadre->getSize().x/2-22,cadre->getPosition().y+10+2*spacementSelector));
                 quit->setColor(sf::Color::Blue);
                 quit->setScale(1,1);
+                quit->setPosition(sf::Vector2f(cadre->getSize().x/2-30,cadre->getPosition().y+10+3*spacementSelector));
                 break;
             case 2:
                 jouer->setColor(sf::Color::Blue);
                 jouer->setScale(1,1);
+                jouer->setPosition(sf::Vector2f(cadre->getSize().x/2,cadre->getPosition().y+10));
                 HS->setColor(sf::Color::Green);
                 HS->setScale(1.2,1.2);
+                HS->setPosition(sf::Vector2f(cadre->getSize().x/2-20-35,cadre->getPosition().y+10+spacementSelector));
                 credits->setColor(sf::Color::Blue);
                 credits->setScale(1,1);
+                credits->setPosition(sf::Vector2f(cadre->getSize().x/2-22,cadre->getPosition().y+10+2*spacementSelector));
                 quit->setColor(sf::Color::Blue);
                 quit->setScale(1,1);
+                quit->setPosition(sf::Vector2f(cadre->getSize().x/2-30,cadre->getPosition().y+10+3*spacementSelector));
                 break;
             case 3:
                 jouer->setColor(sf::Color::Blue);
                 jouer->setScale(1,1);
+                jouer->setPosition(sf::Vector2f(cadre->getSize().x/2,cadre->getPosition().y+10));
                 HS->setColor(sf::Color::Blue);
                 HS->setScale(1,1);
+                HS->setPosition(sf::Vector2f(cadre->getSize().x/2-35,cadre->getPosition().y+10+spacementSelector));
                 credits->setColor(sf::Color::Green);
                 credits->setScale(1.2,1.2);
+                credits->setPosition(sf::Vector2f(cadre->getSize().x/2-15-22,cadre->getPosition().y+10+2*spacementSelector));
                 quit->setColor(sf::Color::Blue);
                 quit->setScale(1,1);
+                quit->setPosition(sf::Vector2f(cadre->getSize().x/2-30,cadre->getPosition().y+10+3*spacementSelector));
                 break;
             case 4:
                 jouer->setColor(sf::Color::Blue);
                 jouer->setScale(1,1);
+                jouer->setPosition(sf::Vector2f(cadre->getSize().x/2,cadre->getPosition().y+10));
                 HS->setColor(sf::Color::Blue);
                 HS->setScale(1,1);
+                HS->setPosition(sf::Vector2f(cadre->getSize().x/2-35,cadre->getPosition().y+10+spacementSelector));
                 credits->setColor(sf::Color::Blue);
                 credits->setScale(1,1);
+                credits->setPosition(sf::Vector2f(cadre->getSize().x/2-22,cadre->getPosition().y+10+2*spacementSelector));
                 quit->setColor(sf::Color::Green);
                 quit->setScale(1.2,1.2);
+                quit->setPosition(sf::Vector2f(cadre->getSize().x/2-18-30,cadre->getPosition().y+10+3*spacementSelector));
                 break;
             default:
                 break;
@@ -181,6 +203,7 @@ enum choix Menu::playMenu(){
 
             //Draw the sprites
             Window->draw(back);
+            Window->draw(*Title);
             Window->draw(*cadre);
             Window->draw(*selector);
             for(unsigned int i=0;i<listeMenu.size();i++){
