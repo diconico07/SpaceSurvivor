@@ -61,6 +61,20 @@ void Game::playGame(){
     sf::Text chrono;
     sf::Text Score;
 
+    //End of Game text
+    sf::Text GameOver;
+    sf::Text EndGame;
+    GameOver.setString("Game Over");
+    GameOver.setFont(font);
+    GameOver.setPosition(Window->getSize().x/2-100,Window->getSize().y/2-80);
+    GameOver.setColor(sf::Color::Blue);
+    GameOver.setCharacterSize(50);
+    EndGame.setString("Appuyez sur Echap pour continuer");
+    EndGame.setFont(font);
+    EndGame.setPosition(Window->getSize().x/2-300,Window->getSize().y/2);
+    EndGame.setColor(sf::Color::Blue);
+    EndGame.setCharacterSize(50);
+
     std::ofstream highscore;
     highscore.open("highscore",std::ios::out | std::ios::app | std::ios::binary);
 
@@ -189,6 +203,7 @@ void Game::playGame(){
               }
             listeMissiles.insert(listeMissiles.end(),listeCollision.begin(),listeCollision.end());
           }
+
         //Draw the sprites
         Window->draw(back);
 
@@ -200,6 +215,11 @@ void Game::playGame(){
         for(unsigned int i=0;i<listeAnimation.size();i++){
             for(int j=0;j<4;j++)
               Window->draw(listeAnimation[i].getSprite(j));
+        }
+
+        if(!joueurIsAlive){//Draw end of game text
+            Window->draw(GameOver);
+            Window->draw(EndGame);
         }
         Window->draw(chrono);
         Window->draw(Score);
