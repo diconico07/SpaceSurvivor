@@ -85,8 +85,9 @@ void Game::playGame(){
     background_blur.setRepeated(true);
     background_blur.setSmooth(true);
     sf::Sprite backblur(background_blur);
-    backblur.setColor(sf::Color::White);
+    backblur.setColor(sf::Color::Transparent);
     backblur.setScale((float)Window->getSize().x/background_blur.getSize().x,(float)Window->getSize().y/background_blur.getSize().y);
+    int alphablur=0;
 
     std::ofstream highscore;
     highscore.open("highscore",std::ios::out | std::ios::app | std::ios::binary);
@@ -231,6 +232,8 @@ void Game::playGame(){
         }
 
         if(!joueurIsAlive){//Draw end of game text
+            backblur.setColor(sf::Color(255,255,255,alphablur));
+            alphablur=alphablur+15>=255?255:alphablur+15;
             Window->draw(backblur);
             Window->draw(Bar);
             Window->draw(GameOver);
