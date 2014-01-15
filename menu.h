@@ -28,6 +28,7 @@ private:
     sf::RenderWindow *Window;
     sf::Sprite back;
     std::vector<sf::Text*> listeMenu;
+    sf::Font font ;
 public:
     //Constructors/destructor
     Menu();
