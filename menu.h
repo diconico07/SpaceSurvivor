@@ -28,7 +28,7 @@ private:
     //Attributes
     sf::RenderWindow *Window;
     sf::Sprite back;
-    std::vector<sf::Text*> listeMenu;
+    std::vector<sf::Text> listeMenu;
 public:
     //Constructors/destructor
     Menu();

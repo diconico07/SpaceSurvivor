@@ -25,55 +25,54 @@ enum choix Menu::playMenu(){
 
     //reinitialisation
     if(listeMenu.size()>0)
-      for(unsigned int i=0;i<listeMenu.size();i++)
-        delete listeMenu[i];
     listeMenu.clear();
 
-    sf::RectangleShape *cadre= new sf::RectangleShape(sf::Vector2f(Window->getSize().x-200,4*(80+10)+10));
-    cadre->setPosition(sf::Vector2f(100,Window->getSize().y/3));
-    cadre->setFillColor(sf::Color::Transparent);
-    cadre->setOutlineThickness(3);
-    cadre->setOutlineColor(sf::Color::Black);
-    cadre->setFillColor(sf::Color(207,207,207,220));
+    sf::RectangleShape cadre=sf::RectangleShape(sf::Vector2f(Window->getSize().x-200,4*(80+10)+10));
+    cadre.setPosition(sf::Vector2f(100,Window->getSize().y/3));
+    cadre.setFillColor(sf::Color::Transparent);
+    cadre.setOutlineThickness(3);
+    cadre.setOutlineColor(sf::Color::Black);
+    cadre.setFillColor(sf::Color(207,207,207,220));
 
-    sf::RectangleShape *selector= new sf::RectangleShape(sf::Vector2f(Window->getSize().x-220,80));
-    selector->setPosition(sf::Vector2f(cadre->getPosition().x+10,cadre->getPosition().y+10));
-    selector->setFillColor(sf::Color(252,220,18,150));
-    selector->setOutlineThickness(2);
-    selector->setOutlineColor(sf::Color::Blue);
+    sf::RectangleShape selector= sf::RectangleShape(sf::Vector2f(Window->getSize().x-220,80));
+    selector.setPosition(sf::Vector2f(cadre.getPosition().x+10,cadre.getPosition().y+10));
+    selector.setFillColor(sf::Color(252,220,18,150));
+    selector.setOutlineThickness(2);
+    selector.setOutlineColor(sf::Color::Blue);
     unsigned int selectorPosition =1;
 
-    sf::Text *Title=new sf::Text("COOKIE SURVIVOR",Ressources::getFont(),90);
-    Title->setPosition(sf::Vector2f(cadre->getSize().x/2-160,cadre->getPosition().y-200));
-    Title->setColor(sf::Color::Yellow);
-    Title->setStyle(sf::Text::Bold);
+    sf::Text Title=sf::Text("COOKIE SURVIVOR",Ressources::getFont(),90);
+    Title.setPosition(sf::Vector2f(cadre.getSize().x/2-190,cadre.getPosition().y-200));
+    Title.setColor(sf::Color::Yellow);
+    Title.setStyle(sf::Text::Bold);
+
     sf::Sprite Monster1, Monster2;
     Monster1.setTexture(Ressources::getVessel());
     Monster2.setTexture(Ressources::getVessel());
-    Monster1.setPosition(sf::Vector2f(cadre->getSize().x/2-280,cadre->getPosition().y-200));
+    Monster1.setPosition(sf::Vector2f(cadre.getSize().x/2-330,cadre.getPosition().y-200));
     Monster1.setScale(2,2);
-    Monster2.setPosition(sf::Vector2f(cadre->getSize().x/2+470,cadre->getPosition().y-200));
+    Monster2.setPosition(sf::Vector2f(cadre.getSize().x/2+460,cadre.getPosition().y-200));
     Monster2.setScale(2,2);
 
-    sf::Text *jouer=new sf::Text("# Jouer #",Ressources::getFont(),42);
-    jouer->setPosition(sf::Vector2f(cadre->getSize().x/2,cadre->getPosition().y+10));
-    jouer->setColor(sf::Color::Blue);
-    jouer->setStyle(sf::Text::Bold);
+    sf::Text jouer=sf::Text("# Jouer #",Ressources::getFont(),42);
+    jouer.setPosition(sf::Vector2f(cadre.getSize().x/2,cadre.getPosition().y+10));
+    jouer.setColor(sf::Color::Blue);
+    jouer.setStyle(sf::Text::Bold);
 
-    sf::Text *HS=new sf::Text("* HighScores *",Ressources::getFont(),42);
-    HS->setPosition(sf::Vector2f(cadre->getSize().x/2,cadre->getPosition().y+10+spacementSelector));
-    HS->setColor(sf::Color::Blue);
-    HS->setStyle(sf::Text::Bold);
+    sf::Text HS=sf::Text("* HighScores *",Ressources::getFont(),42);
+    HS.setPosition(sf::Vector2f(cadre.getSize().x/2,cadre.getPosition().y+10+spacementSelector));
+    HS.setColor(sf::Color::Blue);
+    HS.setStyle(sf::Text::Bold);
 
-    sf::Text *credits=new sf::Text("+ Credits +",Ressources::getFont(),42);
-    credits->setPosition(sf::Vector2f(cadre->getSize().x/2,cadre->getPosition().y+10+2*spacementSelector));
-    credits->setColor(sf::Color::Blue);
-    credits->setStyle(sf::Text::Bold);
+    sf::Text credits=sf::Text("+ Credits +",Ressources::getFont(),42);
+    credits.setPosition(sf::Vector2f(cadre.getSize().x/2,cadre.getPosition().y+10+2*spacementSelector));
+    credits.setColor(sf::Color::Blue);
+    credits.setStyle(sf::Text::Bold);
 
-    sf::Text *quit=new sf::Text("?! Quitter !?",Ressources::getFont(),42);
-    quit->setPosition(sf::Vector2f(cadre->getSize().x/2,cadre->getPosition().y+10+3*spacementSelector));
-    quit->setColor(sf::Color::Red);
-    quit->setStyle(sf::Text::Bold);
+    sf::Text quit=sf::Text("?! Quitter !?",Ressources::getFont(),42);
+    quit.setPosition(sf::Vector2f(cadre.getSize().x/2,cadre.getPosition().y+10+3*spacementSelector));
+    quit.setColor(sf::Color::Blue);
+    quit.setStyle(sf::Text::Bold);
 
     listeMenu.push_back(jouer);
     listeMenu.push_back(HS);
@@ -90,21 +89,21 @@ enum choix Menu::playMenu(){
                 switch (event.key.code) {
                 case sf::Keyboard::Up:
                     if(selectorPosition==1){
-                        selector->setPosition(sf::Vector2f(selector->getPosition().x,selector->getPosition().y+(listeMenu.size()-1)*spacementSelector));
+                        selector.setPosition(sf::Vector2f(selector.getPosition().x,selector.getPosition().y+(listeMenu.size()-1)*spacementSelector));
                         selectorPosition=listeMenu.size();
                     }
                     else{
-                        selector->setPosition(sf::Vector2f(selector->getPosition().x,selector->getPosition().y-spacementSelector));
+                        selector.setPosition(sf::Vector2f(selector.getPosition().x,selector.getPosition().y-spacementSelector));
                         selectorPosition--;
                     }
                     break;
                 case sf::Keyboard::Down:
                     if(selectorPosition==listeMenu.size()){
-                        selector->setPosition(sf::Vector2f(selector->getPosition().x,selector->getPosition().y-(listeMenu.size()-1)*spacementSelector));
+                        selector.setPosition(sf::Vector2f(selector.getPosition().x,selector.getPosition().y-(listeMenu.size()-1)*spacementSelector));
                         selectorPosition=1;
                     }
                     else{
-                        selector->setPosition(sf::Vector2f(selector->getPosition().x,selector->getPosition().y+spacementSelector));
+                        selector.setPosition(sf::Vector2f(selector.getPosition().x,selector.getPosition().y+spacementSelector));
                         selectorPosition++;
                     }
                     break;
@@ -149,60 +148,60 @@ enum choix Menu::playMenu(){
         }
         switch (selectorPosition) {
         case 1:
-            jouer->setColor(sf::Color::Green);
-            jouer->setScale(1.2,1.2);
-            jouer->setPosition(sf::Vector2f(cadre->getSize().x/2-10,cadre->getPosition().y+20));
-            HS->setColor(sf::Color::Blue);
-            HS->setScale(1,1);
-            HS->setPosition(sf::Vector2f(cadre->getSize().x/2-35,cadre->getPosition().y+15+spacementSelector));
-            credits->setColor(sf::Color::Blue);
-            credits->setScale(1,1);
-            credits->setPosition(sf::Vector2f(cadre->getSize().x/2-22,cadre->getPosition().y+15+2*spacementSelector));
-            quit->setColor(sf::Color::Blue);
-            quit->setScale(1,1);
-            quit->setPosition(sf::Vector2f(cadre->getSize().x/2-30,cadre->getPosition().y+15+3*spacementSelector));
+            jouer.setColor(sf::Color::Green);
+            jouer.setScale(1.2,1.2);
+            jouer.setPosition(sf::Vector2f(cadre.getSize().x/2-10,cadre.getPosition().y+20));
+            HS.setColor(sf::Color::Blue);
+            HS.setScale(1,1);
+            HS.setPosition(sf::Vector2f(cadre.getSize().x/2-35,cadre.getPosition().y+15+spacementSelector));
+            credits.setColor(sf::Color::Blue);
+            credits.setScale(1,1);
+            credits.setPosition(sf::Vector2f(cadre.getSize().x/2-22,cadre.getPosition().y+15+2*spacementSelector));
+            quit.setColor(sf::Color::Blue);
+            quit.setScale(1,1);
+            quit.setPosition(sf::Vector2f(cadre.getSize().x/2-30,cadre.getPosition().y+15+3*spacementSelector));
             break;
         case 2:
-            jouer->setColor(sf::Color::Blue);
-            jouer->setScale(1,1);
-            jouer->setPosition(sf::Vector2f(cadre->getSize().x/2,cadre->getPosition().y+15));
-            HS->setColor(sf::Color::Green);
-            HS->setScale(1.2,1.2);
-            HS->setPosition(sf::Vector2f(cadre->getSize().x/2-20-35,cadre->getPosition().y+20+spacementSelector));
-            credits->setColor(sf::Color::Blue);
-            credits->setScale(1,1);
-            credits->setPosition(sf::Vector2f(cadre->getSize().x/2-22,cadre->getPosition().y+15+2*spacementSelector));
-            quit->setColor(sf::Color::Blue);
-            quit->setScale(1,1);
-            quit->setPosition(sf::Vector2f(cadre->getSize().x/2-30,cadre->getPosition().y+15+3*spacementSelector));
+            jouer.setColor(sf::Color::Blue);
+            jouer.setScale(1,1);
+            jouer.setPosition(sf::Vector2f(cadre.getSize().x/2,cadre.getPosition().y+15));
+            HS.setColor(sf::Color::Green);
+            HS.setScale(1.2,1.2);
+            HS.setPosition(sf::Vector2f(cadre.getSize().x/2-20-35,cadre.getPosition().y+20+spacementSelector));
+            credits.setColor(sf::Color::Blue);
+            credits.setScale(1,1);
+            credits.setPosition(sf::Vector2f(cadre.getSize().x/2-22,cadre.getPosition().y+15+2*spacementSelector));
+            quit.setColor(sf::Color::Blue);
+            quit.setScale(1,1);
+            quit.setPosition(sf::Vector2f(cadre.getSize().x/2-30,cadre.getPosition().y+15+3*spacementSelector));
             break;
         case 3:
-            jouer->setColor(sf::Color::Blue);
-            jouer->setScale(1,1);
-            jouer->setPosition(sf::Vector2f(cadre->getSize().x/2,cadre->getPosition().y+15));
-            HS->setColor(sf::Color::Blue);
-            HS->setScale(1,1);
-            HS->setPosition(sf::Vector2f(cadre->getSize().x/2-35,cadre->getPosition().y+15+spacementSelector));
-            credits->setColor(sf::Color::Green);
-            credits->setScale(1.2,1.2);
-            credits->setPosition(sf::Vector2f(cadre->getSize().x/2-15-22,cadre->getPosition().y+20+2*spacementSelector));
-            quit->setColor(sf::Color::Blue);
-            quit->setScale(1,1);
-            quit->setPosition(sf::Vector2f(cadre->getSize().x/2-30,cadre->getPosition().y+15+3*spacementSelector));
+            jouer.setColor(sf::Color::Blue);
+            jouer.setScale(1,1);
+            jouer.setPosition(sf::Vector2f(cadre.getSize().x/2,cadre.getPosition().y+15));
+            HS.setColor(sf::Color::Blue);
+            HS.setScale(1,1);
+            HS.setPosition(sf::Vector2f(cadre.getSize().x/2-35,cadre.getPosition().y+15+spacementSelector));
+            credits.setColor(sf::Color::Green);
+            credits.setScale(1.2,1.2);
+            credits.setPosition(sf::Vector2f(cadre.getSize().x/2-15-22,cadre.getPosition().y+20+2*spacementSelector));
+            quit.setColor(sf::Color::Blue);
+            quit.setScale(1,1);
+            quit.setPosition(sf::Vector2f(cadre.getSize().x/2-30,cadre.getPosition().y+15+3*spacementSelector));
             break;
         case 4:
-            jouer->setColor(sf::Color::Blue);
-            jouer->setScale(1,1);
-            jouer->setPosition(sf::Vector2f(cadre->getSize().x/2,cadre->getPosition().y+15));
-            HS->setColor(sf::Color::Blue);
-            HS->setScale(1,1);
-            HS->setPosition(sf::Vector2f(cadre->getSize().x/2-35,cadre->getPosition().y+15+spacementSelector));
-            credits->setColor(sf::Color::Blue);
-            credits->setScale(1,1);
-            credits->setPosition(sf::Vector2f(cadre->getSize().x/2-22,cadre->getPosition().y+15+2*spacementSelector));
-            quit->setColor(sf::Color::Green);
-            quit->setScale(1.2,1.2);
-            quit->setPosition(sf::Vector2f(cadre->getSize().x/2-18-30,cadre->getPosition().y+20+3*spacementSelector));
+            jouer.setColor(sf::Color::Blue);
+            jouer.setScale(1,1);
+            jouer.setPosition(sf::Vector2f(cadre.getSize().x/2,cadre.getPosition().y+15));
+            HS.setColor(sf::Color::Blue);
+            HS.setScale(1,1);
+            HS.setPosition(sf::Vector2f(cadre.getSize().x/2-35,cadre.getPosition().y+15+spacementSelector));
+            credits.setColor(sf::Color::Blue);
+            credits.setScale(1,1);
+            credits.setPosition(sf::Vector2f(cadre.getSize().x/2-22,cadre.getPosition().y+15+2*spacementSelector));
+            quit.setColor(sf::Color::Green);
+            quit.setScale(1.2,1.2);
+            quit.setPosition(sf::Vector2f(cadre.getSize().x/2-18-30,cadre.getPosition().y+20+3*spacementSelector));
             break;
         default:
             break;
@@ -210,10 +209,9 @@ enum choix Menu::playMenu(){
 
         if(delay.getElapsedTime().asMilliseconds()>=200){
             delay.restart();
-            cadre->setOutlineColor(sf::Color(std::rand()%255,std::rand()%255,std::rand()%255));
-            selector->setOutlineColor(sf::Color(std::rand()%255,std::rand()%255,std::rand()%255));
-            Title->setColor(sf::Color(std::rand()%255,std::rand()%255,std::rand()%255));
-
+            cadre.setOutlineColor(sf::Color(std::rand()%255,std::rand()%255,std::rand()%255));
+            selector.setOutlineColor(sf::Color(std::rand()%255,std::rand()%255,std::rand()%255));
+            Title.setColor(sf::Color(std::rand()%255,std::rand()%255,std::rand()%255));
         }
 
         //clear window
@@ -221,13 +219,13 @@ enum choix Menu::playMenu(){
 
         //Draw the sprites
         Window->draw(back);
-        Window->draw(*Title);
-        Window->draw(*cadre);
-        Window->draw(*selector);
+        Window->draw(Title);
+        Window->draw(cadre);
+        Window->draw(selector);
         Window->draw(Monster1);
         Window->draw(Monster2);
         for(unsigned int i=0;i<listeMenu.size();i++){
-            Window->draw(*listeMenu[i]);
+            Window->draw(listeMenu[i]);
           }
         // Update the window
         Window->display();
