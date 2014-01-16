@@ -43,10 +43,17 @@ enum choix Menu::playMenu(){
     selector->setOutlineColor(sf::Color::Blue);
     unsigned int selectorPosition =1;
 
-    sf::Text *Title=new sf::Text("SPACE SURVIVOR",Ressources::getFont(),90);
+    sf::Text *Title=new sf::Text("COOKIE SURVIVOR",Ressources::getFont(),90);
     Title->setPosition(sf::Vector2f(cadre->getSize().x/2-160,cadre->getPosition().y-200));
     Title->setColor(sf::Color::Yellow);
     Title->setStyle(sf::Text::Bold);
+    sf::Sprite Monster1, Monster2;
+    Monster1.setTexture(Ressources::getVessel());
+    Monster2.setTexture(Ressources::getVessel());
+    Monster1.setPosition(sf::Vector2f(cadre->getSize().x/2-280,cadre->getPosition().y-200));
+    Monster1.setScale(2,2);
+    Monster2.setPosition(sf::Vector2f(cadre->getSize().x/2+470,cadre->getPosition().y-200));
+    Monster2.setScale(2,2);
 
     sf::Text *jouer=new sf::Text("# Jouer #",Ressources::getFont(),42);
     jouer->setPosition(sf::Vector2f(cadre->getSize().x/2,cadre->getPosition().y+10));
@@ -217,6 +224,8 @@ enum choix Menu::playMenu(){
         Window->draw(*Title);
         Window->draw(*cadre);
         Window->draw(*selector);
+        Window->draw(Monster1);
+        Window->draw(Monster2);
         for(unsigned int i=0;i<listeMenu.size();i++){
             Window->draw(*listeMenu[i]);
           }
@@ -258,31 +267,34 @@ void Menu::play_HS(){
 
     }
 
-    sf::Text hs1=sf::Text(std::to_string(hs[0]),Ressources::getFont(),70);
-    hs1.setPosition(sf::Vector2f(cadre.getSize().x/2+50,cadre.getPosition().y+10));
-    hs1.setColor(sf::Color::Yellow);
-    hs1.setStyle(sf::Text::Bold);
-
-    sf::Text hs2=sf::Text(std::to_string(hs[1]),Ressources::getFont(),42);
-    hs2.setPosition(sf::Vector2f(cadre.getSize().x/2+60,cadre.getPosition().y+10+spacementSelector));
-    hs2.setColor(sf::Color::Blue);
-    hs2.setStyle(sf::Text::Bold);
-
-    sf::Text hs3=sf::Text(std::to_string(hs[2]),Ressources::getFont(),42);
-    hs3.setPosition(sf::Vector2f(cadre.getSize().x/2+60,cadre.getPosition().y+10+2*spacementSelector));
-    hs3.setColor(sf::Color::Blue);
-    hs3.setStyle(sf::Text::Bold);
-
-    sf::Text hs4=sf::Text(std::to_string(hs[3]),Ressources::getFont(),42);
-    hs4.setPosition(sf::Vector2f(cadre.getSize().x/2+60,cadre.getPosition().y+10+3*spacementSelector));
-    hs4.setColor(sf::Color::Blue);
-    hs4.setStyle(sf::Text::Bold);
-
-    listeHS.push_back(hs1);
-    listeHS.push_back(hs2);
-    listeHS.push_back(hs3);
-    listeHS.push_back(hs4);
-
+    if(hs.size()>=1){
+        sf::Text hs1=sf::Text(std::to_string(hs[0]),Ressources::getFont(),70);
+        hs1.setPosition(sf::Vector2f(cadre.getSize().x/2+50,cadre.getPosition().y+10));
+        hs1.setColor(sf::Color::Yellow);
+        hs1.setStyle(sf::Text::Bold);
+        listeHS.push_back(hs1);
+    }
+    if(hs.size()>=2){
+        sf::Text hs2=sf::Text(std::to_string(hs[1]),Ressources::getFont(),42);
+        hs2.setPosition(sf::Vector2f(cadre.getSize().x/2+60,cadre.getPosition().y+10+spacementSelector));
+        hs2.setColor(sf::Color::Blue);
+        hs2.setStyle(sf::Text::Bold);
+        listeHS.push_back(hs2);
+    }
+    if(hs.size()>=3){
+        sf::Text hs3=sf::Text(std::to_string(hs[2]),Ressources::getFont(),42);
+        hs3.setPosition(sf::Vector2f(cadre.getSize().x/2+60,cadre.getPosition().y+10+2*spacementSelector));
+        hs3.setColor(sf::Color::Blue);
+        hs3.setStyle(sf::Text::Bold);
+        listeHS.push_back(hs3);
+    }
+    if(hs.size()>=4){
+        sf::Text hs4=sf::Text(std::to_string(hs[3]),Ressources::getFont(),42);
+        hs4.setPosition(sf::Vector2f(cadre.getSize().x/2+60,cadre.getPosition().y+10+3*spacementSelector));
+        hs4.setColor(sf::Color::Blue);
+        hs4.setStyle(sf::Text::Bold);
+        listeHS.push_back(hs4);
+    }
 
     while(Window->isOpen()){
         sf::Event event;
