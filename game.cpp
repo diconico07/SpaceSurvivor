@@ -63,6 +63,7 @@ void Game::playGame(){
     //End of Game text
     sf::Text GameOver;
     sf::Text EndGame;
+    sf::Text EndGame2;
     sf::RectangleShape Bar;
     Bar.setSize(sf::Vector2f(800,200));
     Bar.setPosition(Window->getSize().x/2-400,Window->getSize().y/2-100);
@@ -71,14 +72,18 @@ void Game::playGame(){
     Bar.setOutlineThickness(2);
     GameOver.setString("Game Over");
     GameOver.setFont(Ressources::getFont());
-    GameOver.setPosition(Window->getSize().x/2-100,Window->getSize().y/2-80);
+    GameOver.setPosition(Window->getSize().x/2-100,Window->getSize().y/2-100);
     GameOver.setColor(sf::Color::Blue);
     GameOver.setCharacterSize(50);
     EndGame.setString("Appuyez sur Echap pour continuer");
     EndGame.setFont(Ressources::getFont());
-    EndGame.setPosition(Window->getSize().x/2-350,Window->getSize().y/2);
+    EndGame.setPosition(Window->getSize().x/2-350,Window->getSize().y/2-30);
     EndGame.setColor(sf::Color::Blue);
     EndGame.setCharacterSize(50);
+    EndGame2.setFont(Ressources::getFont());
+    EndGame2.setPosition(Window->getSize().x/2-230,Window->getSize().y/2+10);
+    EndGame2.setColor(sf::Color::Red);
+    EndGame2.setCharacterSize(70);
     sf::Texture background_blur;
     background_blur.loadFromFile("ressources/backmenu.png");
     background_blur.setRepeated(true);
@@ -206,6 +211,7 @@ void Game::playGame(){
                       if(listeMissiles[i]==joueur || listeMissiles[j]==joueur){
                         joueurIsAlive=false;
                         score-=3;
+                        EndGame2.setString("Votre score :  " + std::to_string(score));
                         if(highscore.is_open()){
                             highscore<<score<<std::endl;
                         }
@@ -242,6 +248,7 @@ void Game::playGame(){
             Window->draw(Bar);
             Window->draw(GameOver);
             Window->draw(EndGame);
+            Window->draw(EndGame2);
         }
         Window->draw(chrono);
         Window->draw(Score);
