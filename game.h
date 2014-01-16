@@ -21,7 +21,7 @@ const int Vitesse_projectiles=15;
 const int shootDelay = 100; //100 millisecondes
 const int asteroidDelay = 1000; //1 seconde
 
-const int safeZone = 300;
+const int safeZone = 600;
 
 class Game
 {

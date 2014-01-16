@@ -249,13 +249,13 @@ void Menu::play_HS(){
     cadre.setFillColor(sf::Color(207,207,207,220));
 
     sf::Text Title=sf::Text("* HighScores *",Ressources::getFont(),90);
-    Title.setPosition(sf::Vector2f(cadre.getSize().x/2-150,cadre.getPosition().y-150));
+    Title.setPosition(sf::Vector2f(cadre.getSize().x/2-180,cadre.getPosition().y-150));
     Title.setColor(sf::Color::Yellow);
     Title.setStyle(sf::Text::Bold);
 
     std::vector <sf::Text> listeHS;
 
-    std::ifstream highscore ("highscore");
+    std::fstream highscore ("highscore");
     std::ofstream HS;
     HS.open("hs");
     std::string line;
@@ -267,33 +267,41 @@ void Menu::play_HS(){
         }
         std::sort(hs.begin(),hs.end());
         std::reverse(hs.begin(),hs.end());
+        highscore.close();
 
+        highscore.open("highscore",std::fstream::out|std::fstream::trunc);
+        if(hs.size()!=0)
+            for(int i=0;i<=(hs.size()>3?3:hs.size()-1);i++){
+                highscore<<hs[i]<<std::endl;
+            }
+        highscore.close();
     }
+    highscore.close();
 
     if(hs.size()>=1){
         sf::Text hs1=sf::Text(std::to_string(hs[0]),Ressources::getFont(),70);
-        hs1.setPosition(sf::Vector2f(cadre.getSize().x/2+50,cadre.getPosition().y+10));
+        hs1.setPosition(sf::Vector2f(cadre.getSize().x/2+40-hs1.getString().getSize()*3,cadre.getPosition().y+10));
         hs1.setColor(sf::Color::Yellow);
         hs1.setStyle(sf::Text::Bold);
         listeHS.push_back(hs1);
     }
     if(hs.size()>=2){
         sf::Text hs2=sf::Text(std::to_string(hs[1]),Ressources::getFont(),42);
-        hs2.setPosition(sf::Vector2f(cadre.getSize().x/2+60,cadre.getPosition().y+10+spacementSelector));
+        hs2.setPosition(sf::Vector2f(cadre.getSize().x/2+60-hs2.getString().getSize()*2,cadre.getPosition().y+10+spacementSelector));
         hs2.setColor(sf::Color::Blue);
         hs2.setStyle(sf::Text::Bold);
         listeHS.push_back(hs2);
     }
     if(hs.size()>=3){
         sf::Text hs3=sf::Text(std::to_string(hs[2]),Ressources::getFont(),42);
-        hs3.setPosition(sf::Vector2f(cadre.getSize().x/2+60,cadre.getPosition().y+10+2*spacementSelector));
+        hs3.setPosition(sf::Vector2f(cadre.getSize().x/2+60-hs3.getString().getSize()*2,cadre.getPosition().y+10+2*spacementSelector));
         hs3.setColor(sf::Color::Blue);
         hs3.setStyle(sf::Text::Bold);
         listeHS.push_back(hs3);
     }
     if(hs.size()>=4){
         sf::Text hs4=sf::Text(std::to_string(hs[3]),Ressources::getFont(),42);
-        hs4.setPosition(sf::Vector2f(cadre.getSize().x/2+60,cadre.getPosition().y+10+3*spacementSelector));
+        hs4.setPosition(sf::Vector2f(cadre.getSize().x/2+60-hs4.getString().getSize()*2,cadre.getPosition().y+10+3*spacementSelector));
         hs4.setColor(sf::Color::Blue);
         hs4.setStyle(sf::Text::Bold);
         listeHS.push_back(hs4);
