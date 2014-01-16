@@ -23,9 +23,6 @@ Menu::Menu(sf::RenderWindow *window){
 enum choix Menu::playMenu(){
     sf::Clock delay;
 
-    //reinitialisation
-    if(listeMenu.size()>0)
-    listeMenu.clear();
 
     sf::RectangleShape cadre=sf::RectangleShape(sf::Vector2f(Window->getSize().x-200,4*(80+10)+10));
     cadre.setPosition(sf::Vector2f(100,Window->getSize().y/3));
@@ -74,10 +71,6 @@ enum choix Menu::playMenu(){
     quit.setColor(sf::Color::Blue);
     quit.setStyle(sf::Text::Bold);
 
-    listeMenu.push_back(jouer);
-    listeMenu.push_back(HS);
-    listeMenu.push_back(credits);
-    listeMenu.push_back(quit);
 
     while(Window->isOpen()){
         sf::Event event;
@@ -89,8 +82,8 @@ enum choix Menu::playMenu(){
                 switch (event.key.code) {
                 case sf::Keyboard::Up:
                     if(selectorPosition==1){
-                        selector.setPosition(sf::Vector2f(selector.getPosition().x,selector.getPosition().y+(listeMenu.size()-1)*spacementSelector));
-                        selectorPosition=listeMenu.size();
+                        selector.setPosition(sf::Vector2f(selector.getPosition().x,selector.getPosition().y+(4-1)*spacementSelector));
+                        selectorPosition=4;
                     }
                     else{
                         selector.setPosition(sf::Vector2f(selector.getPosition().x,selector.getPosition().y-spacementSelector));
@@ -98,8 +91,8 @@ enum choix Menu::playMenu(){
                     }
                     break;
                 case sf::Keyboard::Down:
-                    if(selectorPosition==listeMenu.size()){
-                        selector.setPosition(sf::Vector2f(selector.getPosition().x,selector.getPosition().y-(listeMenu.size()-1)*spacementSelector));
+                    if(selectorPosition==4){
+                        selector.setPosition(sf::Vector2f(selector.getPosition().x,selector.getPosition().y-(4-1)*spacementSelector));
                         selectorPosition=1;
                     }
                     else{
@@ -224,9 +217,10 @@ enum choix Menu::playMenu(){
         Window->draw(selector);
         Window->draw(Monster1);
         Window->draw(Monster2);
-        for(unsigned int i=0;i<listeMenu.size();i++){
-            Window->draw(listeMenu[i]);
-          }
+        Window->draw(jouer);
+        Window->draw(HS);
+        Window->draw(credits);
+        Window->draw(quit);
         // Update the window
         Window->display();
 
