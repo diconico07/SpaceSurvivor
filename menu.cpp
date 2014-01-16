@@ -27,14 +27,14 @@ enum choix Menu::playMenu(){
     sf::RectangleShape cadre=sf::RectangleShape(sf::Vector2f(Window->getSize().x-200,4*(80+10)+10));
     cadre.setPosition(sf::Vector2f(100,Window->getSize().y/3));
     cadre.setFillColor(sf::Color::Transparent);
-    cadre.setOutlineThickness(3);
+    cadre.setOutlineThickness(5);
     cadre.setOutlineColor(sf::Color::Black);
     cadre.setFillColor(sf::Color(207,207,207,220));
 
     sf::RectangleShape selector= sf::RectangleShape(sf::Vector2f(Window->getSize().x-220,80));
     selector.setPosition(sf::Vector2f(cadre.getPosition().x+10,cadre.getPosition().y+10));
     selector.setFillColor(sf::Color(252,220,18,150));
-    selector.setOutlineThickness(2);
+    selector.setOutlineThickness(3);
     selector.setOutlineColor(sf::Color::Blue);
     unsigned int selectorPosition =1;
 
@@ -200,7 +200,7 @@ enum choix Menu::playMenu(){
             break;
         }
 
-        if(delay.getElapsedTime().asMilliseconds()>=200){
+        if(delay.getElapsedTime().asMilliseconds()>=500){
             delay.restart();
             cadre.setOutlineColor(sf::Color(std::rand()%255,std::rand()%255,std::rand()%255));
             selector.setOutlineColor(sf::Color(std::rand()%255,std::rand()%255,std::rand()%255));
