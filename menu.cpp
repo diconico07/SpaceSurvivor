@@ -21,6 +21,8 @@ Menu::Menu(sf::RenderWindow *window){
 
 }
 enum choix Menu::playMenu(){
+    sf::Clock delay;
+
     //reinitialisation
     if(listeMenu.size()>0)
       for(unsigned int i=0;i<listeMenu.size();i++)
@@ -142,61 +144,69 @@ enum choix Menu::playMenu(){
         case 1:
             jouer->setColor(sf::Color::Green);
             jouer->setScale(1.2,1.2);
-            jouer->setPosition(sf::Vector2f(cadre->getSize().x/2-10,cadre->getPosition().y+10));
+            jouer->setPosition(sf::Vector2f(cadre->getSize().x/2-10,cadre->getPosition().y+20));
             HS->setColor(sf::Color::Blue);
             HS->setScale(1,1);
-            HS->setPosition(sf::Vector2f(cadre->getSize().x/2-35,cadre->getPosition().y+10+spacementSelector));
+            HS->setPosition(sf::Vector2f(cadre->getSize().x/2-35,cadre->getPosition().y+15+spacementSelector));
             credits->setColor(sf::Color::Blue);
             credits->setScale(1,1);
-            credits->setPosition(sf::Vector2f(cadre->getSize().x/2-22,cadre->getPosition().y+10+2*spacementSelector));
+            credits->setPosition(sf::Vector2f(cadre->getSize().x/2-22,cadre->getPosition().y+15+2*spacementSelector));
             quit->setColor(sf::Color::Blue);
             quit->setScale(1,1);
-            quit->setPosition(sf::Vector2f(cadre->getSize().x/2-30,cadre->getPosition().y+10+3*spacementSelector));
+            quit->setPosition(sf::Vector2f(cadre->getSize().x/2-30,cadre->getPosition().y+15+3*spacementSelector));
             break;
         case 2:
             jouer->setColor(sf::Color::Blue);
             jouer->setScale(1,1);
-            jouer->setPosition(sf::Vector2f(cadre->getSize().x/2,cadre->getPosition().y+10));
+            jouer->setPosition(sf::Vector2f(cadre->getSize().x/2,cadre->getPosition().y+15));
             HS->setColor(sf::Color::Green);
             HS->setScale(1.2,1.2);
-            HS->setPosition(sf::Vector2f(cadre->getSize().x/2-20-35,cadre->getPosition().y+10+spacementSelector));
+            HS->setPosition(sf::Vector2f(cadre->getSize().x/2-20-35,cadre->getPosition().y+20+spacementSelector));
             credits->setColor(sf::Color::Blue);
             credits->setScale(1,1);
-            credits->setPosition(sf::Vector2f(cadre->getSize().x/2-22,cadre->getPosition().y+10+2*spacementSelector));
+            credits->setPosition(sf::Vector2f(cadre->getSize().x/2-22,cadre->getPosition().y+15+2*spacementSelector));
             quit->setColor(sf::Color::Blue);
             quit->setScale(1,1);
-            quit->setPosition(sf::Vector2f(cadre->getSize().x/2-30,cadre->getPosition().y+10+3*spacementSelector));
+            quit->setPosition(sf::Vector2f(cadre->getSize().x/2-30,cadre->getPosition().y+15+3*spacementSelector));
             break;
         case 3:
             jouer->setColor(sf::Color::Blue);
             jouer->setScale(1,1);
-            jouer->setPosition(sf::Vector2f(cadre->getSize().x/2,cadre->getPosition().y+10));
+            jouer->setPosition(sf::Vector2f(cadre->getSize().x/2,cadre->getPosition().y+15));
             HS->setColor(sf::Color::Blue);
             HS->setScale(1,1);
-            HS->setPosition(sf::Vector2f(cadre->getSize().x/2-35,cadre->getPosition().y+10+spacementSelector));
+            HS->setPosition(sf::Vector2f(cadre->getSize().x/2-35,cadre->getPosition().y+15+spacementSelector));
             credits->setColor(sf::Color::Green);
             credits->setScale(1.2,1.2);
-            credits->setPosition(sf::Vector2f(cadre->getSize().x/2-15-22,cadre->getPosition().y+10+2*spacementSelector));
+            credits->setPosition(sf::Vector2f(cadre->getSize().x/2-15-22,cadre->getPosition().y+20+2*spacementSelector));
             quit->setColor(sf::Color::Blue);
             quit->setScale(1,1);
-            quit->setPosition(sf::Vector2f(cadre->getSize().x/2-30,cadre->getPosition().y+10+3*spacementSelector));
+            quit->setPosition(sf::Vector2f(cadre->getSize().x/2-30,cadre->getPosition().y+15+3*spacementSelector));
             break;
         case 4:
             jouer->setColor(sf::Color::Blue);
             jouer->setScale(1,1);
-            jouer->setPosition(sf::Vector2f(cadre->getSize().x/2,cadre->getPosition().y+10));
+            jouer->setPosition(sf::Vector2f(cadre->getSize().x/2,cadre->getPosition().y+15));
             HS->setColor(sf::Color::Blue);
             HS->setScale(1,1);
-            HS->setPosition(sf::Vector2f(cadre->getSize().x/2-35,cadre->getPosition().y+10+spacementSelector));
+            HS->setPosition(sf::Vector2f(cadre->getSize().x/2-35,cadre->getPosition().y+15+spacementSelector));
             credits->setColor(sf::Color::Blue);
             credits->setScale(1,1);
-            credits->setPosition(sf::Vector2f(cadre->getSize().x/2-22,cadre->getPosition().y+10+2*spacementSelector));
+            credits->setPosition(sf::Vector2f(cadre->getSize().x/2-22,cadre->getPosition().y+15+2*spacementSelector));
             quit->setColor(sf::Color::Green);
             quit->setScale(1.2,1.2);
-            quit->setPosition(sf::Vector2f(cadre->getSize().x/2-18-30,cadre->getPosition().y+10+3*spacementSelector));
+            quit->setPosition(sf::Vector2f(cadre->getSize().x/2-18-30,cadre->getPosition().y+20+3*spacementSelector));
             break;
         default:
             break;
+        }
+
+        if(delay.getElapsedTime().asMilliseconds()>=200){
+            delay.restart();
+            cadre->setOutlineColor(sf::Color(std::rand()%255,std::rand()%255,std::rand()%255));
+            selector->setOutlineColor(sf::Color(std::rand()%255,std::rand()%255,std::rand()%255));
+            Title->setColor(sf::Color(std::rand()%255,std::rand()%255,std::rand()%255));
+
         }
 
         //clear window
@@ -307,6 +317,12 @@ void Menu::play_HS(){
 void Menu::play_Credits(){
 
     sf::Clock delay;
+    //Loads and play background music
+    sf::Music music;
+    music.openFromFile("ressources/music.ogg");
+    music.setLoop(true);
+    music.setVolume(60);
+    music.play();
 
 
     sf::Text Title=sf::Text("+ Credits +",Ressources::getFont(),90);
@@ -330,7 +346,8 @@ void Menu::play_Credits(){
                 Window->close();
             if (event.type == sf::Event::KeyPressed){
                 if(event.key.code==sf::Keyboard::Escape) {
-                return;
+                    back.setColor(sf::Color(255,255,255));
+                    return;
                 }
             }
         }
@@ -338,6 +355,8 @@ void Menu::play_Credits(){
         if(delay.getElapsedTime().asMilliseconds()>=200){
             delay.restart();
             credits.setColor(sf::Color(std::rand()%255,std::rand()%255,std::rand()%255));
+            back.setColor(sf::Color(std::rand()%255,std::rand()%255,std::rand()%255));
+            Title.setColor(sf::Color(std::rand()%255,std::rand()%255,std::rand()%255));
 
         }
 
