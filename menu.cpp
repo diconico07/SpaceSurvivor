@@ -72,6 +72,9 @@ enum choix Menu::playMenu(){
     quit.setStyle(sf::Text::Bold);
 
 
+    sf::Sound change;
+    change.setBuffer(Ressources::getExplosionSound());
+
     while(Window->isOpen()){
         sf::Event event;
         while (Window->pollEvent(event))
@@ -81,6 +84,7 @@ enum choix Menu::playMenu(){
             if (event.type == sf::Event::KeyPressed){
                 switch (event.key.code) {
                 case sf::Keyboard::Up:
+                    change.play();
                     if(selectorPosition==1){
                         selector.setPosition(sf::Vector2f(selector.getPosition().x,selector.getPosition().y+(4-1)*spacementSelector));
                         selectorPosition=4;
@@ -91,6 +95,7 @@ enum choix Menu::playMenu(){
                     }
                     break;
                 case sf::Keyboard::Down:
+                    change.play();
                     if(selectorPosition==4){
                         selector.setPosition(sf::Vector2f(selector.getPosition().x,selector.getPosition().y-(4-1)*spacementSelector));
                         selectorPosition=1;

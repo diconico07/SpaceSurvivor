@@ -202,13 +202,14 @@ void Game::playGame(){
             for(unsigned int i=0;i<listeMissiles.size();i++){
                 for(unsigned int j=i+1;j<listeMissiles.size();j++)
                   if(listeMissiles[i]->collide(listeMissiles[j])){
+                      score+=3;
                       if(listeMissiles[i]==joueur || listeMissiles[j]==joueur){
                         joueurIsAlive=false;
+                        score-=3;
                         if(highscore.is_open()){
                             highscore<<score<<std::endl;
                         }
                       }
-                      score+=3;
                       listeMissiles[i]->destroy(&listeCollision, &listeSound, &listeAnimation);
                       listeMissiles[j]->destroy(&listeCollision, &listeSound, &listeAnimation);
                       delete listeMissiles[j];
