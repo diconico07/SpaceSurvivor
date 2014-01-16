@@ -41,10 +41,17 @@ enum choix Menu::playMenu(){
     selector->setOutlineColor(sf::Color::Blue);
     unsigned int selectorPosition =1;
 
-    sf::Text *Title=new sf::Text("SPACE SURVIVOR",Ressources::getFont(),90);
+    sf::Text *Title=new sf::Text("COOKIE SURVIVOR",Ressources::getFont(),90);
     Title->setPosition(sf::Vector2f(cadre->getSize().x/2-160,cadre->getPosition().y-200));
     Title->setColor(sf::Color::Yellow);
     Title->setStyle(sf::Text::Bold);
+    sf::Sprite Monster1, Monster2;
+    Monster1.setTexture(Ressources::getVessel());
+    Monster2.setTexture(Ressources::getVessel());
+    Monster1.setPosition(sf::Vector2f(cadre->getSize().x/2-280,cadre->getPosition().y-200));
+    Monster1.setScale(2,2);
+    Monster2.setPosition(sf::Vector2f(cadre->getSize().x/2+470,cadre->getPosition().y-200));
+    Monster2.setScale(2,2);
 
     sf::Text *jouer=new sf::Text("# Jouer #",Ressources::getFont(),42);
     jouer->setPosition(sf::Vector2f(cadre->getSize().x/2,cadre->getPosition().y+10));
@@ -207,6 +214,8 @@ enum choix Menu::playMenu(){
         Window->draw(*Title);
         Window->draw(*cadre);
         Window->draw(*selector);
+        Window->draw(Monster1);
+        Window->draw(Monster2);
         for(unsigned int i=0;i<listeMenu.size();i++){
             Window->draw(*listeMenu[i]);
           }
