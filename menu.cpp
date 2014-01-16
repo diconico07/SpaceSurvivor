@@ -330,7 +330,7 @@ void Menu::play_Credits(){
 
 
     sf::Text Title=sf::Text("+ Credits +",Ressources::getFont(),90);
-    Title.setPosition(sf::Vector2f(Window->getSize().x/2-260,Window->getSize().y/2-300));
+    Title.setPosition(sf::Vector2f(Window->getSize().x/2-230,Window->getSize().y/2-300));
     Title.setColor(sf::Color::Black);
     Title.setStyle(sf::Text::Bold);
 
