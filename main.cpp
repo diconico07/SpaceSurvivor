@@ -20,6 +20,7 @@ int main()
             break;
         }
         case CREDITS:
+            menu->play_Credits();
             break;
         case HIGHSCORES:
             menu->play_HS();

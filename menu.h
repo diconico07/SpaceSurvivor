@@ -38,6 +38,7 @@ public:
     //methods
     enum choix playMenu();
     void play_HS();
+    void play_Credits();
 };
 
 #endif // MENU_H

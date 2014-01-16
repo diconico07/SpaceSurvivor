@@ -43,11 +43,10 @@ enum choix Menu::playMenu(){
 
     sf::Text *Title=new sf::Text("SPACE SURVIVOR",Ressources::getFont(),90);
     Title->setPosition(sf::Vector2f(cadre->getSize().x/2-160,cadre->getPosition().y-200));
-    Title->setColor(sf::Color::Red);
+    Title->setColor(sf::Color::Yellow);
     Title->setStyle(sf::Text::Bold);
 
     sf::Text *jouer=new sf::Text("# Jouer #",Ressources::getFont(),42);
-
     jouer->setPosition(sf::Vector2f(cadre->getSize().x/2,cadre->getPosition().y+10));
     jouer->setColor(sf::Color::Blue);
     jouer->setStyle(sf::Text::Bold);
@@ -139,9 +138,9 @@ enum choix Menu::playMenu(){
 //            }
             switch (selectorPosition) {
             case 1:
-                jouer->setColor(sf::Color::Green);
+                jouer->setColor(sf::Color::Red);
                 jouer->setScale(1.2,1.2);
-                jouer->setPosition(sf::Vector2f(cadre->getSize().x/2-10,cadre->getPosition().y+10));
+                jouer->setPosition(sf::Vector2f(cadre->getSize().x/2-10,cadre->getPosition().y+20));
                 HS->setColor(sf::Color::Blue);
                 HS->setScale(1,1);
                 HS->setPosition(sf::Vector2f(cadre->getSize().x/2-35,cadre->getPosition().y+10+spacementSelector));
@@ -156,9 +155,9 @@ enum choix Menu::playMenu(){
                 jouer->setColor(sf::Color::Blue);
                 jouer->setScale(1,1);
                 jouer->setPosition(sf::Vector2f(cadre->getSize().x/2,cadre->getPosition().y+10));
-                HS->setColor(sf::Color::Green);
+                HS->setColor(sf::Color::Red);
                 HS->setScale(1.2,1.2);
-                HS->setPosition(sf::Vector2f(cadre->getSize().x/2-20-35,cadre->getPosition().y+10+spacementSelector));
+                HS->setPosition(sf::Vector2f(cadre->getSize().x/2-20-35,cadre->getPosition().y+20+spacementSelector));
                 credits->setColor(sf::Color::Blue);
                 credits->setScale(1,1);
                 credits->setPosition(sf::Vector2f(cadre->getSize().x/2-22,cadre->getPosition().y+10+2*spacementSelector));
@@ -173,9 +172,9 @@ enum choix Menu::playMenu(){
                 HS->setColor(sf::Color::Blue);
                 HS->setScale(1,1);
                 HS->setPosition(sf::Vector2f(cadre->getSize().x/2-35,cadre->getPosition().y+10+spacementSelector));
-                credits->setColor(sf::Color::Green);
+                credits->setColor(sf::Color::Red);
                 credits->setScale(1.2,1.2);
-                credits->setPosition(sf::Vector2f(cadre->getSize().x/2-15-22,cadre->getPosition().y+10+2*spacementSelector));
+                credits->setPosition(sf::Vector2f(cadre->getSize().x/2-15-22,cadre->getPosition().y+20+2*spacementSelector));
                 quit->setColor(sf::Color::Blue);
                 quit->setScale(1,1);
                 quit->setPosition(sf::Vector2f(cadre->getSize().x/2-30,cadre->getPosition().y+10+3*spacementSelector));
@@ -190,9 +189,9 @@ enum choix Menu::playMenu(){
                 credits->setColor(sf::Color::Blue);
                 credits->setScale(1,1);
                 credits->setPosition(sf::Vector2f(cadre->getSize().x/2-22,cadre->getPosition().y+10+2*spacementSelector));
-                quit->setColor(sf::Color::Green);
+                quit->setColor(sf::Color::Red);
                 quit->setScale(1.2,1.2);
-                quit->setPosition(sf::Vector2f(cadre->getSize().x/2-18-30,cadre->getPosition().y+10+3*spacementSelector));
+                quit->setPosition(sf::Vector2f(cadre->getSize().x/2-18-30,cadre->getPosition().y+20+3*spacementSelector));
                 break;
             default:
                 break;
@@ -218,19 +217,19 @@ enum choix Menu::playMenu(){
 
 void Menu::play_HS(){
 
-    sf::RectangleShape *cadre= new sf::RectangleShape(sf::Vector2f(Window->getSize().x-200,4*(80+10)+10));
-    cadre->setPosition(sf::Vector2f(100,Window->getSize().y/3));
-    cadre->setFillColor(sf::Color::Transparent);
-    cadre->setOutlineThickness(3);
-    cadre->setOutlineColor(sf::Color::Yellow);
-    cadre->setFillColor(sf::Color(207,207,207,220));
+    sf::RectangleShape cadre=sf::RectangleShape(sf::Vector2f(Window->getSize().x-200,4*(80+10)+10));
+    cadre.setPosition(sf::Vector2f(100,Window->getSize().y/3));
+    cadre.setFillColor(sf::Color::Transparent);
+    cadre.setOutlineThickness(3);
+    cadre.setOutlineColor(sf::Color::Yellow);
+    cadre.setFillColor(sf::Color(207,207,207,220));
 
-    sf::Text *Title=new sf::Text("* HighScores *",Ressources::getFont(),90);
-    Title->setPosition(sf::Vector2f(cadre->getSize().x/2-150,cadre->getPosition().y-150));
-    Title->setColor(sf::Color::Yellow);
-    Title->setStyle(sf::Text::Bold);
+    sf::Text Title=sf::Text("* HighScores *",Ressources::getFont(),90);
+    Title.setPosition(sf::Vector2f(cadre.getSize().x/2-150,cadre.getPosition().y-150));
+    Title.setColor(sf::Color::Yellow);
+    Title.setStyle(sf::Text::Bold);
 
-    std::vector <sf::Text*> listeHS;
+    std::vector <sf::Text> listeHS;
 
     std::ifstream highscore ("highscore");
     std::ofstream HS;
@@ -247,25 +246,25 @@ void Menu::play_HS(){
 
     }
 
-    sf::Text *hs1=new sf::Text(std::to_string(hs[0]),Ressources::getFont(),70);
-    hs1->setPosition(sf::Vector2f(cadre->getSize().x/2+50,cadre->getPosition().y+10));
-    hs1->setColor(sf::Color::Yellow);
-    hs1->setStyle(sf::Text::Bold);
+    sf::Text hs1=sf::Text(std::to_string(hs[0]),Ressources::getFont(),70);
+    hs1.setPosition(sf::Vector2f(cadre.getSize().x/2+50,cadre.getPosition().y+10));
+    hs1.setColor(sf::Color::Yellow);
+    hs1.setStyle(sf::Text::Bold);
 
-    sf::Text *hs2=new sf::Text(std::to_string(hs[1]),Ressources::getFont(),42);
-    hs2->setPosition(sf::Vector2f(cadre->getSize().x/2+60,cadre->getPosition().y+10+spacementSelector));
-    hs2->setColor(sf::Color::Blue);
-    hs2->setStyle(sf::Text::Bold);
+    sf::Text hs2=sf::Text(std::to_string(hs[1]),Ressources::getFont(),42);
+    hs2.setPosition(sf::Vector2f(cadre.getSize().x/2+60,cadre.getPosition().y+10+spacementSelector));
+    hs2.setColor(sf::Color::Blue);
+    hs2.setStyle(sf::Text::Bold);
 
-    sf::Text *hs3=new sf::Text(std::to_string(hs[2]),Ressources::getFont(),42);
-    hs3->setPosition(sf::Vector2f(cadre->getSize().x/2+60,cadre->getPosition().y+10+2*spacementSelector));
-    hs3->setColor(sf::Color::Blue);
-    hs3->setStyle(sf::Text::Bold);
+    sf::Text hs3=sf::Text(std::to_string(hs[2]),Ressources::getFont(),42);
+    hs3.setPosition(sf::Vector2f(cadre.getSize().x/2+60,cadre.getPosition().y+10+2*spacementSelector));
+    hs3.setColor(sf::Color::Blue);
+    hs3.setStyle(sf::Text::Bold);
 
-    sf::Text *hs4=new sf::Text(std::to_string(hs[3]),Ressources::getFont(),42);
-    hs4->setPosition(sf::Vector2f(cadre->getSize().x/2+60,cadre->getPosition().y+10+3*spacementSelector));
-    hs4->setColor(sf::Color::Blue);
-    hs4->setStyle(sf::Text::Bold);
+    sf::Text hs4=sf::Text(std::to_string(hs[3]),Ressources::getFont(),42);
+    hs4.setPosition(sf::Vector2f(cadre.getSize().x/2+60,cadre.getPosition().y+10+3*spacementSelector));
+    hs4.setColor(sf::Color::Blue);
+    hs4.setStyle(sf::Text::Bold);
 
     listeHS.push_back(hs1);
     listeHS.push_back(hs2);
@@ -290,10 +289,10 @@ void Menu::play_HS(){
         Window->clear();
 
         Window->draw(back);
-        Window->draw(*cadre);
-        Window->draw(*Title);
+        Window->draw(cadre);
+        Window->draw(Title);
         for(unsigned int i=0;i<listeHS.size();i++){
-            Window->draw(*listeHS[i]);
+            Window->draw(listeHS[i]);
         }
 
         Window->display();
@@ -303,3 +302,53 @@ void Menu::play_HS(){
 
 }
 
+void Menu::play_Credits(){
+
+    sf::Clock delay;
+
+
+    sf::Text Title=sf::Text("+ Credits +",Ressources::getFont(),90);
+    Title.setPosition(sf::Vector2f(Window->getSize().x/2-260,Window->getSize().y/2-300));
+    Title.setColor(sf::Color::Black);
+    Title.setStyle(sf::Text::Bold);
+
+
+
+    sf::Text credits=sf::Text("DicoNico07 & Tiritchi",Ressources::getFont(),70);
+    credits.setPosition(sf::Vector2f(Window->getSize().x/2-330,Window->getSize().y/2));
+    credits.setColor(sf::Color::Yellow);
+    credits.setStyle(sf::Text::Bold);
+
+
+    while(Window->isOpen()){
+        sf::Event event;
+        while (Window->pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+                Window->close();
+            if (event.type == sf::Event::KeyPressed){
+                if(event.key.code==sf::Keyboard::Escape) {
+                return;
+                }
+            }
+        }
+
+        if(delay.getElapsedTime().asMilliseconds()>=200){
+            delay.restart();
+            credits.setColor(sf::Color(std::rand()%255,std::rand()%255,std::rand()%255));
+
+        }
+
+        //clear window
+        Window->clear();
+
+        Window->draw(back);
+        Window->draw(Title);
+        Window->draw(credits);
+
+        Window->display();
+    }
+
+
+
+}
