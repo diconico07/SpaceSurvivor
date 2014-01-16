@@ -27,7 +27,7 @@ class Menu
 private:
     //Attributes
     sf::RenderWindow *Window;
-    sf::Sprite back;
+    sf::Sprite back, back2;
 public:
     //Constructors/destructor
     Menu();

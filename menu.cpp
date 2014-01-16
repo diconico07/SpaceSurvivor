@@ -8,21 +8,28 @@ Menu::Menu(sf::RenderWindow *window){
     Window=window;
     // Load a sprite to display
     sf::Texture *background=new sf::Texture;
-    background->loadFromFile("ressources/backmenu_control.png");
+    background->loadFromFile("ressources/backmenu.png");
     background->setRepeated(true);
     background->setSmooth(true);
     back=sf::Sprite(*background);
     back.setColor(sf::Color::White);
+
+    sf::Texture *background2=new sf::Texture;
+    background2->loadFromFile("ressources/backmenu_control.png");
+    background2->setRepeated(true);
+    background2->setSmooth(true);
+    back2=sf::Sprite(*background2);
+    back2.setColor(sf::Color::White);
     //back.scale(2,2);
     back.setScale((float)window->getSize().x/background->getSize().x,(float)window->getSize().y/background->getSize().y);
-    Window->setMouseCursorVisible(true);
+    back2.setScale((float)window->getSize().x/background->getSize().x,(float)window->getSize().y/background->getSize().y);
+    Window->setMouseCursorVisible(false);
 
 
 
 }
 enum choix Menu::playMenu(){
     sf::Clock delay;
-
 
     sf::RectangleShape cadre=sf::RectangleShape(sf::Vector2f(Window->getSize().x-200,4*(80+10)+10));
     cadre.setPosition(sf::Vector2f(100,Window->getSize().y/3));
@@ -216,7 +223,7 @@ enum choix Menu::playMenu(){
         Window->clear();
 
         //Draw the sprites
-        Window->draw(back);
+        Window->draw(back2);
         Window->draw(Title);
         Window->draw(cadre);
         Window->draw(selector);
@@ -234,7 +241,6 @@ enum choix Menu::playMenu(){
 }
 
 void Menu::play_HS(){
-
     sf::RectangleShape cadre=sf::RectangleShape(sf::Vector2f(Window->getSize().x-200,4*(80+10)+10));
     cadre.setPosition(sf::Vector2f(100,Window->getSize().y/3));
     cadre.setFillColor(sf::Color::Transparent);
@@ -324,7 +330,6 @@ void Menu::play_HS(){
 }
 
 void Menu::play_Credits(){
-
     sf::Clock delay;
     //Loads and play background music
     sf::Music music;
