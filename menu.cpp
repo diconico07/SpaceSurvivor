@@ -8,7 +8,7 @@ Menu::Menu(sf::RenderWindow *window){
     Window=window;
     // Load a sprite to display
     sf::Texture *background=new sf::Texture;
-    background->loadFromFile("ressources/backmenu.png");
+    background->loadFromFile("ressources/backmenu_control.png");
     background->setRepeated(true);
     background->setSmooth(true);
     back=sf::Sprite(*background);
