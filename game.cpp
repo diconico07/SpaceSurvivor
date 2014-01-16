@@ -57,6 +57,8 @@ void Game::playGame(){
 
     sf::Text chrono;
     sf::Text Score;
+    int scoretemps=0;
+    score=0;
 
     //End of Game text
     sf::Text GameOver;
@@ -86,6 +88,7 @@ void Game::playGame(){
     backblur.setScale((float)Window->getSize().x/background_blur.getSize().x,(float)Window->getSize().y/background_blur.getSize().y);
     int alphablur=0;
 
+    //Opens Highscores file
     std::ofstream highscore;
     highscore.open("highscore",std::ios::out | std::ios::app | std::ios::binary);
 
@@ -96,7 +99,9 @@ void Game::playGame(){
         if(joueurIsAlive){
             millisec=game_delay.getElapsedTime().asMilliseconds();
             sec=(int)game_delay.getElapsedTime().asSeconds();
-            score=5*sec;
+            score+=5*sec-scoretemps;
+            scoretemps=5*sec;
+
         }
         chrono_display=std::to_string(sec/60)+":"+std::to_string(sec%60)+":"+std::to_string((millisec%1000)/10);
         chrono=sf::Text(chrono_display,Ressources::getFont(),42);
@@ -203,6 +208,7 @@ void Game::playGame(){
                             highscore<<score<<std::endl;
                         }
                       }
+                      score+=3;
                       listeMissiles[i]->destroy(&listeCollision, &listeSound, &listeAnimation);
                       listeMissiles[j]->destroy(&listeCollision, &listeSound, &listeAnimation);
                       delete listeMissiles[j];
